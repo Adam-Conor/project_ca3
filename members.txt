@@ -1,0 +1,7 @@
+title: swag
+
+supervisor: Brian Stone
+
+member1: 12452382 Conor Smyth
+
+member2: 12378651 Adam O'Flynn
