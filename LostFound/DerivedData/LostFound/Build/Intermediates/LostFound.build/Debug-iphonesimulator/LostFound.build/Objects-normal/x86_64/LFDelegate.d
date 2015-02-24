@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/LFProject/LFDelegate.m \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/Parse.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFACL.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFAnalytics.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFConstants.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFAnonymousUtils.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFUser.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFObject.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFSubclassing.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFCloud.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFConfig.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFFile.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFGeoPoint.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFObject+Subclass.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFQuery.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFRelation.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFRole.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFInstallation.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFNetworkActivityIndicatorManager.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFProduct.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFPurchase.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFPush.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PFTwitterUtils.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/Parse.framework/Headers/PF_Twitter.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/LFProject/LFDelegate.h \
+  /Users/aoflynn/Dropbox/work/work/project/LostFound/LFProject/LFViewController.h
