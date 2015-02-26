@@ -7,7 +7,7 @@
 #import <Parse/Parse.h>
 
 // If you want to use any of the UI components, uncomment this line
-// #import <ParseUI/ParseUI.h>
+#import <ParseUI/ParseUI.h>
 
 // If you are using Facebook, uncomment this line
 // #import <ParseFacebookUtils/PFFacebookUtils.h>
@@ -17,6 +17,11 @@
 
 #import "LFDelegate.h"
 #import "LFViewController.h"
+#import "LFLoginViewController.h"
+
+@interface LFDelegate () <LFloginViewControllerDelegate>
+
+@end
 
 @implementation LFDelegate
 
@@ -41,7 +46,7 @@
     // [PFFacebookUtils initializeFacebook];
     // ****************************************************************************
 
-    [PFUser enableAutomaticUser];
+    /*[PFUser enableAutomaticUser];
 
     PFACL *defaultACL = [PFACL ACL];
 
@@ -49,13 +54,22 @@
     [defaultACL setPublicReadAccess:YES];
 
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-
+     */
     // Override point for customization after application launch.
-
-    self.window.rootViewController = self.viewController;
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+    
+    
+    /*if(true){
+        [self presentLoginViewController];
+    }*/
+    
+    
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
 
-    if (application.applicationState != UIApplicationStateBackground) {
+   /* if (application.applicationState != UIApplicationStateBackground) {
         // Track an app open here if we launch with a push, unless
         // "content_available" was used to trigger a background push (introduced in iOS 7).
         // In that case, we skip tracking here to avoid double counting the app-open.
@@ -82,12 +96,19 @@
         [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                          UIRemoteNotificationTypeAlert |
                                                          UIRemoteNotificationTypeSound)];
-    }
-
+    }*/
+    
     return YES;
 }
 
-#pragma mark Push Notifications
+
+- (void)presentLoginViewController {
+    LFLoginViewController *viewController = [[LFLoginViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.delegate = self;
+    [self.navigationController setViewControllers:@[ viewController ] animated:NO];
+}
+
+/*#pragma mark Push Notifications
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
@@ -96,9 +117,9 @@
 
     [PFPush subscribeToChannelInBackground:@"" block:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"ParseStarterProject successfully subscribed to push notifications on the broadcast channel.");
+            NSLog(@"LFProject successfully subscribed to push notifications on the broadcast channel.");
         } else {
-            NSLog(@"ParseStarterProject failed to subscribe to push notifications on the broadcast channel.");
+            NSLog(@"LFProject failed to subscribe to push notifications on the broadcast channel.");
         }
     }];
 }
@@ -140,5 +161,5 @@
 //         annotation:(id)annotation {
 //    return [PFFacebookUtils handleOpenURL:url];
 //}
-
+*/
 @end

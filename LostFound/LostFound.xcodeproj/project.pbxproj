@@ -31,6 +31,8 @@
 		81A6CA611A2EA82800297C39 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6CA601A2EA82800297C39 /* libstdc++.6.dylib */; };
 		81DDFD1919B4A60300BE649C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DDFD1719B4A60300BE649C /* Parse.framework */; };
 		81DDFD1A19B4A60300BE649C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DDFD1819B4A60300BE649C /* ParseFacebookUtils.framework */; };
+		885E80231A9FB93D00DAE48B /* LFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 885E80211A9FB93D00DAE48B /* LFLoginViewController.m */; };
+		885E80241A9FB93D00DAE48B /* LFLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */; };
 		91D261791A36EB67005D713D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D261781A36EB67005D713D /* libsqlite3.0.dylib */; };
 		C4C51B571613CE0800959FDC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B541613CE0800959FDC /* Default.png */; };
 		C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B551613CE0800959FDC /* Default-568h@2x.png */; };
@@ -74,6 +76,9 @@
 		81A6CA601A2EA82800297C39 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81DDFD1719B4A60300BE649C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		81DDFD1819B4A60300BE649C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		885E80201A9FB93D00DAE48B /* LFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLoginViewController.h; sourceTree = "<group>"; };
+		885E80211A9FB93D00DAE48B /* LFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLoginViewController.m; sourceTree = "<group>"; };
+		885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFLoginViewController.xib; sourceTree = "<group>"; };
 		889922D81A9CDAF500B368F6 /* LFDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFDelegate.h; sourceTree = "<group>"; };
 		91D261781A36EB67005D713D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		97E18B1E1624CB5700B17A67 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -155,6 +160,9 @@
 				F5DD9E2A1A9B9CB400695F7C /* Storyboard.storyboard */,
 				09ABC08613A1D52E009C3FCF /* LFViewController.h */,
 				09ABC08713A1D52E009C3FCF /* LFViewController.m */,
+				885E80201A9FB93D00DAE48B /* LFLoginViewController.h */,
+				885E80211A9FB93D00DAE48B /* LFLoginViewController.m */,
+				885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */,
 				09ABC08913A1D52E009C3FCF /* LFViewController.xib */,
 				F5DD9E281A9B9B9A00695F7C /* LaunchScreen.xib */,
 				F5DD9E261A9B8D4600695F7C /* Images.xcassets */,
@@ -263,6 +271,7 @@
 				C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */,
 				C4C51B591613CE0800959FDC /* Default@2x.png in Resources */,
 				F5DD9E2B1A9B9CB400695F7C /* Storyboard.storyboard in Resources */,
+				885E80241A9FB93D00DAE48B /* LFLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				885E80231A9FB93D00DAE48B /* LFLoginViewController.m in Sources */,
 				09ABC07F13A1D52D009C3FCF /* main.m in Sources */,
 				09ABC08213A1D52D009C3FCF /* LFDelegate.m in Sources */,
 				09ABC08813A1D52E009C3FCF /* LFViewController.m in Sources */,

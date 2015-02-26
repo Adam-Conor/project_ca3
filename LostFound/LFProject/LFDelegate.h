@@ -10,8 +10,8 @@
 
 @interface LFDelegate : NSObject <UIApplicationDelegate>
 
-@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
 
-@property (nonatomic, strong) IBOutlet LFViewController *viewController;
+@property (nonatomic, strong) UINavigationController *navigationController;
 
 @end
