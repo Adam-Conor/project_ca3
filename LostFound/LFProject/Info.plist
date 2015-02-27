@@ -26,10 +26,10 @@
 	<string>1.6.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>LFLoginViewController</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LFLoginViewController</string>
+	<string>Main</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

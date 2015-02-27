@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "LFLoginViewController.h"
+#import "LFNewUserViewController.h"
 
 @interface LFLoginViewController ()
 <UITextFieldDelegate, UIScrollViewDelegate>
@@ -42,6 +43,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
@@ -62,9 +64,9 @@
 
 
 
-/*- (IBAction)signUp:(id)sender {
+- (IBAction)signUp:(id)sender {
     [self showNewUserView];
-}*/
+}
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.usernameField) {
@@ -79,7 +81,17 @@
 }
 
 
-//- (void)newUser
+- (void)showNewUserView {
+    LFNewUserViewController *viewController = [[LFNewUserViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.delegate = self;
+    [self.navigationController presentViewController:viewController animated:YES completion:nil];
+}
+
+#pragma mark Delegate
+
+- (void)newUserViewControllerDidSignup:(LFNewUserViewController *)controller {
+    [self.delegate loginViewControllerDidLogin:self];
+}
 
 
 - (void) getFieldValues{
@@ -139,9 +151,9 @@
         }
      }
      ];
+}
     
-    
-- (void) dismissKeyboard {
+- (void)dismissKeyboard {
         [self.view endEditing:YES];
 }
     
@@ -169,7 +181,7 @@
     }
     */
     
-}
+
 @end
 
 
