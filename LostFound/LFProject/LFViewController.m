@@ -5,6 +5,7 @@
 //
 
 #import "LFViewController.h"
+#import "LFLoginViewController.h"
 
 #import <Parse/Parse.h>
 
@@ -16,14 +17,25 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    /*PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
     [testObject saveInBackground];
     
-    //[self updateData];
+    [self updateListing];*/
 }
 
-- (void)createListing {
+
+- (IBAction)showViewController:(id)sender {
+    NSLog(@"showViewController");
+    
+    LFViewController *viewController = [[LFViewController alloc] init];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+
+
+
+/*- (void)createListing {
     PFObject *lis = [PFObject objectWithClassName:@"Listing"];
     lis[@"item"] = @"bobble";
     [lis saveInBackground];
@@ -42,7 +54,7 @@ PFQuery *query = [PFQuery queryWithClassName:@"Listing"];
     [lis saveInBackground];
     
 }];
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

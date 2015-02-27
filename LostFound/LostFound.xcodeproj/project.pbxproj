@@ -18,9 +18,6 @@
 		09ABC07C13A1D52D009C3FCF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09ABC07A13A1D52D009C3FCF /* InfoPlist.strings */; };
 		09ABC07F13A1D52D009C3FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC07E13A1D52D009C3FCF /* main.m */; };
 		09ABC08213A1D52D009C3FCF /* LFDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08113A1D52D009C3FCF /* LFDelegate.m */; };
-		09ABC08513A1D52E009C3FCF /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ABC08313A1D52D009C3FCF /* MainWindow.xib */; };
-		09ABC08813A1D52E009C3FCF /* LFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08713A1D52E009C3FCF /* LFViewController.m */; };
-		09ABC08B13A1D52E009C3FCF /* LFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ABC08913A1D52E009C3FCF /* LFViewController.xib */; };
 		09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BEF34B13D51C3F001BBCDB /* Security.framework */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
@@ -31,14 +28,15 @@
 		81A6CA611A2EA82800297C39 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6CA601A2EA82800297C39 /* libstdc++.6.dylib */; };
 		81DDFD1919B4A60300BE649C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DDFD1719B4A60300BE649C /* Parse.framework */; };
 		81DDFD1A19B4A60300BE649C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DDFD1819B4A60300BE649C /* ParseFacebookUtils.framework */; };
+		883F6C9C1A9FE0CB00ABD4C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */; };
+		885E80231A9FB93D00DAE48B /* LFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 885E80211A9FB93D00DAE48B /* LFLoginViewController.m */; };
+		885E80241A9FB93D00DAE48B /* LFLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */; };
+		8862944E1A9FEF21004F028C /* LFNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862944D1A9FEF21004F028C /* LFNewUserViewController.m */; };
+		8873FCBB1AA0C2C6003A1096 /* LFNewUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8873FCBA1AA0C2C6003A1096 /* LFNewUserViewController.xib */; };
 		91D261791A36EB67005D713D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D261781A36EB67005D713D /* libsqlite3.0.dylib */; };
-		C4C51B571613CE0800959FDC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B541613CE0800959FDC /* Default.png */; };
-		C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B551613CE0800959FDC /* Default-568h@2x.png */; };
-		C4C51B591613CE0800959FDC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B561613CE0800959FDC /* Default@2x.png */; };
 		DD952FCB16E7F5CF00470144 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E18B1E1624CB5700B17A67 /* CoreLocation.framework */; };
 		F5DD9E271A9B8D4600695F7C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5DD9E261A9B8D4600695F7C /* Images.xcassets */; };
-		F5DD9E291A9B9B9A00695F7C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DD9E281A9B9B9A00695F7C /* LaunchScreen.xib */; };
-		F5DD9E2B1A9B9CB400695F7C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DD9E2A1A9B9CB400695F7C /* Storyboard.storyboard */; };
+		F5DD9E2B1A9B9CB400695F7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DD9E2A1A9B9CB400695F7C /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +54,6 @@
 		09ABC07D13A1D52D009C3FCF /* LostFound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LostFound-Prefix.pch"; sourceTree = "<group>"; };
 		09ABC07E13A1D52D009C3FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09ABC08113A1D52D009C3FCF /* LFDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LFDelegate.m; sourceTree = "<group>"; };
-		09ABC08413A1D52E009C3FCF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		09ABC08613A1D52E009C3FCF /* LFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFViewController.h; sourceTree = "<group>"; };
-		09ABC08713A1D52E009C3FCF /* LFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LFViewController.m; sourceTree = "<group>"; };
-		09ABC08A13A1D52E009C3FCF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LFViewController.xib; sourceTree = "<group>"; };
 		09BEF34B13D51C3F001BBCDB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -74,15 +68,18 @@
 		81A6CA601A2EA82800297C39 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81DDFD1719B4A60300BE649C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		81DDFD1819B4A60300BE649C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		885E80201A9FB93D00DAE48B /* LFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLoginViewController.h; sourceTree = "<group>"; };
+		885E80211A9FB93D00DAE48B /* LFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLoginViewController.m; sourceTree = "<group>"; };
+		885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFLoginViewController.xib; sourceTree = "<group>"; };
+		8862944C1A9FEF21004F028C /* LFNewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFNewUserViewController.h; sourceTree = "<group>"; };
+		8862944D1A9FEF21004F028C /* LFNewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFNewUserViewController.m; sourceTree = "<group>"; };
+		8873FCBA1AA0C2C6003A1096 /* LFNewUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFNewUserViewController.xib; sourceTree = "<group>"; };
 		889922D81A9CDAF500B368F6 /* LFDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFDelegate.h; sourceTree = "<group>"; };
 		91D261781A36EB67005D713D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		97E18B1E1624CB5700B17A67 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C4C51B541613CE0800959FDC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Images.xcassets/Default.png; sourceTree = "<group>"; };
-		C4C51B551613CE0800959FDC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Images.xcassets/Default-568h@2x.png"; sourceTree = "<group>"; };
-		C4C51B561613CE0800959FDC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Images.xcassets/Default@2x.png"; sourceTree = "<group>"; };
 		F5DD9E261A9B8D4600695F7C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
-		F5DD9E281A9B9B9A00695F7C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		F5DD9E2A1A9B9CB400695F7C /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		F5DD9E2A1A9B9CB400695F7C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,12 +148,14 @@
 			children = (
 				889922D81A9CDAF500B368F6 /* LFDelegate.h */,
 				09ABC08113A1D52D009C3FCF /* LFDelegate.m */,
-				09ABC08313A1D52D009C3FCF /* MainWindow.xib */,
-				F5DD9E2A1A9B9CB400695F7C /* Storyboard.storyboard */,
-				09ABC08613A1D52E009C3FCF /* LFViewController.h */,
-				09ABC08713A1D52E009C3FCF /* LFViewController.m */,
-				09ABC08913A1D52E009C3FCF /* LFViewController.xib */,
-				F5DD9E281A9B9B9A00695F7C /* LaunchScreen.xib */,
+				F5DD9E2A1A9B9CB400695F7C /* Main.storyboard */,
+				883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */,
+				8862944C1A9FEF21004F028C /* LFNewUserViewController.h */,
+				8862944D1A9FEF21004F028C /* LFNewUserViewController.m */,
+				8873FCBA1AA0C2C6003A1096 /* LFNewUserViewController.xib */,
+				885E80201A9FB93D00DAE48B /* LFLoginViewController.h */,
+				885E80211A9FB93D00DAE48B /* LFLoginViewController.m */,
+				885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */,
 				F5DD9E261A9B8D4600695F7C /* Images.xcassets */,
 				09ABC07813A1D52D009C3FCF /* Supporting Files */,
 			);
@@ -166,9 +165,6 @@
 		09ABC07813A1D52D009C3FCF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C4C51B541613CE0800959FDC /* Default.png */,
-				C4C51B561613CE0800959FDC /* Default@2x.png */,
-				C4C51B551613CE0800959FDC /* Default-568h@2x.png */,
 				09ABC07913A1D52D009C3FCF /* Info.plist */,
 				09144A7213C2997E00388B00 /* Entitlements.plist */,
 				09ABC07A13A1D52D009C3FCF /* InfoPlist.strings */,
@@ -253,16 +249,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883F6C9C1A9FE0CB00ABD4C0 /* LaunchScreen.xib in Resources */,
 				09ABC07C13A1D52D009C3FCF /* InfoPlist.strings in Resources */,
 				F5DD9E271A9B8D4600695F7C /* Images.xcassets in Resources */,
-				F5DD9E291A9B9B9A00695F7C /* LaunchScreen.xib in Resources */,
-				09ABC08513A1D52E009C3FCF /* MainWindow.xib in Resources */,
-				09ABC08B13A1D52E009C3FCF /* LFViewController.xib in Resources */,
 				09144A7313C2997E00388B00 /* Entitlements.plist in Resources */,
-				C4C51B571613CE0800959FDC /* Default.png in Resources */,
-				C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */,
-				C4C51B591613CE0800959FDC /* Default@2x.png in Resources */,
-				F5DD9E2B1A9B9CB400695F7C /* Storyboard.storyboard in Resources */,
+				F5DD9E2B1A9B9CB400695F7C /* Main.storyboard in Resources */,
+				8873FCBB1AA0C2C6003A1096 /* LFNewUserViewController.xib in Resources */,
+				885E80241A9FB93D00DAE48B /* LFLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,9 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8862944E1A9FEF21004F028C /* LFNewUserViewController.m in Sources */,
+				885E80231A9FB93D00DAE48B /* LFLoginViewController.m in Sources */,
 				09ABC07F13A1D52D009C3FCF /* main.m in Sources */,
 				09ABC08213A1D52D009C3FCF /* LFDelegate.m in Sources */,
-				09ABC08813A1D52E009C3FCF /* LFViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,22 +299,6 @@
 				09ABC07B13A1D52D009C3FCF /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		09ABC08313A1D52D009C3FCF /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				09ABC08413A1D52E009C3FCF /* en */,
-			);
-			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		09ABC08913A1D52E009C3FCF /* LFViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				09ABC08A13A1D52E009C3FCF /* en */,
-			);
-			name = LFViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
