@@ -1,25 +1,18 @@
 //
-//  ParseStarterProjectAppDelegate.m
+//  Lost & Found app delegate
 //
 //  Copyright 2011-present Parse Inc. All rights reserved.
 //
 
 #import <Parse/Parse.h>
-
-// If you want to use any of the UI components, uncomment this line
 #import <ParseUI/ParseUI.h>
-
-// If you are using Facebook, uncomment this line
-// #import <ParseFacebookUtils/PFFacebookUtils.h>
-
-// If you want to use Crash Reporting - uncomment this line
-// #import <ParseCrashReporting/ParseCrashReporting.h>
-
 #import "LFDelegate.h"
 #import "LFViewController.h"
 #import "LFLoginViewController.h"
+#import "LFSearchViewController.h"
 
-@interface LFDelegate () <LFloginViewControllerDelegate>
+
+@interface LFDelegate () <LFLoginViewControllerDelegate, LFSearchViewControllerDelegate>
 
 @end
 
@@ -36,11 +29,12 @@
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
     
-    
+    // Caches user when they sign in so they dont need to sign in every time :)
     if([PFUser currentUser]){
-        [self presentLoginViewController];
+        [self presentSearchViewController];
     }
     
+    // Log in screen if not logged in, can register from there :)
     else [self presentLoginViewController];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -62,7 +56,13 @@
 }
 
 -(void)loginViewControllerDidLogin:(LFLoginViewController *)controller{
-    //[self presentSearchViewController];
+    [self presentSearchViewController];
+}
+
+-(void)presentSearchViewController {
+    LFSearchViewController *searchViewController = [[LFSearchViewController alloc] initWithNibName:nil bundle:nil];
+    searchViewController.delegate = self;
+    [self.navigationController setViewControllers:@[searchViewController] animated:YES];
 }
 
 @end
