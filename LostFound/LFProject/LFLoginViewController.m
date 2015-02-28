@@ -38,7 +38,7 @@
     tapGestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
-    //[self registerForKeyboardNotifications];
+    [self registerForKeyboardNotifications];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,9 +82,9 @@
 
 
 - (void)showNewUserView {
-    LFNewUserViewController *viewController = [[LFNewUserViewController alloc] initWithNibName:nil bundle:nil];
-    viewController.delegate = self;
-    [self.navigationController presentViewController:viewController animated:YES completion:nil];
+    LFNewUserViewController *newUserViewController = [[LFNewUserViewController alloc] initWithNibName:nil bundle:nil];
+    newUserViewController.delegate = self;
+    [self.navigationController presentViewController:newUserViewController animated:YES completion:nil];
 }
 
 #pragma mark Delegate
@@ -99,6 +99,7 @@
     NSString *password = self.passwordField.text;
     NSString *emptyUser = @"username";
     NSString *emptyPass = @"password";
+    NSString *errorText = @"No ";
     
     BOOL textError = NO;
     
@@ -114,23 +115,8 @@
         }
     }
     
-    /*if([username length] == 0){
-        textError = YES;
-        errorText = errorText
-    }
-    
-    //Text errors -- will do later
-     
-    */
- 
-    self.activityViewVisible = YES;
-    
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error){
-     self.activityViewVisible = NO;
-        if(user){
-            [self.delegate loginViewControllerDidLogin:self];
-        }
-        else{
+        if(error){
             NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);
             
             NSString *alertTitle = nil;
@@ -147,40 +133,75 @@
             [alertView show];
             
             [self.usernameField becomeFirstResponder];
-            
         }
-     }
-     ];
-}
+        if(user)
+            [self.delegate loginViewControllerDidLogin:self];
+     }];
     
-- (void)dismissKeyboard {
+}
+
+- (void) dismissKeyboard {
         [self.view endEditing:YES];
 }
     
 - (IBAction)loginPressed:(id)sender {
         [self dismissKeyboard];
         [self getFieldValues];
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
-  /*
-- (void) registerForKeyboardNotifications {
+//This is all to do with keyboards, not essential rn
+
+- (void)registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 }
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
+    CGRect keyboardFrame = [self.view convertRect:endFrame fromView:self.view.window];
     
-    /*- (void)setActivityViewVisible:(BOOL)visible{
-        if (self.actvityViewVisible == visible) {
-            return;
-            
-        }
-        
-        _activityViewVisible = visible;
-        
-        if(_activityViewVisible){
-            
-        }
+    CGFloat scrollViewOffsetY = (CGRectGetHeight(keyboardFrame) -
+                                 (CGRectGetMaxY(self.view.bounds) -
+                                  CGRectGetMaxY(self.login.frame) - 10.0f));
+    
+    if (scrollViewOffsetY < 0) {
+        return;
     }
-    */
     
+    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:curve << 16 | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         [self.scrollView setContentOffset:CGPointMake(0.0f, scrollViewOffsetY) animated:NO];
+                     }
+                     completion:nil];
+    
+}
+
+- (void)keyboardWillHide:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:curve << 16 | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         [self.scrollView setContentOffset:CGPointZero animated:NO];
+                     }
+                     completion:nil];
+}
+
 
 @end
 

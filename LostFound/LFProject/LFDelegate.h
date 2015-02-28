@@ -6,8 +6,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class LFViewController;
-
 @interface LFDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;

@@ -14,6 +14,10 @@
 
 @interface LFNewUserViewController () <UITextFieldDelegate>
 
+@property (nonatomic, assign) BOOL activityViewVisible;
+@property (nonatomic, strong) UIView *activityView;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIView *backgroundView;
 @property (nonatomic, strong) IBOutlet  UIButton *registerAccount;
 
 @end
@@ -104,26 +108,71 @@
             [self.usernameField becomeFirstResponder];
             return;
         }
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
         [self.delegate newUserViewControllerDidSignup:self];
     }];
 }
     
 - (IBAction)registerPressed:(id)sender {
+    [self dismissKeyboard];
     [self processSignup];
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void) dismissKeyboard {
+    [self.view endEditing:YES];
+}
+
+
+- (void)registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    CGRect keyboardFrame = [self.view convertRect:endFrame fromView:self.view.window];
+    
+    CGFloat scrollViewOffsetY = (CGRectGetHeight(keyboardFrame) -
+                                 (CGRectGetMaxY(self.view.bounds) -
+                                  CGRectGetMaxY(self.registerAccount.frame) - 10.0f));
+    
+    if (scrollViewOffsetY < 0) {
+        return;
+    }
+    
+    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:curve << 16 | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         [self.scrollView setContentOffset:CGPointMake(0.0f, scrollViewOffsetY) animated:NO];
+                     }
+                     completion:nil];
     
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)keyboardWillHide:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:curve << 16 | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         [self.scrollView setContentOffset:CGPointZero animated:NO];
+                     }
+                     completion:nil];
 }
-*/
 
 @end

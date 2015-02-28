@@ -39,7 +39,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-            <point key="canvasLocation" x="386" y="294"/>
+            <point key="canvasLocation" x="570" y="154"/>
         </view>
     </objects>
 </document>
