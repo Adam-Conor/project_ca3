@@ -1,22 +1,18 @@
 //
-//  LFSearchViewController.m
+//  LFMapViewController.m
 //  LostFound
 //
-//  Created by Adam O'Flynn on 28/02/2015.
+//  Created by Adam O'Flynn on 02/03/2015.
 //
 //
 
-#import "LFSearchViewController.h"
-#import <Parse/Parse.h>
+#import "LFMapViewController.h"
 
-@interface LFSearchViewController ()
-
-//@property (nonatomic, strong) IBOutlet UIButton *login;
-//@property (nonatomic, strong) IBOutlet UIT
+@interface LFMapViewController ()
 
 @end
 
-@implementation LFSearchViewController
+@implementation LFMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

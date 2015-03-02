@@ -44,7 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    //[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -62,11 +62,14 @@
     return UIStatusBarStyleLightContent;
 }
 
-
-
 - (IBAction)signUp:(id)sender {
-    [self showNewUserView];
+    //[self performSegueWithIdentifier:@"segue1" sender:myString
 }
+
+
+/*- (IBAction)signUp:(id)sender {
+    [self showNewUserView];
+}*/
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.usernameField) {
@@ -81,18 +84,18 @@
 }
 
 
-- (void)showNewUserView {
+/*- (void)showNewUserView {
     LFNewUserViewController *newUserViewController = [[LFNewUserViewController alloc] initWithNibName:nil bundle:nil];
     newUserViewController.delegate = self;
     [self.navigationController presentViewController:newUserViewController animated:YES completion:nil];
+}*/
+
+- (void)performSegueWithIdentifier:(NSString *)identifier
+                            sender:(id)sender{
+    
 }
 
 #pragma mark Delegate
-
-- (void)newUserViewControllerDidSignup:(LFNewUserViewController *)controller {
-    [self.delegate loginViewControllerDidLogin:self];
-}
-
 
 - (void) getFieldValues{
     NSString *username = self.usernameField.text;
@@ -134,8 +137,10 @@
             
             [self.usernameField becomeFirstResponder];
         }
-        if(user)
-            [self.delegate loginViewControllerDidLogin:self];
+        if(user){
+            -[self performSegueWithIdentifier:@"login"];
+        }
+            //[self.delegate loginViewControllerDidLogin:self];
      }];
     
 }
@@ -147,7 +152,6 @@
 - (IBAction)loginPressed:(id)sender {
         [self dismissKeyboard];
         [self getFieldValues];
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 //This is all to do with keyboards, not essential rn
 

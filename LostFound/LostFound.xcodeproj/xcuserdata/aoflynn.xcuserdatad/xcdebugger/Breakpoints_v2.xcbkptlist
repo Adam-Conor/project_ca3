@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "446840817.592485"
+            timestampString = "447012098.959325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "446840817.592485"
+            timestampString = "447012098.959325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "446840933.62377"
+            timestampString = "447012826.308544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFDelegate.m"
-            timestampString = "446849927.691429"
+            timestampString = "447008790.325336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
             landmarkName = "@interface LFDelegate()"
             landmarkType = "2">
          </BreakpointContent>
@@ -152,13 +152,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFDelegate.m"
-            timestampString = "446849927.691429"
+            timestampString = "447015233.520059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "-presentSearchViewController"
-            landmarkType = "5">
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "@implementation LFDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFDelegate.m"
-            timestampString = "446849927.691429"
+            timestampString = "447008790.325336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "@implementation LFDelegate"
             landmarkType = "3">
          </BreakpointContent>
@@ -200,13 +200,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "446763826.700172"
+            timestampString = "447012098.959325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-signUp:"
-            landmarkType = "5">
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "@implementation LFLoginViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "446763827.732781"
+            timestampString = "447012098.959325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-textFieldShouldReturn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -232,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "446839386.721196"
+            timestampString = "447012098.959325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -262,8 +262,8 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[LFNewUserViewController delegate]"
                   moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Dropbox/work/work/project_ca3/LostFound/LFProject/LFNewUserViewController.h"
-                  timestampString = "446841630.441654"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFNewUserViewController.h"
+                  timestampString = "447014932.229388"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -276,8 +276,8 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[LFNewUserViewController setDelegate:]"
                   moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Dropbox/work/work/project_ca3/LostFound/LFProject/LFNewUserViewController.h"
-                  timestampString = "446841630.442502"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFNewUserViewController.h"
+                  timestampString = "447014932.229584"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -294,11 +294,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFNewUserViewController.m"
-            timestampString = "446841629.87152"
+            timestampString = "447012570.302291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-registerPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -324,8 +324,8 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[LFSearchViewController delegate]"
                   moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Dropbox/work/work/project_ca3/LostFound/LFProject/LFSearchViewController.h"
-                  timestampString = "446841630.44996"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFSearchViewController.h"
+                  timestampString = "447014932.238728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
@@ -338,8 +338,8 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[LFSearchViewController setDelegate:]"
                   moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Dropbox/work/work/project_ca3/LostFound/LFProject/LFSearchViewController.h"
-                  timestampString = "446841630.450341"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFSearchViewController.h"
+                  timestampString = "447014932.239044"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
@@ -356,13 +356,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFDelegate.m"
-            timestampString = "446849927.691429"
+            timestampString = "447015233.520059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-loginViewControllerDidLogin:"
-            landmarkType = "5">
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "@implementation LFDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -372,12 +372,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "446841447.045045"
+            timestampString = "447012098.959325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-showNewUserView"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "@implementation LFLoginViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LFProject/LFProfileViewController.h"
+            timestampString = "447008778.751664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "@interface LFProfileViewController"
+            landmarkType = "2">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LFProject/LFDelegate.m"
+            timestampString = "447014931.887679"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

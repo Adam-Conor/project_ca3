@@ -32,6 +32,12 @@
                         <outlet property="delegate" destination="-1" id="FmQ-RY-sDp"/>
                     </connections>
                 </searchBar>
+                <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Woe-83-nVO">
+                    <rect key="frame" x="0.0" y="74" width="414" height="44"/>
+                    <items>
+                        <navigationItem title="Search" id="Nvd-GZ-V36"/>
+                    </items>
+                </navigationBar>
                 <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZJ-XF-Kue">
                     <rect key="frame" x="0.0" y="687" width="422" height="49"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -41,12 +47,6 @@
                         <tabBarItem title="Settings" image="settings" id="0kw-fA-TyO"/>
                     </items>
                 </tabBar>
-                <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Woe-83-nVO">
-                    <rect key="frame" x="0.0" y="74" width="414" height="44"/>
-                    <items>
-                        <navigationItem title="Search" id="Nvd-GZ-V36"/>
-                    </items>
-                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -65,7 +65,11 @@
                 <constraint firstAttribute="trailing" secondItem="8ZJ-XF-Kue" secondAttribute="trailing" constant="-8" id="vOn-41-wc2"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="300" y="239"/>
+=======
             <point key="canvasLocation" x="626" y="282"/>
+>>>>>>> origin/aoflynn
         </view>
         <tabBarController id="1YN-Qo-PEM">
             <nil key="simulatedBottomBarMetrics"/>
