@@ -65,11 +65,7 @@
                 <constraint firstAttribute="trailing" secondItem="8ZJ-XF-Kue" secondAttribute="trailing" constant="-8" id="vOn-41-wc2"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-<<<<<<< HEAD
-            <point key="canvasLocation" x="300" y="239"/>
-=======
-            <point key="canvasLocation" x="626" y="282"/>
->>>>>>> origin/aoflynn
+            <point key="canvasLocation" x="289" y="206"/>
         </view>
         <tabBarController id="1YN-Qo-PEM">
             <nil key="simulatedBottomBarMetrics"/>

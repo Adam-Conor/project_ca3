@@ -43,8 +43,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    //[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -63,13 +61,8 @@
 }
 
 - (IBAction)signUp:(id)sender {
-    //[self performSegueWithIdentifier:@"segue1" sender:myString
+    [self performSegueWithIdentifier:@"register" sender:self];
 }
-
-
-/*- (IBAction)signUp:(id)sender {
-    [self showNewUserView];
-}*/
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.usernameField) {
@@ -83,17 +76,6 @@
     return YES;
 }
 
-
-/*- (void)showNewUserView {
-    LFNewUserViewController *newUserViewController = [[LFNewUserViewController alloc] initWithNibName:nil bundle:nil];
-    newUserViewController.delegate = self;
-    [self.navigationController presentViewController:newUserViewController animated:YES completion:nil];
-}*/
-
-- (void)performSegueWithIdentifier:(NSString *)identifier
-                            sender:(id)sender{
-    
-}
 
 #pragma mark Delegate
 
@@ -119,7 +101,10 @@
     }
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error){
-        if(error){
+        if(!error){
+            [self performSegueWithIdentifier:@"login" sender:self];
+        }
+        else{
             NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);
             
             NSString *alertTitle = nil;
@@ -137,12 +122,7 @@
             
             [self.usernameField becomeFirstResponder];
         }
-        if(user){
-            -[self performSegueWithIdentifier:@"login"];
-        }
-            //[self.delegate loginViewControllerDidLogin:self];
-     }];
-    
+       }];
 }
 
 - (void) dismissKeyboard {
@@ -153,6 +133,7 @@
         [self dismissKeyboard];
         [self getFieldValues];
 }
+
 //This is all to do with keyboards, not essential rn
 
 - (void)registerForKeyboardNotifications {

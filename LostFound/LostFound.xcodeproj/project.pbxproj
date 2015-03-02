@@ -161,25 +161,21 @@
 		09ABC07713A1D52D009C3FCF /* LFProject */ = {
 			isa = PBXGroup;
 			children = (
+				88B6A59A1AA5119500DBE138 /* Views */,
 				889922D81A9CDAF500B368F6 /* LFDelegate.h */,
 				09ABC08113A1D52D009C3FCF /* LFDelegate.m */,
 				F5DD9E2A1A9B9CB400695F7C /* Main.storyboard */,
+				883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */,
 				886B59E61AA4BE780070E718 /* LFProfileViewController.h */,
 				886B59E71AA4BE780070E718 /* LFProfileViewController.m */,
-				886B59E81AA4BE780070E718 /* LFProfileViewController.xib */,
 				886B59E11AA4BDFD0070E718 /* LFMapViewController.h */,
 				886B59E21AA4BDFD0070E718 /* LFMapViewController.m */,
-				886B59E31AA4BDFD0070E718 /* LFMapViewController.xib */,
-				883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */,
 				8862944C1A9FEF21004F028C /* LFNewUserViewController.h */,
 				8862944D1A9FEF21004F028C /* LFNewUserViewController.m */,
-				8873FCBA1AA0C2C6003A1096 /* LFNewUserViewController.xib */,
 				885E80201A9FB93D00DAE48B /* LFLoginViewController.h */,
 				885E80211A9FB93D00DAE48B /* LFLoginViewController.m */,
-				885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */,
 				887AAA8D1AA2245700E9A06A /* LFSearchViewController.h */,
 				887AAA8E1AA2245700E9A06A /* LFSearchViewController.m */,
-				887AAA8F1AA2245700E9A06A /* LFSearchViewController.xib */,
 				F5DD9E261A9B8D4600695F7C /* Images.xcassets */,
 				09ABC07813A1D52D009C3FCF /* Supporting Files */,
 			);
@@ -220,6 +216,18 @@
 				09ABC07113A1D52D009C3FCF /* UIKit.framework */,
 			);
 			name = "System Frameworks";
+			sourceTree = "<group>";
+		};
+		88B6A59A1AA5119500DBE138 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				886B59E81AA4BE780070E718 /* LFProfileViewController.xib */,
+				886B59E31AA4BDFD0070E718 /* LFMapViewController.xib */,
+				8873FCBA1AA0C2C6003A1096 /* LFNewUserViewController.xib */,
+				885E80221A9FB93D00DAE48B /* LFLoginViewController.xib */,
+				887AAA8F1AA2245700E9A06A /* LFSearchViewController.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

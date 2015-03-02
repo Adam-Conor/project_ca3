@@ -109,11 +109,12 @@
             return;
         }
         else{
-            
+            [self performSegueWithIdentifier:@"registerSuccess" sender:self];
         }
-        //[self dismissViewControllerAnimated:YES completion:nil];
-        //[self.delegate newUserViewControllerDidSignup:self];
     }];
+}
+- (IBAction)goBack:(id)sender {
+    [self performSegueWithIdentifier:@"close" sender:self];
 }
     
 - (IBAction)registerPressed:(id)sender {
