@@ -1,22 +1,18 @@
 //
-//  LFSearchViewController.m
+//  LFProfileViewController.m
 //  LostFound
 //
-//  Created by Adam O'Flynn on 28/02/2015.
+//  Created by Adam O'Flynn on 02/03/2015.
 //
 //
 
-#import "LFSearchViewController.h"
-#import <Parse/Parse.h>
+#import "LFProfileViewController.h"
 
-@interface LFSearchViewController ()
-
-//@property (nonatomic, strong) IBOutlet UIButton *login;
-//@property (nonatomic, strong) IBOutlet UIT
+@interface LFProfileViewController ()
 
 @end
 
-@implementation LFSearchViewController
+@implementation LFProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

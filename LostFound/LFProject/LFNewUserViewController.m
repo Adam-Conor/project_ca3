@@ -108,8 +108,11 @@
             [self.usernameField becomeFirstResponder];
             return;
         }
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self.delegate newUserViewControllerDidSignup:self];
+        else{
+            
+        }
+        //[self dismissViewControllerAnimated:YES completion:nil];
+        //[self.delegate newUserViewControllerDidSignup:self];
     }];
 }
     

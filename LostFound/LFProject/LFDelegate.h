@@ -1,5 +1,5 @@
 //
-//  ParseStarterProjectAppDelegate.h
+//  LFAppDelegate.h
 //
 //  Copyright 2011-present Parse Inc. All rights reserved.
 //
@@ -11,5 +11,6 @@
 @property (nonatomic, strong) UIWindow *window;
 
 @property (nonatomic, strong) UINavigationController *navigationController;
+@property (nonatomic, strong) UITabBarController *tabController;
 
 @end
