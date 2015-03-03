@@ -8,6 +8,8 @@
 
 #import <Parse/Parse.h>
 #import "LFMapViewController.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface LFMapViewController ()
 
@@ -21,7 +23,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //[self.locationManager requestWhenInUseAuthorization];
     [self.locationManager requestWhenInUseAuthorization];
+    
+    CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
+    
+    if(authorizationStatus == kCLAuthorizationStatusAuthorized ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        NSLog(@"Here");
+        
+        //[self.locationManager startUpdatingLocation];
+        //_MapName.showsUserLocation = YES;
+    
     
     // Start location updates
     [self.locationManager startUpdatingLocation];
@@ -34,36 +48,35 @@
     }
 
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(10, 10));
-    //region.center = self.mapView.userLocation.coordinate;
-    //region.span = MKCoordinateSpanMake(0.1, 0.1);
     
-    //region = [mapView regionThatFits:region];
-    //[mapView setRegion:region animated:YES];
-
-    //ctrpoint = MKCoordinateRegionMake(CLLocationCoordinate2DMake(CLLocationDegrees(currentLocation)), MKCoordinateSpan span);
-    //CLLocationCoordinate2DMake(<#CLLocationDegrees latitude#>, <#CLLocationDegrees longitude#>)
+    //_mapView.showsUserLocation = YES;
     
-    _mapView.showsUserLocation = YES;
-    //ctrpoint.latitude = 53.58448;
-    //ctrpoint.longitude =-8.93772;
-    CLLocationCoordinate2D ctrpoint = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:ctrpoint];
-    [annotation setTitle:@"Title"]; //You can set the subtitle too
-    [self.mapView addAnnotation:annotation];
+    NSLog(@"latitude %+.6f, longitude %+.6f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
     [self startStandardUpdates];
+    }
 }
 
-/*- (IBAction)zoomIn:(id)sender {
-    MKUserLocation *userLocation = _mapView.userLocation;
-    MKCoordinateRegion region =
-    MKCoordinateRegionMakeWithDistance (
-                                        userLocation.location.coordinate, 20000, 20000);
-    [_mapView setRegion:region animated:NO];
+- (void)viewWillAppear:(BOOL)animated {
+    /*CLLocationCoordinate2D initialLocation;
+    initialLocation.latitude = _currentLocation.coordinate.latitude;
+    initialLocation.longitude= _currentLocation.coordinate.longitude;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(initialLocation, 1000, 1000);
+    */
+
+    [_mapView setRegion:_mapView.region animated:NO];
 }
- */
+
+- (void)startStandardUpdates {
+    [self.locationManager startUpdatingLocation];
+    
+    CLLocation *currentLocation = self.locationManager.location;
+    if (currentLocation) {
+        self.currentLocation = currentLocation;
+        NSLog(@"latitude %+.6f, longitude %+.6f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    }
+}
 
 - (IBAction)changeMapType:(id)sender {
     if (_mapView.mapType == MKMapTypeStandard)
@@ -86,6 +99,7 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
     self.currentLocation = newLocation;
+    NSLog(@"latitude %+.6f, longitude %+.6f\n", _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
@@ -93,7 +107,7 @@
     switch (status) {
         case kCLAuthorizationStatusAuthorized:
         {
-            NSLog(@"kCLAuthorizationStatusAuthorized");
+            NSLog(@"kCLAuthorizationStatusAuthorized, YEEEEERRRRRRRRRRRR");
             
             // Re-enable the post button if it was disabled before.
             self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -105,7 +119,7 @@
             NSLog(@"kCLAuthorizationStatusDenied");
             
             //Alert user to allow location services
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Lost & Found can’t access your current location.\n\nTo view nearby posts or create a post at your current location, turn on access for Lost & Found to your location in the Settings under Location Services." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Lost & Found can’t access your current location.\n\nTo view nearby listing or create a listing at your current location, turn on access for Lost & Found to your location in the Settings under Location Services." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [alertView show];
             
             // Disable the post button.
@@ -123,15 +137,6 @@
         }
             break;
         default:break;
-    }
-}
-
-- (void)startStandardUpdates {
-    [self.locationManager startUpdatingLocation];
-    
-    CLLocation *currentLocation = self.locationManager.location;
-    if (currentLocation) {
-        self.currentLocation = currentLocation;
     }
 }
 
