@@ -32,8 +32,11 @@
 	<string>Main</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>NSLocationWhenInUseDescription</key>
-	<string>App use Locations service mode In Use</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>location-services</string>
+		<string>armv7</string>
+	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>NSServices</key>
@@ -51,8 +54,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>
