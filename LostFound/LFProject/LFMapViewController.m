@@ -23,14 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+    //    [self.locationManager requestWhenInUseAuthorization];
+    //}
+    
     //[self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestWhenInUseAuthorization];
+    //[self.locationManager requestWhenInUseAuthorization];
     
     CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
     
-    if(authorizationStatus == kCLAuthorizationStatusAuthorized ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+    //if(authorizationStatus == kCLAuthorizationStatusAuthorized ||
+       // authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+       //// authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
         NSLog(@"Here");
         
         //[self.locationManager startUpdatingLocation];
@@ -54,7 +58,7 @@
     NSLog(@"latitude %+.6f, longitude %+.6f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
     [self startStandardUpdates];
-    }
+    //}
 }
 
 - (void)viewWillAppear:(BOOL)animated {

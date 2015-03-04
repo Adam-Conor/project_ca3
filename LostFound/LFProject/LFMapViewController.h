@@ -14,6 +14,7 @@
                 <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
 //- (IBAction)zoomIn:(id)sender;
 - (IBAction)changeMapType:(id)sender;
 

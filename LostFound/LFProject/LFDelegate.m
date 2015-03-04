@@ -30,6 +30,11 @@
                   clientKey:@"RrWnOBRZTFX9aGsWAkrXsi3wiUGcJWRaGt99xKvn"];
     UIStoryboard *storyboard = self.window.rootViewController.storyboard;
     
+        //Current position
+        CLLocationManager *locationManager;
+        locationManager = [[CLLocationManager alloc] init];
+        [locationManager requestWhenInUseAuthorization];
+    
     /* 
        This section is here to allow users skip the log in screen if they have already done so.
        Since parse caches the sessionkey locally, users can log in once and be logged in until they log out
