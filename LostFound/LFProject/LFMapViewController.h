@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface LFMapViewController : UIViewController

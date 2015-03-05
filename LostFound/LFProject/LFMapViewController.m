@@ -6,10 +6,7 @@
 //
 //
 
-#import <Parse/Parse.h>
 #import "LFMapViewController.h"
-#import <CoreLocation/CoreLocation.h>
-
 
 @interface LFMapViewController ()
 
@@ -23,51 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.locationManager = [[CLLocationManager alloc] init];
-    //self.locationManager.delegate = self;
-    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
-    //if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        //[self.locationManager requestWhenInUseAuthorization];
-    //}
-    
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
-    if(status == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    
-    if(status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        [self.locationManager startUpdatingLocation];
-    }
-    
-    // Cache any current location info
-    CLLocation *currentLocation = self.locationManager.location;
-    
-    if(currentLocation) {
-        self.currentLocation = currentLocation;
-    }
-    
-    
-    [_mapView setMapType:MKMapTypeStandard];
-    [_mapView setZoomEnabled:YES];
-    [_mapView setScrollEnabled:YES];
-    [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
     [_mapView setDelegate:self];
     
-    //self.circleOverlay = nil;
-     //[_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+    /* Caters for iOS7 I think */
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     
-    //[_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-    
-    //[_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
-    
-    /*CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
-    // If the status is denied or only granted for when in use, display an alert
-    if (status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusNotDetermined) {
-        NSString *title;
-        title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
-        NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings";
+    /* Check if denied from location servies */
+    if (status == kCLAuthorizationStatusDenied) {
+        NSString *title = @"Location services are off for this app";
+        NSString *message = @"To use background location you must turn on 'While Using the App in the Location Services Settings";
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
                                                             message:message
@@ -77,55 +38,47 @@
         [alertView show];
     }
     
-    // The user has not enabled any location services. Request background authorization.
-    else if (status == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestWhenInUseAuthorization];
+    /* Check to see if user has ever authorized */
+    if(status == kCLAuthorizationStatusNotDetermined) {
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
     }
-     */
     
-    
-    
-    //if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-    //    [self.locationManager requestWhenInUseAuthorization];
-    //}
-    
-    //[self.locationManager requestWhenInUseAuthorization];
-    
-    //CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
-    
-    //if(authorizationStatus == kCLAuthorizationStatusAuthorized ||
-     //   authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
-      //  authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
-      //  NSLog(@"Here"); //test log
-        
-        //[self.locationManager startUpdatingLocation];
-        //_MapName.showsUserLocation = YES;
-    
-    
-    // Start location updates
-    //[self.locationManager startUpdatingLocation];
-    
-    // Cache any current location info
-    /*CLLocation *currentLocation = self.locationManager.location;
+    /* Cache any current location info */
+    CLLocation *currentLocation = self.locationManager.location;
     
     if(currentLocation) {
         self.currentLocation = currentLocation;
     }
+    
+     _mapView.showsUserLocation = YES;
+    
+    CLLocationCoordinate2D coord = {currentLocation.coordinate.latitude, currentLocation.coordinate.longitude};
+    MKCoordinateSpan span = {.latitudeDelta =  1, .longitudeDelta =  1};
+    MKCoordinateRegion region = {coord, span};
+    [_mapView setRegion:region];
+    
+    
+    //gonna use this to mark listings on the map. ***Watch this space****
+    /*CLLocationCoordinate2D listing;
+    listing.latitude = 0;
+    listing.longitude = 0;
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:listing];
+    [annotation setTitle:@"Title"]; //You can set the subtitle too
+    [self.mapView addAnnotation:annotation];
      */
 
-    //self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(10, 10));
-    
-    //_mapView.showsUserLocation = YES;
-    
-    NSLog(@"latitude %+.6f, longitude %+.6f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude); //test log
-    
-    //}
+    [_mapView setZoomEnabled:YES];
+    [_mapView setScrollEnabled:YES];
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
 }
+
 
 /*
  * Sends user to app settings to change location servies if they wish
@@ -167,8 +120,6 @@
  */
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    //[self.navigationController setNavigationBarHidden:NO animated:animated];
     
     [self.locationManager startUpdatingLocation];
     
@@ -242,7 +193,7 @@
             NSLog(@"kCLAuthorizationStatusRestricted");
         }
             break;
-        default:break;
+        default: NSLog(@"Allowed I think"); break;
     }
 }
 
