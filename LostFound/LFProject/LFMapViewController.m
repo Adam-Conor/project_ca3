@@ -193,7 +193,7 @@
             NSLog(@"kCLAuthorizationStatusRestricted");
         }
             break;
-        default: NSLog(@"Allowed I think"); break;
+        default:break;
     }
 }
 
