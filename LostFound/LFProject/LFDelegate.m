@@ -7,14 +7,14 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "LFDelegate.h"
-#import "LFViewController.h"
+/*#import "LFViewController.h"
 #import "LFLoginViewController.h"
 #import "LFSearchViewController.h"
 #import "LFProfileViewController.h"
-#import "LFMapViewController.h"
+#import "LFMapViewController.h"*/
 
 
-@interface LFDelegate () <LFLoginViewControllerDelegate, LFSearchViewControllerDelegate>
+@interface LFDelegate () //<LFLoginViewControllerDelegate, LFSearchViewControllerDelegate>
 
 @end
 
@@ -38,6 +38,7 @@
     PFUser *user = [PFUser currentUser];
     if (user) {
         NSLog(@"%s This is working", __PRETTY_FUNCTION__);
+        NSLog(@"%@" ,user.username);
         UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"homeView"];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];

@@ -9,15 +9,7 @@
 #import <UIKit/UIKit.h>
 @class LFNewUserViewController;
 
-@protocol LFNewUserViewControllerDelegate <NSObject>
-
-- (void)newUserViewControllerDidSignup:(LFNewUserViewController *)controller;
-
-
-@end
-
 @interface LFNewUserViewController : UIViewController
-@property  (nonatomic, weak )id<LFNewUserViewControllerDelegate> delegate;
 
 @property (nonatomic, strong) IBOutlet UITextField *usernameField;
 @property (nonatomic, strong) IBOutlet UITextField *emailField;
