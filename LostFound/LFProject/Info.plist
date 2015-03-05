@@ -6,6 +6,10 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Do I need this?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Why do I need this?</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons~ipad</key>
@@ -40,17 +44,7 @@
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>NSServices</key>
-	<array>
-		<dict>
-			<key>NSMessage</key>
-			<string></string>
-			<key>NSMenuItem</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
