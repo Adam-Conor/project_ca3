@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TBt-TH-OuH">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TBt-TH-OuH">
->>>>>>> search
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -176,7 +172,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cvX-TL-aB3">
             <objects>
-                <navigationController storyboardIdentifier="searchView" id="Xy7-E8-h02" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="searchView1" id="Xy7-E8-h02" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="rgn-Na-6Pf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ds0-Cb-HFD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -603,7 +599,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsF-wc-gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1631" y="-1128"/>
+            <point key="canvasLocation" x="-2095" y="-1150"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="kKM-JK-hdx">
@@ -620,7 +616,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdA-H4-zSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2257.5" y="-2078.8732394366198"/>
+            <point key="canvasLocation" x="-2728" y="-2079"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="vAC-G4-OkF">
@@ -657,7 +653,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzH-Rk-YfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1625" y="-2079"/>
+            <point key="canvasLocation" x="-2095" y="-2079"/>
         </scene>
         <!--Map-->
         <scene sceneID="2ui-6h-sul">
@@ -675,7 +671,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-uK-sMW">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-uK-sMW">
                                 <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                                 <gestureRecognizers/>
                             </mapView>
@@ -691,7 +687,7 @@
                             <constraint firstItem="qxq-uK-sMW" firstAttribute="leading" secondItem="i3C-gQ-A6h" secondAttribute="leading" id="y8w-OY-1sX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map" id="UEi-v2-6vE"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="UEi-v2-6vE"/>
                     <navigationItem key="navigationItem" id="kym-ld-lpI"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -701,8 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8f-D5-cvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
-            <point key="canvasLocation" x="-1556" y="-1006"/>
+            <point key="canvasLocation" x="-4323" y="-1234"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="MKN-4b-dyk">
@@ -757,9 +752,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4Y-33-gYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-663" y="-1022"/>
-=======
-            <point key="canvasLocation" x="-4755" y="-2078.8732394366198"/>
->>>>>>> search
         </scene>
         <!--New User View Controller-->
         <scene sceneID="eM4-Mh-DVr">
@@ -979,8 +971,8 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mjm-In-mEA"/>
-        <segue reference="Tgp-zV-WKq"/>
+        <segue reference="zFg-zo-Cbu"/>
+        <segue reference="JsP-jl-lyX"/>
         <segue reference="Fjj-Yl-z7e"/>
         <segue reference="SwE-yL-3ps"/>
     </inferredMetricsTieBreakers>
