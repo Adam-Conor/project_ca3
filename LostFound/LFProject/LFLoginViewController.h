@@ -13,15 +13,7 @@
 
 @class LFLoginViewController;
 
-@protocol LFLoginViewControllerDelegate <NSObject>
-
-- (void)loginViewControllerDidLogin:(LFLoginViewController *)controller;
-
-@end
-
 @interface LFLoginViewController : UIViewController <UITextFieldDelegate>
-
-@property (nonatomic, weak) id<LFLoginViewControllerDelegate> delegate;
 
 @property (nonatomic, strong) IBOutlet UITextField *usernameField;
 @property (nonatomic, strong) IBOutlet UITextField *passwordField;

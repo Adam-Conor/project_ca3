@@ -37,8 +37,11 @@
 		886B59E91AA4BE780070E718 /* LFProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B59E71AA4BE780070E718 /* LFProfileViewController.m */; };
 		886B59EA1AA4BE780070E718 /* LFProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 886B59E81AA4BE780070E718 /* LFProfileViewController.xib */; };
 		8873FCBB1AA0C2C6003A1096 /* LFNewUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8873FCBA1AA0C2C6003A1096 /* LFNewUserViewController.xib */; };
-		887AAA901AA2245700E9A06A /* LFSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887AAA8E1AA2245700E9A06A /* LFSearchViewController.m */; };
 		887AAA911AA2245700E9A06A /* LFSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887AAA8F1AA2245700E9A06A /* LFSearchViewController.xib */; };
+		8883C9101AA7838A008C6B1E /* LFSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883C90F1AA7838A008C6B1E /* LFSearchResultsViewController.m */; };
+		8883C9131AA783D3008C6B1E /* LFSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883C9121AA783D3008C6B1E /* LFSearchViewController.m */; };
+		8883C9161AA7861A008C6B1E /* LFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883C9151AA7861A008C6B1E /* LFSettingsViewController.m */; };
+		8883C9191AA7BDF4008C6B1E /* LFCreateListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883C9181AA7BDF4008C6B1E /* LFCreateListingViewController.m */; };
 		91D261791A36EB67005D713D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D261781A36EB67005D713D /* libsqlite3.0.dylib */; };
 		DD952FCB16E7F5CF00470144 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E18B1E1624CB5700B17A67 /* CoreLocation.framework */; };
 		F5DD9E271A9B8D4600695F7C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5DD9E261A9B8D4600695F7C /* Images.xcassets */; };
@@ -87,9 +90,15 @@
 		886B59E71AA4BE780070E718 /* LFProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFProfileViewController.m; sourceTree = "<group>"; };
 		886B59E81AA4BE780070E718 /* LFProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFProfileViewController.xib; sourceTree = "<group>"; };
 		8873FCBA1AA0C2C6003A1096 /* LFNewUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFNewUserViewController.xib; sourceTree = "<group>"; };
-		887AAA8D1AA2245700E9A06A /* LFSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSearchViewController.h; sourceTree = "<group>"; };
-		887AAA8E1AA2245700E9A06A /* LFSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSearchViewController.m; sourceTree = "<group>"; };
 		887AAA8F1AA2245700E9A06A /* LFSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFSearchViewController.xib; sourceTree = "<group>"; };
+		8883C90E1AA7838A008C6B1E /* LFSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSearchResultsViewController.h; sourceTree = "<group>"; };
+		8883C90F1AA7838A008C6B1E /* LFSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSearchResultsViewController.m; sourceTree = "<group>"; };
+		8883C9111AA783D3008C6B1E /* LFSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSearchViewController.h; sourceTree = "<group>"; };
+		8883C9121AA783D3008C6B1E /* LFSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSearchViewController.m; sourceTree = "<group>"; };
+		8883C9141AA7861A008C6B1E /* LFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSettingsViewController.h; sourceTree = "<group>"; };
+		8883C9151AA7861A008C6B1E /* LFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSettingsViewController.m; sourceTree = "<group>"; };
+		8883C9171AA7BDF4008C6B1E /* LFCreateListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCreateListingViewController.h; sourceTree = "<group>"; };
+		8883C9181AA7BDF4008C6B1E /* LFCreateListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCreateListingViewController.m; sourceTree = "<group>"; };
 		889922D81A9CDAF500B368F6 /* LFDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFDelegate.h; sourceTree = "<group>"; };
 		91D261781A36EB67005D713D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		97E18B1E1624CB5700B17A67 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -164,8 +173,16 @@
 				88B6A59A1AA5119500DBE138 /* Views */,
 				889922D81A9CDAF500B368F6 /* LFDelegate.h */,
 				09ABC08113A1D52D009C3FCF /* LFDelegate.m */,
-				F5DD9E2A1A9B9CB400695F7C /* Main.storyboard */,
 				883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */,
+				F5DD9E2A1A9B9CB400695F7C /* Main.storyboard */,
+				8883C9171AA7BDF4008C6B1E /* LFCreateListingViewController.h */,
+				8883C9181AA7BDF4008C6B1E /* LFCreateListingViewController.m */,
+				8883C9111AA783D3008C6B1E /* LFSearchViewController.h */,
+				8883C9121AA783D3008C6B1E /* LFSearchViewController.m */,
+				8883C90E1AA7838A008C6B1E /* LFSearchResultsViewController.h */,
+				8883C90F1AA7838A008C6B1E /* LFSearchResultsViewController.m */,
+				8883C9141AA7861A008C6B1E /* LFSettingsViewController.h */,
+				8883C9151AA7861A008C6B1E /* LFSettingsViewController.m */,
 				886B59E61AA4BE780070E718 /* LFProfileViewController.h */,
 				886B59E71AA4BE780070E718 /* LFProfileViewController.m */,
 				886B59E11AA4BDFD0070E718 /* LFMapViewController.h */,
@@ -174,8 +191,6 @@
 				8862944D1A9FEF21004F028C /* LFNewUserViewController.m */,
 				885E80201A9FB93D00DAE48B /* LFLoginViewController.h */,
 				885E80211A9FB93D00DAE48B /* LFLoginViewController.m */,
-				887AAA8D1AA2245700E9A06A /* LFSearchViewController.h */,
-				887AAA8E1AA2245700E9A06A /* LFSearchViewController.m */,
 				F5DD9E261A9B8D4600695F7C /* Images.xcassets */,
 				09ABC07813A1D52D009C3FCF /* Supporting Files */,
 			);
@@ -319,11 +334,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8862944E1A9FEF21004F028C /* LFNewUserViewController.m in Sources */,
+				8883C9191AA7BDF4008C6B1E /* LFCreateListingViewController.m in Sources */,
 				885E80231A9FB93D00DAE48B /* LFLoginViewController.m in Sources */,
+				8883C9131AA783D3008C6B1E /* LFSearchViewController.m in Sources */,
 				09ABC07F13A1D52D009C3FCF /* main.m in Sources */,
+				8883C9101AA7838A008C6B1E /* LFSearchResultsViewController.m in Sources */,
+				8883C9161AA7861A008C6B1E /* LFSettingsViewController.m in Sources */,
 				886B59E91AA4BE780070E718 /* LFProfileViewController.m in Sources */,
 				886B59E41AA4BDFD0070E718 /* LFMapViewController.m in Sources */,
-				887AAA901AA2245700E9A06A /* LFSearchViewController.m in Sources */,
 				09ABC08213A1D52D009C3FCF /* LFDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +400,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/LFProject/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = LostFound;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -402,6 +421,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/LFProject/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = LostFound;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;

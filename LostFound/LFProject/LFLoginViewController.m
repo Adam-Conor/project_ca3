@@ -10,7 +10,6 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "LFLoginViewController.h"
-#import "LFNewUserViewController.h"
 
 @interface LFLoginViewController ()
 <UITextFieldDelegate, UIScrollViewDelegate>
