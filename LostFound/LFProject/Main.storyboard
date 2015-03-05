@@ -173,19 +173,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-uK-sMW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-uK-sMW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <gestureRecognizers/>
                             </mapView>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="EYR-ZP-3XM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qxq-uK-sMW" firstAttribute="top" secondItem="EYR-ZP-3XM" secondAttribute="bottom" id="0NW-Xn-kfj"/>
+                            <constraint firstItem="EYR-ZP-3XM" firstAttribute="top" secondItem="cEg-pj-UK3" secondAttribute="bottom" id="Fq8-Dw-1VH"/>
+                            <constraint firstItem="EYR-ZP-3XM" firstAttribute="leading" secondItem="qxq-uK-sMW" secondAttribute="leading" id="GQN-EI-C6X"/>
+                            <constraint firstAttribute="bottom" secondItem="qxq-uK-sMW" secondAttribute="bottom" id="Ut7-co-kGs"/>
+                            <constraint firstAttribute="trailing" secondItem="EYR-ZP-3XM" secondAttribute="trailing" id="YZR-S8-TPR"/>
+                            <constraint firstItem="qxq-uK-sMW" firstAttribute="trailing" secondItem="EYR-ZP-3XM" secondAttribute="trailing" id="mC1-Mr-c5U"/>
+                            <constraint firstItem="qxq-uK-sMW" firstAttribute="leading" secondItem="i3C-gQ-A6h" secondAttribute="leading" id="y8w-OY-1sX"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map" id="UEi-v2-6vE"/>
                     <navigationItem key="navigationItem" id="kym-ld-lpI"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8f-D5-cvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1558" y="-1022"/>
+            <point key="canvasLocation" x="-1556" y="-1006"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="MKN-4b-dyk">
