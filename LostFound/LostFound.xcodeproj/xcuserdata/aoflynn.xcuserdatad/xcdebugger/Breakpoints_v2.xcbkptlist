@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "447204682.168001"
+            timestampString = "447527364.310411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "447204682.168001"
+            timestampString = "447527364.310411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-dismissKeyboard"
             landmarkType = "5">
          </BreakpointContent>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFNewUserViewController.m"
-            timestampString = "446841629.87152"
+            timestampString = "447528158.035637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-processSignup"
             landmarkType = "5">
          </BreakpointContent>
@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFNewUserViewController.m"
-            timestampString = "447025102.591796"
+            timestampString = "447528158.035637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "-registerPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -232,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "447204682.168001"
+            timestampString = "447527364.310411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -248,11 +248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "447204682.168001"
+            timestampString = "447527364.310411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-loginPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -264,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFLoginViewController.m"
-            timestampString = "447204682.168001"
+            timestampString = "447527364.310411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -295,7 +295,7 @@
                   symbolName = "-[LFNewUserViewController backgroundView]"
                   moduleName = "LostFound"
                   urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFNewUserViewController.m"
-                  timestampString = "447186326.016576"
+                  timestampString = "447530211.52285"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -309,7 +309,7 @@
                   symbolName = "-[LFNewUserViewController setBackgroundView:]"
                   moduleName = "LostFound"
                   urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFNewUserViewController.m"
-                  timestampString = "447186326.016834"
+                  timestampString = "447530211.523169"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -341,11 +341,11 @@
                   symbolName = "-[LFProfileViewController signOut]"
                   moduleName = "LostFound"
                   urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFProfileViewController.m"
-                  timestampString = "447186326.017866"
+                  timestampString = "447530211.524485"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
@@ -355,14 +355,46 @@
                   symbolName = "-[LFProfileViewController setSignOut:]"
                   moduleName = "LostFound"
                   urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFProfileViewController.m"
-                  timestampString = "447186326.018068"
+                  timestampString = "447530211.524643"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LFProject/LFNewUserViewController.m"
+            timestampString = "447528158.035637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-processSignup"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LFProject/LFCreateListingViewController.m"
+            timestampString = "447530211.094978"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-createListing"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

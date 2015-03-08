@@ -81,9 +81,10 @@
 - (void) getFieldValues{
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
-    NSString *emptyUser = @"username";
-    NSString *emptyPass = @"password";
-    NSString *errorText = @"No ";
+    NSString *emptyUser = @"Username";
+    NSString *emptyPass = @"Password";
+    NSString *errorText = @"Please ";
+    //self.passwordField.secureTextEntry =YES;
     
     BOOL textError = NO;
     
@@ -97,6 +98,30 @@
         if (password.length == 0){
             [self.passwordField becomeFirstResponder];
         }
+    }
+    
+    if ([username length] == 0) {
+        textError = YES;
+        errorText = [errorText stringByAppendingString:emptyUser];
+    }
+    
+    if ([password length] == 0) {
+        textError = YES;
+        if ([username length] == 0) {
+            errorText = [errorText stringByAppendingString:emptyUser];
+        }
+        errorText = [errorText stringByAppendingString:emptyPass];
+    }
+    
+    if (textError) {
+        //errorText = [errorText stringByAppendingString:errorTextEnding];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"OK", nil];
+        [alertView show];
+        return;
     }
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error){

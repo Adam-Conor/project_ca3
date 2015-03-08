@@ -65,33 +65,58 @@
     NSString *emptyPass = @"Empty password";
     NSString *emptyEmail = @"Empty email";
     NSString *noMatch = @"Please enter the same password.";
+    NSString *errorText = @"No";
+    NSString *joinText = @", and ";
     
     
     BOOL textError = NO;
     
     // If nothing entered, show error and set error field to be entered
-    if(username.length == 0 || password.length == 0){
+    if (username.length == 0 || password.length == 0 || passwordAgain.length == 0) {
         textError = YES;
         
-        if (username.length == 0)
-            [self.usernameField becomeFirstResponder];
-        
-        if (password.length == 0){
+        // Set up the keyboard for the first field missing input:
+        if (passwordAgain.length == 0) {
+            [self.passAgain becomeFirstResponder];
+        }
+        if (password.length == 0) {
             [self.passwordField becomeFirstResponder];
         }
+        if (username.length == 0) {
+            [self.usernameField becomeFirstResponder];
+        }
+        
+        if (email.length == 0){
+            [self.emailField becomeFirstResponder];
+        }
+        
+        if (username.length == 0) {
+            errorText = [errorText stringByAppendingString:emptyUser];
+        }
+        
+        if (email.length == 0){
+            errorText = [errorText stringByAppendingString:emptyEmail];
+        }
+        
+        if (password.length == 0 || passwordAgain.length == 0) {
+            if (username.length == 0) { // We need some joining text in the error:
+                errorText = [errorText stringByAppendingString:joinText];
+            }
+            errorText = [errorText stringByAppendingString:emptyPass];
+        }
+    } else if ([password compare:passwordAgain] != NSOrderedSame) {
+        // We have non-zero strings.
+        // Check for equal password strings.
+        textError = YES;
+        errorText = [errorText stringByAppendingString:noMatch];
+        [self.passwordField becomeFirstResponder];
     }
     
-    /*if([username length] == 0){
-     textError = YES;
-     errorText = errorText
-     }
-     
-     //Text errors -- will do later
-     
-     */
-    
-    //self.activityViewVisible = YES;
-    
+    if (textError) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
+        return;
+    }
     PFUser *user = [PFUser user];
     user.username = username;
     user.email = email;

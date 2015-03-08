@@ -7,6 +7,7 @@
 //
 
 #import "LFCreateListingViewController.h"
+#import <Parse/Parse.h>
 
 @interface LFCreateListingViewController ()
 
@@ -17,12 +18,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self  createListing];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) createListing{
+    PFUser *user = [PFUser currentUser];
+    PFObject *listing = [PFObject objectWithClassName:@"Listing"];
+    //PFFile *image = ;
+    listing[@"category"] = @"animal";
+    listing[@"user"] = user;
+    listing[@"status"] = @"found";
+    listing[@"image"] = @"test";
+    [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(succeeded) NSLog(@"%s Listing saved succesfully", __PRETTY_FUNCTION__);
+        else NSLog(@"%s Listing fucked up", __PRETTY_FUNCTION__);
+    }];
+
+}
+
+
+
 
 /*
 #pragma mark - Navigation
