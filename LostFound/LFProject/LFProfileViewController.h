@@ -10,12 +10,12 @@
 
 @interface LFProfileViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *usernameField;
-@property (weak, nonatomic) IBOutlet UILabel *memberField;
-@property (weak, nonatomic) IBOutlet UILabel *emailField;
-@property (weak, nonatomic) IBOutlet UIView *listingField;
-@property (weak, nonatomic) IBOutlet UILabel *feedbackField;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *usernameField;
+@property (nonatomic, weak) IBOutlet UILabel *memberField;
+@property (nonatomic, weak) IBOutlet UILabel *emailField;
+@property (nonatomic, weak) IBOutlet UIView *listingField;
+@property (nonatomic, weak) IBOutlet UILabel *feedbackField;
+@property (nonatomic, weak) IBOutlet UIProgressView *feedbackBar;
 
-//@property (nonatomic, strong) IBOutlet UIButton* signOut;
 @end

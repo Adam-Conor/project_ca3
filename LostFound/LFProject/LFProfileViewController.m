@@ -12,8 +12,6 @@
 
 @interface LFProfileViewController ()
 
-/* This to show users current listings */
-
 @end
 
 @implementation LFProfileViewController
@@ -21,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     PFUser *cUser = [PFUser currentUser];
     
     /* Get User information */
@@ -30,9 +27,7 @@
     NSDate *createdDate = cUser.createdAt; //date
     NSString *email = cUser.email; //email
     //todo//NSString *listingCount = [self getListingCount:(PFUser*)cUser]; //listing count
-    //NSString *feedback;
-    [self getFeedback:(PFUser*)cUser]; //feedback
-    //NSLog(@"%@", feedback); //test
+    [self setFeedback:(PFUser*)cUser]; //feedback
     
     /* Format date */
     NSString *created = [self dateToString:(createdDate)];
@@ -42,19 +37,18 @@
     _imageView.layer.masksToBounds = YES;
     _imageView.layer.borderWidth = 0;
     
-    /* Add progress bar stuff */
-    
     /* Populate fields */
     //_imageView //image view
     _usernameField.text = user; //username
     _memberField.text = created; //date
     _emailField.text = email; //email
     //_listingField.text = listingCount; //listing count
-    //_feedbackField.text = feedback; //feedback
-    
 }
 
-
+/* Convert a date to a string 
+ * Takes date
+ * Returns as Month/Day/Year
+ */
 -(NSString*)dateToString:(NSDate*)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterLongStyle];
@@ -64,32 +58,32 @@
     return created;
 }
 
--(void)getFeedback:(PFUser*)user {
+/* Set feedback for profile
+ * Gets feedback from DB and displays
+ * Displays rating on progress bar
+ */
+-(void)setFeedback:(PFUser*)user {
+    /* Set what to query */
     NSString *userID = user.objectId;
-    __block NSString *feedback;
-    //NSArray *objects;
-    
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    
     [query whereKey:@"objectId" equalTo:userID];
-    //objects = [query findObjects];
-    //feedback = objects[0][@"rating"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            //NSLog(@"%@", objects[0][]);
-            feedback = objects[0][@"rating"];
-            //_feedbackField.text = feedback.uppercaseString; //feedback
-            NSLog(@"%@", feedback);
+        if (!error) { //found match
+            NSString *feedbackAsString;
+            float feedbackAsPercent;
+            
+            feedbackAsString = objects[0][@"rating"];
+            feedbackAsPercent = feedbackAsString.floatValue;
+            
+            /* Display on profile */
+            _feedbackField.text = [NSString stringWithFormat:@"%@%%", feedbackAsString];
+            _feedbackBar.progress = (feedbackAsPercent / 100);
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
-    //_feedbackField.text = feedback; //feedback
-    //NSLog(@"%@", feedback);
-    _feedbackField.text = feedback; //feedback
-    //return feedback;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,16 +91,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+/* User button to sign out
+ * returns user to log in screen
+ */
 - (IBAction)signOut:(id)sender {
-    //PFUser *user = [PFUser currentUser];
     [PFUser logOut];
-    //NSLog(@"%@", user.username);
+    
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
-
-
-
 
 /*
 #pragma mark - Navigation
