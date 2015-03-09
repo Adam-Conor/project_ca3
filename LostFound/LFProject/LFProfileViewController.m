@@ -76,6 +76,13 @@
             feedbackAsString = objects[0][@"rating"];
             feedbackAsPercent = feedbackAsString.floatValue;
             
+            /* Catch users with no feedback */
+            if(feedbackAsString == NULL) {
+                feedbackAsString = @"0";
+                feedbackAsPercent = 50;
+                _noFeedbackField.text = @"No feedback";
+            }
+            
             /* Display on profile */
             _feedbackField.text = [NSString stringWithFormat:@"%@%%", feedbackAsString];
             _feedbackBar.progress = (feedbackAsPercent / 100);
