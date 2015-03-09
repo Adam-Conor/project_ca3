@@ -757,6 +757,8 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="OGC-gK-CfG"/>
                                         </constraints>
+                                        <color key="progressTintColor" red="0.066173463474775485" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="trackTintColor" red="1" green="0.0" blue="0.020100812986998839" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJd-ex-TTJ">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -812,6 +814,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="emailField" destination="Exc-2B-gTE" id="hTF-1v-auF"/>
+                        <outlet property="feedbackBar" destination="AHj-dz-V2i" id="YVD-KS-xeG"/>
                         <outlet property="feedbackField" destination="lJd-ex-TTJ" id="epo-LO-yRa"/>
                         <outlet property="imageView" destination="Ftu-rS-m5A" id="rCa-qL-Op3"/>
                         <outlet property="listingField" destination="V53-Be-5UB" id="jec-8J-2Ar"/>
