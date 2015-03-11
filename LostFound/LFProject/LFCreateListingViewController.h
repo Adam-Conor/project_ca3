@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Listing.h"
 
-@interface LFCreateListingViewController : UIViewController
+@interface LFCreateListingViewController : UITableViewController <UITextFieldDelegate>
 
+@property (nonatomic, strong) IBOutlet UITextField *listingTitle;
+@property (nonatomic, assign) NSString *category;
 @end
