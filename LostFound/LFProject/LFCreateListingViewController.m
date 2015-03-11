@@ -16,6 +16,7 @@
 
 @end
 static NSString *status;
+static NSIndexPath *indexPath;
 @implementation LFCreateListingViewController
 
 - (void)viewDidLoad {
@@ -35,6 +36,15 @@ static NSString *status;
 
 - (void)viewDidAppear{
     //NSLog(@"%@ I'm printing from create listing view", self.category);
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.tag = indexPath.section;
+    if(cell.tag == 0 && [status isEqual:@"found"]){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else{
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    NSLog(@"Should have checkmarked it");
 }
 
 - (void) createListing{
@@ -46,7 +56,6 @@ static NSString *status;
     listing[@"category"] = self.category;
     listing[@"user"] = user;
     listing[@"status"] = status;
-    //listing[@"status"] =
     //listing[@"date"] = @;
     //listing[@"image"] = @"test";
     [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -55,37 +64,40 @@ static NSString *status;
     }];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.tag = indexPath.section;
-    if(cell.tag == 1){
+    if(cell.tag == 2){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.tag = indexPath.row;
         if(cell.tag == 0){
-            NSLog(@"This shiud be lostt");
             status = @"lost";
         }
         else{
-            NSLog(@"This should be found");
             status = @"found";
         }
     }
-    
+    else{
+        cell.accessoryType = UITableViewCellSelectionStyleNone;
+    }
     //listing[@"status]
 }
 -(IBAction)sendData:(UIStoryboardSegue *)segue {
-    /*if ([segue.sourceViewController isKindOfClass:[LFCategoriesViewController class]]) {
-        LFCategoriesViewController *viewController = segue.sourceViewController;
-        if (viewController.category) {
-            self.category = viewController.category;
-            NSLog(self.category);
-        }
-        else NSLog(@"Something fucked up");
-        NSLog(self.category);
-    }*/
-   // self.category = cat;
-    //NSLog(@"%@", segue.identifier);
+    // Capitalise First letter for label on UI
+    NSString *upper = self.category;
+    upper = [self.category capitalizedString];
+    self.catLabel.text = upper;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // rows in section 0 should not be selectable
+    if ( indexPath.section == 0 ) return nil;
+    
+    // first 3 rows in any section should not be selectable
+    
+    // By default, allow row to be selected
+    return indexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,4 +111,6 @@ static NSString *status;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
+
+
 @end

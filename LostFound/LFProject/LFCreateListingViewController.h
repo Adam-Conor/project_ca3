@@ -11,6 +11,7 @@
 
 @interface LFCreateListingViewController : UITableViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *catLabel;
 @property (nonatomic, strong) IBOutlet UITextField *listingTitle;
 @property (nonatomic, assign) NSString *category;
 @end

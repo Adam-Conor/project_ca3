@@ -322,7 +322,7 @@
                     <navigationItem key="navigationItem" title="Pick A Category" id="PST-GQ-22D">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="x5n-JD-UXN">
                             <connections>
-                                <segue destination="939-Fu-bdP" kind="unwind" unwindAction="saveCategory:" id="lrX-Ga-RHV"/>
+                                <segue destination="939-Fu-bdP" kind="unwind" unwindAction="sendData:" id="Tpx-97-SUi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="done" systemItem="done" id="sDC-t7-SmM">
@@ -382,6 +382,27 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Category" id="bdf-FW-mW3">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="category" rowHeight="50" id="jGB-vL-lzb">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="center" tableViewCell="jGB-vL-lzb" id="kWB-u9-pAD">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBc-t3-SyJ">
+                                                    <rect key="frame" x="15" y="11" width="160" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="JXW-qV-9tS" kind="show" identifier="goCat" id="TkU-Jq-7zE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Lost or Found" id="PTx-G6-pZS">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="lost" editingAccessoryType="checkmark" textLabel="Yo3-dn-81N" rowHeight="50" style="IBUITableViewCellStyleDefault" id="loY-If-6mr">
@@ -414,33 +435,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Category" id="bdf-FW-mW3">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="category" textLabel="oxe-j6-Atx" detailTextLabel="xgm-xq-Rj1" rowHeight="50" style="IBUITableViewCellStyleValue1" id="jGB-vL-lzb">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="center" tableViewCell="jGB-vL-lzb" id="kWB-u9-pAD">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oxe-j6-Atx">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xgm-xq-Rj1">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="JXW-qV-9tS" kind="show" identifier="goCat" id="TkU-Jq-7zE"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="inc-8S-MkR" id="Fj4-tg-STo"/>
@@ -460,13 +454,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="catLabel" destination="eBc-t3-SyJ" id="P4t-3s-xeq"/>
+                        <outlet property="category" destination="eBc-t3-SyJ" id="VBD-Bk-a8F"/>
                         <outlet property="listingTitle" destination="7Wl-QK-iep" id="f4F-1X-3Wg"/>
                         <segue destination="oEx-qp-hlr" kind="show" identifier="saveListing" id="BAj-eP-wdd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBL-xb-XyM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4701" y="-439"/>
+            <point key="canvasLocation" x="-4701" y="-442"/>
         </scene>
         <!--Search-->
         <scene sceneID="qM5-u4-CmY">
@@ -716,7 +712,7 @@
             <objects>
                 <tableViewController id="0wg-CK-Z0c" customClass="LFSearchResultsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="135" sectionHeaderHeight="10" sectionFooterHeight="10" id="Vu6-UR-2oh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -800,7 +796,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mWw-3T-xBm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hZQ-ow-yOp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is the listing you wanted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGG-hW-m5G">
@@ -1286,9 +1282,9 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fjj-Yl-z7e"/>
         <segue reference="Tgp-zV-WKq"/>
         <segue reference="Mjm-In-mEA"/>
         <segue reference="kBz-ss-m7c"/>
+        <segue reference="m4N-by-MLH"/>
     </inferredMetricsTieBreakers>
 </document>
