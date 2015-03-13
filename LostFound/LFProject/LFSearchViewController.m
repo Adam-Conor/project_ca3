@@ -72,7 +72,12 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSString *str = searchBar.text;
-    NSLog(@"%@",str);
+    NSInteger *scopeAsNum = searchBar.selectedScopeButtonIndex;
+    
+    NSString *scopeAsString = [self scopeIndexToString:scopeAsNum];
+    NSLog(@"%@", str);
+    NSLog(@"%@", scopeAsString);
+    [self queryString:str queryScope:scopeAsString];
 }
 
 /* Runs when user pesses cancel
@@ -81,6 +86,59 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+}
+
+-(NSString*)scopeIndexToString:(int)num {
+    NSString *scope;
+    switch(num) {
+        case 1:
+            scope = @"lost";
+            break;
+        case 2:
+            scope = @"found";
+            break;
+        default:
+            scope = @"o";
+            break;
+    }
+    
+    return scope;
+}
+
+/* Query for search
+ * ATM to just print the listings
+ */
+
+-(void)queryString:(NSString*)qString queryScope:(NSString*)qScope {
+    /* Set what to query */
+    PFQuery *query = [PFQuery queryWithClassName:@"Listing"];
+    
+    [query whereKey:@"title" containsString:qString];
+    [query whereKey:@"status" containsString:qScope];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) { //found match
+            /*NSString *feedbackAsString;
+            float feedbackAsPercent;
+            
+            feedbackAsString = objects[0][@"rating"];
+            feedbackAsPercent = feedbackAsString.floatValue;
+            if(feedbackAsString == NULL) {
+                feedbackAsString = @"0";
+                feedbackAsPercent = 50;
+                _noFeedbackField.text = @"No feedback";
+            }
+            _feedbackField.text = [NSString stringWithFormat:@"%@%%", feedbackAsString];
+            _feedbackBar.progress = (feedbackAsPercent / 100);
+            */
+            for(PFObject *object in objects) {
+                NSLog(@"%@", object);
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 /*#pragma mark - UISearchDisplayController Delegate Methods
