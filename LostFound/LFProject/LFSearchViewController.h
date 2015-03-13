@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LFSearchViewController : UITableViewController
+            <UISearchBarDelegate, UISearchDisplayDelegate>
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchField;
 
 @end
