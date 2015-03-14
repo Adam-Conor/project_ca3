@@ -10,8 +10,6 @@
 
 @interface LFSearchViewController ()
 
-@property (nonatomic, weak) IBOutlet UILabel *listingLabel;
-
 @end
 
 @implementation LFSearchViewController
@@ -28,7 +26,7 @@
     /* Not sure what this does */
     [self.view addSubview:_searchField];
     
-    /**** WHAT ARE THESE FOR ***/
+    /**** WHAT ARE THESE FOR ****/
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -58,6 +56,7 @@
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
     searchBar.showsScopeBar = NO;
+    searchBar.text=@"";
     
     [searchBar sizeToFit];
     [searchBar setShowsCancelButton:NO animated:YES];
@@ -66,18 +65,20 @@
 }
 
 /* When user presses search
- * TODO
- * 1) send text to DB and return results
+ * Get and prepares text for query
+ * Queries for input text
  */
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    /* Get text for query */
     NSString *str = searchBar.text;
     NSInteger *scopeAsNum = searchBar.selectedScopeButtonIndex;
     
     /* Prepare text for query */
-    //str = [str lowercaseString];
-    str = [NSString stringWithFormat:@"^%@", str];
+    str = [NSString stringWithFormat:@"^%@", str]; //case insensitive
     NSString *scopeAsString = [self scopeIndexToString:scopeAsNum];
+    
+    /* Test logs. To be removed */
     NSLog(@"%@", str);
     NSLog(@"%@", scopeAsString);
     
@@ -92,6 +93,10 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
 }
+
+/* Change the scope index to matching string
+ * Returns string of status to search
+ */
 
 -(NSString*)scopeIndexToString:(int)num {
     NSString *scope;
@@ -121,8 +126,28 @@
     [query whereKey:@"title" matchesRegex:qString modifiers:@"i"];
     [query whereKey:@"status" containsString:qScope];
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    /* Get query objects in array */
+    [query findObjectsInBackgroundWithBlock:^(NSArray *listings, NSError *error) {
         if (!error) { //found match
+            /* TODO 
+             * Put relevant info into view
+             * Image - Title - Category?
+             * Don't know how to do this yet
+             * Allow for
+             * Image/Location/Item
+             */
+            for(PFObject *listing in listings) {
+                /* Get information to show */
+                //get image somehow
+                NSString *status = listing[@"status"];
+                NSString *title = listing[@"title"];
+                NSString *category = listing[@"category"];
+                
+                /* Test log */
+                NSLog(@"\nStatus: %@\nTitle: %@\nCategory: %@", status, title, category);
+                
+                /* Somehow put information into view */
+            }
             /*NSString *feedbackAsString;
             float feedbackAsPercent;
             
@@ -136,9 +161,6 @@
             _feedbackField.text = [NSString stringWithFormat:@"%@%%", feedbackAsString];
             _feedbackBar.progress = (feedbackAsPercent / 100);
             */
-            for(PFObject *object in objects) {
-                NSLog(@"%@", object);
-            }
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
