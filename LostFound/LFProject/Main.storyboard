@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TBt-TH-OuH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -122,6 +123,8 @@
                             <constraint firstItem="gUN-7n-xTD" firstAttribute="top" secondItem="uDz-TZ-iAG" secondAttribute="bottom" constant="118" id="A8f-fV-zvu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vPe-dQ-KwW" secondAttribute="trailing" constant="64" id="BCj-yv-ySC"/>
                             <constraint firstItem="gUN-7n-xTD" firstAttribute="top" secondItem="omj-A6-iZ9" secondAttribute="top" constant="139" id="Bn6-Ml-TTf"/>
+                            <constraint firstItem="gUN-7n-xTD" firstAttribute="top" secondItem="uDz-TZ-iAG" secondAttribute="bottom" constant="118" id="CKG-5f-LnH"/>
+                            <constraint firstItem="gUN-7n-xTD" firstAttribute="top" secondItem="uDz-TZ-iAG" secondAttribute="bottom" constant="118" id="CMZ-nd-tcR"/>
                             <constraint firstItem="12d-wU-fTc" firstAttribute="leading" secondItem="omj-A6-iZ9" secondAttribute="leadingMargin" constant="66" id="DID-pJ-POK"/>
                             <constraint firstItem="ST0-Tg-h3R" firstAttribute="leading" secondItem="12d-wU-fTc" secondAttribute="trailing" constant="10" id="DtJ-kT-7y1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mLX-r4-Kjy" secondAttribute="trailing" constant="-16" id="Fzk-OP-BAW"/>
@@ -129,15 +132,22 @@
                             <constraint firstItem="ST0-Tg-h3R" firstAttribute="top" secondItem="vPe-dQ-KwW" secondAttribute="bottom" constant="8" id="LhY-RU-85s"/>
                             <constraint firstItem="ST0-Tg-h3R" firstAttribute="top" secondItem="vPe-dQ-KwW" secondAttribute="bottom" constant="8" id="MMG-PX-r7e"/>
                             <constraint firstItem="vPe-dQ-KwW" firstAttribute="leading" secondItem="y0V-uP-pIz" secondAttribute="trailing" constant="8" id="QAf-xI-wXb"/>
+                            <constraint firstItem="gUN-7n-xTD" firstAttribute="leading" secondItem="omj-A6-iZ9" secondAttribute="leadingMargin" constant="57" id="QIr-bX-Pwd"/>
                             <constraint firstItem="y0V-uP-pIz" firstAttribute="leading" secondItem="omj-A6-iZ9" secondAttribute="leadingMargin" constant="65" id="Tld-Ry-zyU"/>
+                            <constraint firstItem="vPe-dQ-KwW" firstAttribute="top" secondItem="gUN-7n-xTD" secondAttribute="bottom" constant="18" id="W65-J0-kkx"/>
                             <constraint firstItem="12d-wU-fTc" firstAttribute="top" secondItem="y0V-uP-pIz" secondAttribute="bottom" constant="16" id="ZeC-Xe-IMF"/>
                             <constraint firstItem="mLX-r4-Kjy" firstAttribute="top" secondItem="ST0-Tg-h3R" secondAttribute="bottom" constant="97" id="cEK-Jp-7dA"/>
+                            <constraint firstItem="vPe-dQ-KwW" firstAttribute="top" secondItem="gUN-7n-xTD" secondAttribute="bottom" constant="18" id="dFr-at-2Sn"/>
                             <constraint firstItem="gUN-7n-xTD" firstAttribute="leading" secondItem="omj-A6-iZ9" secondAttribute="leadingMargin" constant="57" id="dRy-OR-7VM"/>
+                            <constraint firstItem="y0V-uP-pIz" firstAttribute="top" secondItem="gUN-7n-xTD" secondAttribute="bottom" constant="22" id="eMS-Cl-ARw"/>
                             <constraint firstItem="vPe-dQ-KwW" firstAttribute="top" secondItem="gUN-7n-xTD" secondAttribute="bottom" constant="18" id="eZv-9e-Sne"/>
                             <constraint firstItem="vPe-dQ-KwW" firstAttribute="top" secondItem="gUN-7n-xTD" secondAttribute="bottom" constant="18" id="fel-yK-wkv"/>
+                            <constraint firstItem="ST0-Tg-h3R" firstAttribute="top" secondItem="vPe-dQ-KwW" secondAttribute="bottom" constant="8" id="iSs-gC-pTX"/>
                             <constraint firstItem="y0V-uP-pIz" firstAttribute="top" secondItem="gUN-7n-xTD" secondAttribute="bottom" constant="22" id="m12-5K-Pnx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gUN-7n-xTD" secondAttribute="trailing" constant="56" id="mHw-cG-IeY"/>
                             <constraint firstItem="KPW-Qr-f4m" firstAttribute="top" secondItem="mLX-r4-Kjy" secondAttribute="bottom" constant="294" id="saR-xe-Nwg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vPe-dQ-KwW" secondAttribute="trailing" constant="64" id="uKK-JR-k5F"/>
+                            <constraint firstItem="12d-wU-fTc" firstAttribute="top" secondItem="y0V-uP-pIz" secondAttribute="bottom" constant="16" id="vhc-UV-IfP"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -342,7 +352,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Uv-am-NF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="939-Fu-bdP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-5424" y="-462"/>
+            <point key="canvasLocation" x="-5404" y="-616"/>
         </scene>
         <!--Create Listing-->
         <scene sceneID="8xp-wB-V3S">
@@ -449,14 +459,18 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" keyboardDismissMode="interactive" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6Z-cU-JUS">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" keyboardDismissMode="interactive" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="F6Z-cU-JUS">
                                                     <rect key="frame" x="0.0" y="1" width="406" height="180"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <attributedString key="attributedText"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                                 </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="F6Z-cU-JUS" firstAttribute="trailing" secondItem="A2y-RC-hdw" secondAttribute="trailingMargin" id="KgZ-45-uUB"/>
+                                                <constraint firstItem="F6Z-cU-JUS" firstAttribute="leading" secondItem="A2y-RC-hdw" secondAttribute="leading" id="Xvi-9y-a03"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -468,14 +482,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NWh-e2-GFI" id="QkD-Ye-Uqn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NUa-od-RO1">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NUa-od-RO1">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="wWc-Mx-zmc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="wWc-Mx-zmc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="448044924.762972">
                                                         <!--2015-03-14 16:55:24 +0000-->
                                                     </date>
@@ -485,6 +499,46 @@
                                                     <locale key="locale" localeIdentifier="en_IE"/>
                                                 </datePicker>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wWc-Mx-zmc" firstAttribute="leading" secondItem="QkD-Ye-Uqn" secondAttribute="leading" id="Q9Y-xa-rev"/>
+                                                <constraint firstItem="wWc-Mx-zmc" firstAttribute="top" secondItem="NUa-od-RO1" secondAttribute="top" id="cIG-jj-qoe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Upload Photo" id="PFZ-sI-DgP">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imagePicker" editingAccessoryType="checkmark" textLabel="HJp-x2-hMF" style="IBUITableViewCellStyleDefault" id="Ou8-BX-c1R">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ou8-BX-c1R" id="qdO-g5-olh">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HJp-x2-hMF">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nj6-Qg-slb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <state key="normal" title="Upload an Image">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="nice:" destination="inc-8S-MkR" eventType="touchUpInside" id="VXM-im-PdO"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Nj6-Qg-slb" firstAttribute="baseline" secondItem="HJp-x2-hMF" secondAttribute="baseline" id="8Fy-iq-JhG"/>
+                                                <constraint firstItem="Nj6-Qg-slb" firstAttribute="firstBaseline" secondItem="HJp-x2-hMF" secondAttribute="firstBaseline" id="9gd-fZ-a23"/>
+                                                <constraint firstItem="Nj6-Qg-slb" firstAttribute="top" secondItem="HJp-x2-hMF" secondAttribute="top" id="MsD-9j-4El"/>
+                                                <constraint firstItem="Nj6-Qg-slb" firstAttribute="centerX" secondItem="HJp-x2-hMF" secondAttribute="centerX" id="RnJ-0c-wqP"/>
+                                                <constraint firstItem="Nj6-Qg-slb" firstAttribute="leading" secondItem="qdO-g5-olh" secondAttribute="leading" id="VQC-tE-odh"/>
+                                                <constraint firstItem="Nj6-Qg-slb" firstAttribute="bottom" secondItem="HJp-x2-hMF" secondAttribute="bottom" id="dSF-Sk-ntO"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -520,7 +574,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBL-xb-XyM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4814" y="-611"/>
+            <point key="canvasLocation" x="-4761" y="-623"/>
         </scene>
         <!--Search-->
         <scene sceneID="qM5-u4-CmY">
@@ -1340,9 +1394,9 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m4N-by-MLH"/>
-        <segue reference="CNM-Mz-1TA"/>
-        <segue reference="Tgp-zV-WKq"/>
         <segue reference="Mjm-In-mEA"/>
+        <segue reference="Tgp-zV-WKq"/>
+        <segue reference="kBz-ss-m7c"/>
+        <segue reference="m4N-by-MLH"/>
     </inferredMetricsTieBreakers>
 </document>

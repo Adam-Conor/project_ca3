@@ -12,7 +12,7 @@
 #import <Listing.h>
 #import <UIKit/UIKit.h>
 
-@interface LFCreateListingViewController () <UITextFieldDelegate>
+@interface LFCreateListingViewController () 
 
 @end
 static NSString *status;
@@ -65,15 +65,13 @@ static NSString *date;
     NSDate *date = self.datePicker.date;
     PFUser *user = [PFUser currentUser];
     PFObject *listing = [PFObject objectWithClassName:@"Listing"];
-    //if(indexPath.row ==)
-    //PFFile *image = ;
     [listing setObject:_listingTitle.text forKey:@"title"];
-    listing[@"category"] = self.category;
+    listing[@"category"] = self.category; //
     listing[@"user"] = user;
     listing[@"status"] = status;
     [listing setObject:_desc.text forKey:@"description"];
     listing[@"date"] = date;
-    //listing[@"image"] = @"test";
+    listing[@"image"] = self.uploadImage;
     [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(succeeded) NSLog(@"%s Listing saved succesfully", __PRETTY_FUNCTION__);
         else NSLog(@"%s Listing fucked up", __PRETTY_FUNCTION__);
@@ -99,24 +97,27 @@ static NSString *date;
     else{
         cell.accessoryType = UITableViewCellSelectionStyleNone;
     }
-    //listing[@"status]
 }
+
+
 -(IBAction)sendData:(UIStoryboardSegue *)segue {
     // Capitalise First letter for label on UI
+    if([self.category isEqualToString:@""]){
+        self.catLabel.text = @"No Category Chosen";
+        NSLog(@"Cancelled :)");
+    }else{
     NSString *upper = self.category;
     upper = [self.category capitalizedString];
     self.catLabel.text = upper;
+    }
 }
 
+
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // rows in section 0 should not be selectable
     if ( indexPath.section == 0 ) return nil;
-    
-    // first 3 rows in any section should not be selectable
-    
-    // By default, allow row to be selected
     return indexPath;
 }
+
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -130,5 +131,26 @@ static NSString *date;
     }
 }
 
+- (IBAction)nice:(id)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    self.uploadImage = [PFFile fileWithData:imageData];
+}
 
 @end

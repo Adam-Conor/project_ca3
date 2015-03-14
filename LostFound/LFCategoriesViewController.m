@@ -97,6 +97,10 @@ static NSString *cat;
                 NSLog(self.category);
                 mainViewConroller.category = self.category;
             }
+            else{
+                mainViewConroller.category = @"";
+                NSLog(self.category);
+            }
     }
     
 }
