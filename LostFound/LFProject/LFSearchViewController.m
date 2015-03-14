@@ -74,9 +74,14 @@
     NSString *str = searchBar.text;
     NSInteger *scopeAsNum = searchBar.selectedScopeButtonIndex;
     
+    /* Prepare text for query */
+    //str = [str lowercaseString];
+    str = [NSString stringWithFormat:@"^%@", str];
     NSString *scopeAsString = [self scopeIndexToString:scopeAsNum];
     NSLog(@"%@", str);
     NSLog(@"%@", scopeAsString);
+    
+    /* Query for search */
     [self queryString:str queryScope:scopeAsString];
 }
 
@@ -113,7 +118,7 @@
     /* Set what to query */
     PFQuery *query = [PFQuery queryWithClassName:@"Listing"];
     
-    [query whereKey:@"title" containsString:qString];
+    [query whereKey:@"title" matchesRegex:qString modifiers:@"i"];
     [query whereKey:@"status" containsString:qScope];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
