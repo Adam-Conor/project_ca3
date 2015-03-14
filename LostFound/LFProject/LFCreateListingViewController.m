@@ -17,12 +17,16 @@
 @end
 static NSString *status;
 static NSIndexPath *indexPath;
+static NSString *date;
 @implementation LFCreateListingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //NSLog(_cat);
+    //Set max date as current date :)
+    self.datePicker.maximumDate = [NSDate date];
+    [self.datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
 }
 - (IBAction)saveListing:(id)sender {
     [self createListing];
@@ -46,6 +50,16 @@ static NSIndexPath *indexPath;
     }
     NSLog(@"Should have checkmarked it");
 }
+
+- (void)datePickerChanged:(UIDatePicker *)datePicker
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
+    NSLog(strDate);
+    date = strDate;
+}
+
 
 - (void) createListing{
     NSDate *date = self.datePicker.date;

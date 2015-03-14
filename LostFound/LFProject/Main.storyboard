@@ -349,7 +349,7 @@
             <objects>
                 <tableViewController title="Create Listing" clearsSelectionOnViewWillAppear="NO" id="inc-8S-MkR" customClass="LFCreateListingViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sj1-QG-plR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -450,17 +450,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" keyboardDismissMode="interactive" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6Z-cU-JUS">
-                                                    <rect key="frame" x="0.0" y="1" width="418" height="180"/>
+                                                    <rect key="frame" x="0.0" y="1" width="406" height="180"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Enter your description">
-                                                            <attributes>
-                                                                <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <font key="NSFont" size="22" name="HelveticaNeue"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                    <attributedString key="attributedText"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                                 </textView>
@@ -469,24 +461,29 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Date Found or Lost" id="5e9-yQ-5Te">
+                            <tableViewSection headerTitle="Date Lost or Found" id="ug0-dk-NIg">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="date" editingAccessoryType="checkmark" textLabel="Hcf-yZ-lIN" rowHeight="50" style="IBUITableViewCellStyleDefault" id="xed-zp-55e">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePicker" editingAccessoryType="checkmark" textLabel="NUa-od-RO1" rowHeight="223" style="IBUITableViewCellStyleDefault" id="NWh-e2-GFI">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xed-zp-55e" id="aoH-Wc-uZz">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NWh-e2-GFI" id="QkD-Ye-Uqn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hcf-yZ-lIN">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NUa-od-RO1">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DGx-yd-U2T">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="wWc-Mx-zmc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="448044924.762972">
+                                                        <!--2015-03-14 16:55:24 +0000-->
+                                                    </date>
+                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="284040000">
+                                                        <!--2010-01-01 12:00:00 +0000-->
+                                                    </date>
+                                                    <locale key="locale" localeIdentifier="en_IE"/>
+                                                </datePicker>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -515,6 +512,7 @@
                     <connections>
                         <outlet property="catLabel" destination="eBc-t3-SyJ" id="P4t-3s-xeq"/>
                         <outlet property="category" destination="eBc-t3-SyJ" id="VBD-Bk-a8F"/>
+                        <outlet property="datePicker" destination="wWc-Mx-zmc" id="FLY-kw-Igr"/>
                         <outlet property="desc" destination="F6Z-cU-JUS" id="QOD-Fx-ls1"/>
                         <outlet property="listingTitle" destination="7Wl-QK-iep" id="f4F-1X-3Wg"/>
                         <segue destination="oEx-qp-hlr" kind="show" identifier="saveListing" id="BAj-eP-wdd"/>
@@ -529,11 +527,11 @@
             <objects>
                 <tableViewController id="oEx-qp-hlr" customClass="LFSearchViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3qI-ra-MKm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search Listings" showsCancelButton="YES" id="rOl-ZD-OAC">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="alphabet" keyboardAppearance="light"/>
                             <scopeButtonTitles>
