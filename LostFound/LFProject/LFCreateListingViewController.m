@@ -48,6 +48,7 @@ static NSIndexPath *indexPath;
 }
 
 - (void) createListing{
+    NSDate *date = self.datePicker.date;
     PFUser *user = [PFUser currentUser];
     PFObject *listing = [PFObject objectWithClassName:@"Listing"];
     //if(indexPath.row ==)
@@ -56,13 +57,16 @@ static NSIndexPath *indexPath;
     listing[@"category"] = self.category;
     listing[@"user"] = user;
     listing[@"status"] = status;
-    //listing[@"date"] = @;
+    [listing setObject:_desc.text forKey:@"description"];
+    listing[@"date"] = date;
     //listing[@"image"] = @"test";
     [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(succeeded) NSLog(@"%s Listing saved succesfully", __PRETTY_FUNCTION__);
         else NSLog(@"%s Listing fucked up", __PRETTY_FUNCTION__);
     }];
 }
+
+
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
