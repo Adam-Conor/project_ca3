@@ -72,6 +72,7 @@ static NSString *date;
     [listing setObject:_desc.text forKey:@"description"];
     listing[@"date"] = date;
     listing[@"image"] = self.uploadImage;
+    listing[@"location"] = self.loc;
     [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(succeeded) NSLog(@"%s Listing saved succesfully", __PRETTY_FUNCTION__);
         else NSLog(@"%s Listing fucked up", __PRETTY_FUNCTION__);
@@ -112,6 +113,11 @@ static NSString *date;
     }
 }
 
+-(IBAction)sendLocation:(UIStoryboardSegue *)segue {
+    NSLog(@"Nice, should have geo point");
+    NSLog(@"%f %f", self.loc.latitude, self.loc.latitude);
+}
+
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ( indexPath.section == 0 ) return nil;
@@ -129,6 +135,8 @@ static NSString *date;
     if(cell.tag == 1){
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+}
+- (IBAction)getLocation:(id)sender {
 }
 
 - (IBAction)nice:(id)sender {

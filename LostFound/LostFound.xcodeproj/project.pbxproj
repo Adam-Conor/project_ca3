@@ -45,6 +45,7 @@
 		8883C9191AA7BDF4008C6B1E /* LFCreateListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883C9181AA7BDF4008C6B1E /* LFCreateListingViewController.m */; };
 		88D0D6711AAF507300230E72 /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D0D6701AAF507300230E72 /* Listing.m */; };
 		88D0D6791AAF7C9B00230E72 /* LFCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D0D6781AAF7C9B00230E72 /* LFCategoriesViewController.m */; };
+		88DB0BC21AB4E92B00076DA9 /* LFLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DB0BC11AB4E92B00076DA9 /* LFLocationViewController.m */; };
 		91D261791A36EB67005D713D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D261781A36EB67005D713D /* libsqlite3.0.dylib */; };
 		DD952FCB16E7F5CF00470144 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E18B1E1624CB5700B17A67 /* CoreLocation.framework */; };
 		F5DD9E271A9B8D4600695F7C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5DD9E261A9B8D4600695F7C /* Images.xcassets */; };
@@ -108,6 +109,8 @@
 		88D0D6701AAF507300230E72 /* Listing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Listing.m; sourceTree = "<group>"; };
 		88D0D6771AAF7C9B00230E72 /* LFCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFCategoriesViewController.h; path = ../LFCategoriesViewController.h; sourceTree = "<group>"; };
 		88D0D6781AAF7C9B00230E72 /* LFCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFCategoriesViewController.m; path = ../LFCategoriesViewController.m; sourceTree = "<group>"; };
+		88DB0BC01AB4E92B00076DA9 /* LFLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLocationViewController.h; sourceTree = "<group>"; };
+		88DB0BC11AB4E92B00076DA9 /* LFLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLocationViewController.m; sourceTree = "<group>"; };
 		91D261781A36EB67005D713D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		97E18B1E1624CB5700B17A67 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F5DD9E261A9B8D4600695F7C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				09ABC08113A1D52D009C3FCF /* LFDelegate.m */,
 				889922D81A9CDAF500B368F6 /* LFDelegate.h */,
 				F5DD9E2A1A9B9CB400695F7C /* Main.storyboard */,
+				88DB0BC01AB4E92B00076DA9 /* LFLocationViewController.h */,
+				88DB0BC11AB4E92B00076DA9 /* LFLocationViewController.m */,
 				8883C9171AA7BDF4008C6B1E /* LFCreateListingViewController.h */,
 				8883C9181AA7BDF4008C6B1E /* LFCreateListingViewController.m */,
 				8883C9111AA783D3008C6B1E /* LFSearchViewController.h */,
@@ -367,6 +372,7 @@
 				886B59E91AA4BE780070E718 /* LFProfileViewController.m in Sources */,
 				886B59E41AA4BDFD0070E718 /* LFMapViewController.m in Sources */,
 				09ABC08213A1D52D009C3FCF /* LFDelegate.m in Sources */,
+				88DB0BC21AB4E92B00076DA9 /* LFLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
