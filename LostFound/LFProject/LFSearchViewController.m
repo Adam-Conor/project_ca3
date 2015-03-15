@@ -56,7 +56,7 @@
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
     searchBar.showsScopeBar = NO;
-    searchBar.text=@"";
+    //searchBar.text=@"";
     
     [searchBar sizeToFit];
     [searchBar setShowsCancelButton:NO animated:YES];
@@ -129,7 +129,7 @@
     /* Get query objects in array */
     [query findObjectsInBackgroundWithBlock:^(NSArray *listings, NSError *error) {
         if (!error) { //found match
-            /* TODO 
+            /* TODO
              * Put relevant info into view
              * Image - Title - Category?
              * Don't know how to do this yet
@@ -148,19 +148,6 @@
                 
                 /* Somehow put information into view */
             }
-            /*NSString *feedbackAsString;
-            float feedbackAsPercent;
-            
-            feedbackAsString = objects[0][@"rating"];
-            feedbackAsPercent = feedbackAsString.floatValue;
-            if(feedbackAsString == NULL) {
-                feedbackAsString = @"0";
-                feedbackAsPercent = 50;
-                _noFeedbackField.text = @"No feedback";
-            }
-            _feedbackField.text = [NSString stringWithFormat:@"%@%%", feedbackAsString];
-            _feedbackBar.progress = (feedbackAsPercent / 100);
-            */
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -168,23 +155,56 @@
     }];
 }
 
-/*#pragma mark - UISearchDisplayController Delegate Methods
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    // Tells the table data source to reload when text changes
-    //[self filterContentForSearchText:searchString scope:
-     //[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+-- (id)initWithCoder:(NSCoder *)aCoder
+{
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        // The className to query on
+        self.parseClassName = @"Listing";
+        
+        // The key of the PFObject to display in the label of the default cell style
+        self.textKey = @"name";
+        
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = NO;
+    }
+    return self;
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    // Tells the table data source to reload when scope bar selection changes
-    //[self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+- (PFQuery *)queryForTable
+{
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    
+    return query;
 }
- */
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
+{
+    static NSString *simpleTableIdentifier = @"ListingCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    // Configure the cell
+    PFFile *thumbnail = [object objectForKey:@"imageFile"];
+    PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
+    thumbnailImageView.image = [UIImage imageNamed:@"placeholder.jpg"];
+    thumbnailImageView.file = thumbnail;
+    [thumbnailImageView loadInBackground];
+    
+    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
+    nameLabel.text = [object objectForKey:@"name"];
+    
+    UILabel *prepTimeLabel = (UILabel*) [cell viewWithTag:102];
+    prepTimeLabel.text = [object objectForKey:@""];
+    
+    return cell;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
