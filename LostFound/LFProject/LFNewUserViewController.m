@@ -27,7 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    
+    [self registerForKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +70,7 @@
     NSString *emptyPass = @"Empty password";
     NSString *emptyEmail = @"Empty email";
     NSString *noMatch = @"Please enter the same password.";
-    NSString *errorText = @"No";
+    NSString *errorText = @"";
     NSString *joinText = @", and ";
     
     
