@@ -5,11 +5,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
-@interface LFDelegate : NSObject <UIApplicationDelegate>
+@interface LFDelegate : NSObject
+    <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
-
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, strong) UITabBarController *tabController;
 

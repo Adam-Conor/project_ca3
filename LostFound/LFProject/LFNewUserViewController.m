@@ -7,10 +7,6 @@
 //
 
 #import "LFNewUserViewController.h"
-#import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
-#import <ParseUI/ParseUI.h>
-
 
 @interface LFNewUserViewController () <UITextFieldDelegate>
 
@@ -28,7 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    /* Set up gesture recognition */
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(dismissKeyboard)];
+    
     tapGestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
@@ -58,10 +58,12 @@
     return YES;
 }
 
-
-
-
-- (void) processSignup{
+/* Function for signing up
+ * Shows errors if needed
+ * If success signs user up
+ */
+- (void) processSignup {
+    /* Set up strings */
     NSString *username = self.usernameField.text;
     NSString *email = self.emailField.text;
     NSString *password = self.passwordField.text;
@@ -73,53 +75,61 @@
     NSString *errorText = @"";
     NSString *joinText = @", and ";
     
-    
     BOOL textError = NO;
     
-    // If nothing entered, show error and set error field to be entered
-    if (username.length == 0 || password.length == 0 || passwordAgain.length == 0) {
+    /* Alert user of incomplete fields */
+    if(username.length == 0 || password.length == 0 || passwordAgain.length == 0) {
         textError = YES;
         
-        // Set up the keyboard for the first field missing input:
-        if (passwordAgain.length == 0) {
+        /* Set keyboard to first missing field */
+        if(passwordAgain.length == 0) {
             [self.passAgain becomeFirstResponder];
         }
-        if (password.length == 0) {
+        
+        if(password.length == 0) {
             [self.passwordField becomeFirstResponder];
         }
-        if (username.length == 0) {
+        
+        if(username.length == 0) {
             [self.usernameField becomeFirstResponder];
         }
         
-        if (email.length == 0){
+        if(email.length == 0){
             [self.emailField becomeFirstResponder];
         }
         
-        if (username.length == 0) {
+        /* Show error message */
+        if(username.length == 0) {
             errorText = [errorText stringByAppendingString:emptyUser];
         }
         
-        if (email.length == 0){
+        if(email.length == 0){
             errorText = [errorText stringByAppendingString:emptyEmail];
         }
         
-        if (password.length == 0 || passwordAgain.length == 0) {
+        if(password.length == 0 || passwordAgain.length == 0) {
             if (username.length == 0) { // We need some joining text in the error:
                 errorText = [errorText stringByAppendingString:joinText];
             }
             errorText = [errorText stringByAppendingString:emptyPass];
         }
-    } else if ([password compare:passwordAgain] != NSOrderedSame) {
-        // We have non-zero strings.
-        // Check for equal password strings.
+    } else if([password compare:passwordAgain] != NSOrderedSame) {
+        /* Check passwords are the same */
         textError = YES;
         errorText = [errorText stringByAppendingString:noMatch];
+        
         [self.passwordField becomeFirstResponder];
     }
     
-    if (textError) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    if(textError) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"OK", nil];
+        
         [alertView show];
+        
         return;
     }
     
@@ -138,11 +148,12 @@
                                                                delegate:self
                                                       cancelButtonTitle:nil
                                                       otherButtonTitles:@"OK", nil];
+            
             [alertView show];
             [self.usernameField becomeFirstResponder];
+            
             return;
-        }
-        else{
+        } else {
             [self performSegueWithIdentifier:@"registerSuccess" sender:self];
         }
     }];
@@ -151,17 +162,17 @@
 - (IBAction)goBack:(id)sender {
     [self performSegueWithIdentifier:@"close" sender:self];
 }
-    
+
+/* Identify register key presses */
 - (IBAction)registerPressed:(id)sender {
     [self dismissKeyboard];
     [self processSignup];
 }
 
-
+/* Close keyboard */
 - (void) dismissKeyboard {
     [self.view endEditing:YES];
 }
-
 
 - (void)registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -173,13 +184,18 @@
                                                  name:UIKeyboardWillHideNotification object:nil];
 }
 
--(PFFile*)getDefaultImage {
+/* Gives user default profile image
+ * They can change at a later date
+ */
+- (PFFile*)getDefaultImage {
     UIImage *defaultImage = [UIImage imageNamed:@"default.png"];
     NSData *imageData = UIImageJPEGRepresentation(defaultImage, 0.05f);
     PFFile *imageFile = [PFFile fileWithName:@"default.png" data:imageData];
     
     return imageFile;
 }
+
+/* Keyboard functions */
 
 - (void)keyboardWillShow:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
@@ -191,7 +207,7 @@
                                  (CGRectGetMaxY(self.view.bounds) -
                                   CGRectGetMaxY(self.registerAccount.frame) - 10.0f));
     
-    if (scrollViewOffsetY < 0) {
+    if(scrollViewOffsetY < 0) {
         return;
     }
     

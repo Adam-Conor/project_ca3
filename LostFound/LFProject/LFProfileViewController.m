@@ -38,11 +38,10 @@
     _usernameField.text = user; //username
     _memberField.text = created; //date
     _emailField.text = email; //email
-    //NSLog(@"%d", listingCount); //move to viewDIdLoad?
-    //_listingField.text = listingCount; //listing count
+    //_listingField.text = listingCount; //listing count to be added
 }
 
--(void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     PFUser *cUser = [PFUser currentUser];
     int listingCount = [self getListingCount:(PFUser*)cUser];
     
@@ -52,7 +51,7 @@
 /* Gets profile picture from database
  * sets the image to the image view
  */
--(void)setImage:(PFUser*)user {
+- (void)setImage:(PFUser*)user {
     NSString *userID = user.objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     
@@ -77,7 +76,7 @@
  * Takes date
  * Returns as Month/Day/Year
  */
--(NSString*)dateToString:(NSDate*)date {
+- (NSString*)dateToString:(NSDate*)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterLongStyle];
     
@@ -89,7 +88,7 @@
 /* Set the image format
  * Makes the image show as a circle
  */
--(void)formatImage:(UIImageView*)image {
+- (void)formatImage:(UIImageView*)image {
     image.layer.cornerRadius = image.frame.size.height / 2;
     image.layer.masksToBounds = YES;
     image.layer.borderWidth = 0;
@@ -98,7 +97,7 @@
 /* Get the number of listing for current user
  * Return count as int
  */
--(int)getListingCount:(PFUser*)user {
+- (int)getListingCount:(PFUser*)user {
     PFQuery *query = [PFQuery queryWithClassName:@"Listing"];
     __block int listingCount = 0;
     
@@ -119,7 +118,7 @@
  * Gets feedback from DB and displays
  * Displays rating on progress bar
  */
--(void)setFeedback:(PFUser*)user {
+- (void)setFeedback:(PFUser*)user {
     /* Set what to query */
     NSString *userID = user.objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];

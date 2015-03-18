@@ -10,9 +10,6 @@
 
 @interface LFMapViewController ()
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) CLLocation *currentLocation;
-
 @end
 
 @implementation LFMapViewController
@@ -22,7 +19,7 @@
     
     [_mapView setDelegate:self];
     
-    /* Caters for iOS7 I think */
+    /* Caters for iOS7 */
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     
     /* Check if denied from location servies */
@@ -40,41 +37,32 @@
     
     /* Check to see if user has ever authorized */
     if(status == kCLAuthorizationStatusNotDetermined) {
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [self.locationManager requestWhenInUseAuthorization];
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [_locationManager requestWhenInUseAuthorization];
         }
     }
     
     /* Cache any current location info */
-    CLLocation *currentLocation = self.locationManager.location;
+    CLLocation *currentLocation = _locationManager.location;
     
     if(currentLocation) {
-        self.currentLocation = currentLocation;
+        _currentLocation = currentLocation;
     }
     
+    /* Show user location with blue dot */
      _mapView.showsUserLocation = YES;
     
+    /* Open map on user */
     CLLocationCoordinate2D coord = {currentLocation.coordinate.latitude, currentLocation.coordinate.longitude};
     MKCoordinateSpan span = {.latitudeDelta =  1, .longitudeDelta =  1};
     MKCoordinateRegion region = {coord, span};
     [_mapView setRegion:region];
-    
-    
-    //gonna use this to mark listings on the map. ***Watch this space****
-    /*CLLocationCoordinate2D listing;
-    listing.latitude = 0;
-    listing.longitude = 0;
-    
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:listing];
-    [annotation setTitle:@"Title"]; //You can set the subtitle too
-    [self.mapView addAnnotation:annotation];
-     */
 
     [_mapView setZoomEnabled:YES];
     [_mapView setScrollEnabled:YES];
 }
 
+/* Update user's updated location */
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
 }
@@ -83,7 +71,6 @@
 /*
  * Sends user to app settings to change location servies if they wish
  */
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
@@ -93,53 +80,28 @@
     }
 }
 
-/*- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    NSLog(@"Error: %@", [error description]);
-    
-    if (error.code == kCLErrorDenied) {
-        [self.locationManager stopUpdatingLocation];
-    } else if (error.code == kCLErrorLocationUnknown) {
-        // todo: retry?
-        // set a timer for five seconds to cycle location, and if it fails again, bail and tell the user.
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error retrieving location"
-                                                        message:[error localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"OK", nil];
-        [alert show];
-    }
-}
- */
-
 /*
  * Runs every time the view appears
- * Log for testing purposes
+ * Starts updating location again
  */
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.locationManager startUpdatingLocation];
-    
-    NSLog(@"View Appeared");
 }
 
 /*
  * Runs every time the view disappears
+ * Stops updating location as not necessary
  */
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
     [self.locationManager stopUpdatingLocation];
-    
-    NSLog(@"Is that LeBlanc?");
 }
 
 /*
  * Start updating users location
- * For testing location changes are logged
  */
 
 - (void)startStandardUpdates {
@@ -148,9 +110,6 @@
     CLLocation *currentLocation = self.locationManager.location;
     if (currentLocation) {
         self.currentLocation = currentLocation;
-        
-        //mic check 1, 2
-        NSLog(@"latitude %+.6f, longitude %+.6f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     }
 }
 
@@ -162,34 +121,31 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     switch (status) {
-        case kCLAuthorizationStatusAuthorized:
-        {
-            NSLog(@"kCLAuthorizationStatusAuthorized, YEEEEERRRRRRRRRRRR");
+        case kCLAuthorizationStatusAuthorizedWhenInUse: {
+            NSLog(@"kCLAuthorizationStatusAuthorizedWhenInUse");
             
-            // Re-enable the post button if it was disabled before.
-            //self.navigationItem.rightBarButtonItem.enabled = YES;
+            /* Permission granted. Start updating location */
             [self.locationManager startUpdatingLocation];
         }
             break;
-        case kCLAuthorizationStatusDenied:
-        {
+        case kCLAuthorizationStatusDenied: {
             NSLog(@"kCLAuthorizationStatusDenied");
             
-            //Alert user to allow location services
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Lost & Found can’t access your current location.\n\nTo view nearby listing or create a listing at your current location, turn on access for Lost & Found to your location in the Settings under Location Services." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            [alertView show];
+            /* Permission denied. Alert user to re-enable location servies */
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Lost & Found can’t access your current location.\n\nTo view nearby listing or create a listing at your current location, turn on access for Lost & Found to your location in the Settings under Location Services."
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
             
-            // Disable the post button.
-            self.navigationItem.rightBarButtonItem.enabled = NO;
+            [alertView show];
         }
             break;
-        case kCLAuthorizationStatusNotDetermined:
-        {
+        case kCLAuthorizationStatusNotDetermined: {
             NSLog(@"kCLAuthorizationStatusNotDetermined");
         }
             break;
-        case kCLAuthorizationStatusRestricted:
-        {
+        case kCLAuthorizationStatusRestricted: {
             NSLog(@"kCLAuthorizationStatusRestricted");
         }
             break;
@@ -212,17 +168,13 @@
     return _locationManager;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+/* Changes location */
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
     self.currentLocation = newLocation;
-    
-    //mic check 1, 2
-    NSLog(@"latitude %+.6f, longitude %+.6f\n", _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude);
 }
 
-
-/*
- * What's this for?
- */
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

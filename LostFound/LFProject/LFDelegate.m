@@ -4,17 +4,9 @@
 //  Copyright 2011-present Parse Inc. All rights reserved.
 //
 
-#import <Parse/Parse.h>
-#import <ParseUI/ParseUI.h>
 #import "LFDelegate.h"
-/*#import "LFViewController.h"
-#import "LFLoginViewController.h"
-#import "LFSearchViewController.h"
-#import "LFProfileViewController.h"
-#import "LFMapViewController.h"*/
 
-
-@interface LFDelegate () //<LFLoginViewControllerDelegate, LFSearchViewControllerDelegate>
+@interface LFDelegate ()
 
 @end
 

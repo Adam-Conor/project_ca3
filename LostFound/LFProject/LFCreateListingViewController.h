@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "Listing.h"
+#import <Parse/Parse.h>
 
-@interface LFCreateListingViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface LFCreateListingViewController : UITableViewController
+    <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *catLabel;
+@property (nonatomic, weak) IBOutlet UILabel *catLabel;
 @property (nonatomic, strong) IBOutlet UITextField *listingTitle;
-@property (strong, nonatomic) IBOutlet UITextView *desc;
-@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (strong, nonatomic) PFFile *uploadImage;
-@property (strong, nonatomic) PFGeoPoint *location;
+@property (nonatomic, strong) IBOutlet UITextView *desc;
+@property (nonatomic, strong) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, strong) PFFile *uploadImage;
+@property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, assign) NSString *category;
 @property (nonatomic, strong) PFGeoPoint *loc;
+
 @end

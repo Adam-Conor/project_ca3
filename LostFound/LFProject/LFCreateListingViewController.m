@@ -8,13 +8,11 @@
 
 #import "LFCreateListingViewController.h"
 #import "LFCategoriesViewController.h"
-#import <Parse/Parse.h>
-#import <Listing.h>
-#import <UIKit/UIKit.h>
 
 @interface LFCreateListingViewController () 
 
 @end
+
 static NSString *status = @"none";
 static NSIndexPath *indexPath;
 static NSString *date;
@@ -25,11 +23,16 @@ static NSString *locale;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //NSLog(_cat);
-    //Set max date as current date :)
+    /* Set max date as current date */
     self.datePicker.maximumDate = [NSDate date];
-    [self.datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.datePicker addTarget:self
+                        action:@selector(datePickerChanged:)
+              forControlEvents:UIControlEventValueChanged];
 }
+
+/* Save Listing button
+ * Calls create listing function
+ */
 - (IBAction)saveListing:(id)sender {
     [self createListing];
 }
@@ -39,106 +42,131 @@ static NSString *locale;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)datePickerChanged:(UIDatePicker *)datePicker
-{
+- (void)datePickerChanged:(UIDatePicker *)datePicker {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
     NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
-    NSLog(strDate);
     date = strDate;
 }
 
-
-- (void) createListing{
-    BOOL inputError = NO;
+/* Creates listing in database
+ * Warns user for errors
+ * Posts listing to databse
+ */
+- (void) createListing {
     NSDate *date = self.datePicker.date;
     PFUser *user = [PFUser currentUser];
+    
+    /* Alert user that they are not verified */
     if([user objectForKey:@"emailVerified"] == NO){
-        //NSLog([user objectForKey:@"emailVerified"]);
         NSString *alertTitle = @"You are not a verified user. Please verify your email account through the email we sent you when you signed up.";
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Ok", nil];
+        
         [alertView show];
-        NSLog(@"Not verified, tut tut.");
-    }
-    else{
+    } else {
+        /* Alert user to fill mandatory fields */
         NSString *alertTitle = @"Title, Category, Status and Description are all mandatory fields. Please make sure these are filled before placing listing.";
-        if([_listingTitle.text isEqualToString:@""] || [status isEqualToString:@"none"] || [self.category isEqualToString:@""] || [_desc.text isEqualToString:@""]){
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        
+        if([_listingTitle.text isEqualToString:@""]
+           || [status isEqualToString:@"none"]
+           || [self.category isEqualToString:@""]
+           || [_desc.text isEqualToString:@""]) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"Ok", nil];
+            
             [alertView show];
-        }
-        else{
+        } else {
+            /* Get listing information from fields */
             PFObject *listing = [PFObject objectWithClassName:@"Listing"];
+            
             [listing setObject:_listingTitle.text forKey:@"title"];
-            listing[@"category"] = self.category; //
+            
+            listing[@"category"] = self.category;
             listing[@"user"] = user;
             listing[@"status"] = status;
             [listing setObject:_desc.text forKey:@"description"];
             listing[@"date"] = date;
+            
+            /* Get image ; Optional */
             if(self.uploadImage){
                 listing[@"image"] = self.uploadImage;
             }
+            
+            /* get location ; Optional */
             if(self.loc){
                 listing[@"location"] = self.loc;
                 listing[@"locale"] = locale;
             }
-        
+            
+            /* Save listing */
             [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded) NSLog(@"%s Listing saved succesfully.", __PRETTY_FUNCTION__);
                 else NSLog(@"%s Listing was not saved.", __PRETTY_FUNCTION__);
             }];
+            
+            /* Preform segue transition */
             [self performSegueWithIdentifier:@"saveListing" sender:nil];
         }
     }
 }
 
-
-
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+/* Table view for lost/found selection
+ * Only allows one selection
+ */
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.tag = indexPath.section;
     if(cell.tag == 2){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.tag = indexPath.row;
-        if(cell.tag == 0){
+        if(cell.tag == 0) {
             status = @"lost";
         }
-        else{
+        else {
             status = @"found";
         }
     }
-    else{
+    else {
         cell.accessoryType = UITableViewCellSelectionStyleNone;
     }
 }
 
-- (void) getLocale{
+/* Gets listing locale
+ * Gives name of area near listing
+ */
+- (void) getLocale {
     CLLocation *locat = [[CLLocation alloc] initWithLatitude:self.loc.latitude longitude:self.loc.longitude];
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    
     [geoCoder reverseGeocodeLocation:locat completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         locale = [placemark locality];
-        //NSLog([placemark subAdministrativeArea]);
-        NSLog(@"%@",locale);
     }];
 }
 
+/* Data between views over segue functions */
 
 -(IBAction)sendData:(UIStoryboardSegue *)segue {
     // Capitalise First letter for label on UI
     if([self.category isEqualToString:@""]){
         self.catLabel.text = @"No Category Chosen";
-        NSLog(@"Cancelled :)");
-    }else{
-    NSString *upper = self.category;
-    upper = [self.category capitalizedString];
-    self.catLabel.text = upper;
+    } else {
+        NSString *upper = self.category;
+        upper = [self.category capitalizedString];
+        self.catLabel.text = upper;
     }
 }
 
 -(IBAction)sendLocation:(UIStoryboardSegue *)segue {
-    NSLog(@"Nice, should have geo point");
-    NSLog(@"%f %f", self.loc.latitude, self.loc.longitude);
     [self getLocale];
 }
 
@@ -153,16 +181,23 @@ static NSString *locale;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     cell.tag = indexPath.row;
-    if(cell.tag == 0){
+    if(cell.tag == 0) {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    if(cell.tag == 1){
+    
+    if(cell.tag == 1) {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-}
-- (IBAction)getLocation:(id)sender {
 }
 
+/* Get listing location
+ * Goes to map view where user chooses location
+ */
+- (IBAction)getLocation:(id)sender {}
+
+/* Gets image from user
+ * Allows user to upload image to listing
+ */
 - (IBAction)getImage:(id)sender {
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -173,15 +208,19 @@ static NSString *locale;
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
-
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+/* If user cancels image pick */
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+/* Controls getting the image and uploading it */
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSData *imageData = UIImagePNGRepresentation(image);
+    
     self.uploadImage = [PFFile fileWithData:imageData];
 }
 

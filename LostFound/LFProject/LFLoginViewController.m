@@ -6,13 +6,9 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
-#import <ParseUI/ParseUI.h>
 #import "LFLoginViewController.h"
 
 @interface LFLoginViewController ()
-<UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, assign) BOOL activityViewVisible;
 @property (nonatomic, strong) UIView *activityView;
@@ -24,11 +20,14 @@
 
 @implementation LFLoginViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    /* Set up gesture recognition */
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(dismissKeyboard)];
+    
     tapGestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
@@ -44,26 +43,29 @@
     [self.scrollView flashScrollIndicators];
 }
 
-- (void)viewDidLayoutSubviews{
+- (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    
     self.activityView.frame = self.view.bounds;
     self.scrollView.contentSize = self.backgroundView.bounds.size;
 }
 
+/* Set status bar style */
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
+/* Button for user registration */
 - (IBAction)signUp:(id)sender {
     [self performSegueWithIdentifier:@"register" sender:self];
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.usernameField) {
         [self.usernameField becomeFirstResponder];
     }
     
-    if(textField == self.passwordField){
+    if(textField == self.passwordField) {
         [self.passwordField becomeFirstResponder];
     }
     
@@ -73,70 +75,72 @@
 
 #pragma mark Delegate
 
-- (void) getFieldValues{
+- (void)getFieldValues {
+    /* Set up strings */
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
     NSString *emptyUser = @"Username";
     NSString *emptyPass = @"Password";
     NSString *errorText = @"Please ";
-    //self.passwordField.secureTextEntry =YES;
     
     BOOL textError = NO;
     
-    // If nothing entered, show error and set error field to be entered
+    /* Alert user if incomplete fields */
     if(username.length == 0 || password.length == 0){
         textError = YES;
         
-        if (username.length == 0)
+        if(username.length == 0) {
             [self.usernameField becomeFirstResponder];
+        }
         
-        if (password.length == 0){
+        if(password.length == 0) {
             [self.passwordField becomeFirstResponder];
         }
     }
     
-    if ([username length] == 0) {
+    /* Show error messages */
+    if([username length] == 0) {
         textError = YES;
         errorText = [errorText stringByAppendingString:emptyUser];
     }
     
     if ([password length] == 0) {
         textError = YES;
+        
         if ([username length] == 0) {
             errorText = [errorText stringByAppendingString:emptyUser];
         }
+        
         errorText = [errorText stringByAppendingString:emptyPass];
     }
     
-    if (textError) {
-        //errorText = [errorText stringByAppendingString:errorTextEnding];
+    if(textError) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText
                                                             message:nil
                                                            delegate:self
                                                   cancelButtonTitle:nil
                                                   otherButtonTitles:@"OK", nil];
+        
         [alertView show];
         return;
     }
     
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error){
-        if(!error){
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+        if(!error){ //if user found
             [self performSegueWithIdentifier:@"login" sender:self];
-        }
-        else{
-            NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);
-            
+        } else {
             NSString *alertTitle = nil;
             
-            if(error){
+            if(error) {
                 alertTitle = [error userInfo][@"error"];
             }
             
-            else {
-                alertTitle = @"Can't log in:(";
-            }
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"Ok", nil];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
             [alertView show];
             
             [self.usernameField becomeFirstResponder];
@@ -144,17 +148,18 @@
        }];
 }
 
+/* Hide keyboard function */
 - (void) dismissKeyboard {
         [self.view endEditing:YES];
 }
-    
+
+/* Button for login */
 - (IBAction)loginPressed:(id)sender {
         [self dismissKeyboard];
         [self getFieldValues];
 }
 
-//This is all to do with keyboards
-
+/* Keyboard functions */
 - (void)registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -206,24 +211,4 @@
                      completion:nil];
 }
 
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

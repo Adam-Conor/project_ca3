@@ -14,6 +14,8 @@
 @interface LFMapViewController : UIViewController
                 <MKMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *currentLocation;
 
 @end

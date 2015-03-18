@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+
 @class LFNewUserViewController;
 
 @interface LFNewUserViewController : UIViewController

@@ -11,8 +11,11 @@
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LFLocationViewController : UIViewController <MKMapViewDelegate>
-@property (strong, nonatomic) IBOutlet MKMapView *locationView;
-@property (strong, nonatomic) MKPointAnnotation *listingLoc;
+@interface LFLocationViewController : UIViewController
+    <MKMapViewDelegate>
+
+@property (nonatomic, strong) IBOutlet MKMapView *locationView;
+@property (nonatomic, strong) MKPointAnnotation *listingLoc;
+@property (nonatomic, strong) PFGeoPoint *loc;
 
 @end

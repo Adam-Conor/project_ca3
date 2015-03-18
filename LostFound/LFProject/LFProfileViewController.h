@@ -18,6 +18,6 @@
 @property (nonatomic, weak) IBOutlet UIView *listingField;
 @property (nonatomic, weak) IBOutlet UILabel *feedbackField;
 @property (nonatomic, weak) IBOutlet UIProgressView *feedbackBar;
-@property (weak, nonatomic) IBOutlet UILabel *noFeedbackField;
+@property (nonatomic, weak) IBOutlet UILabel *noFeedbackField;
 
 @end
