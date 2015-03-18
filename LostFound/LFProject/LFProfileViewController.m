@@ -21,11 +21,11 @@
     PFUser *cUser = [PFUser currentUser];
     
     /* Get User information */
-    //Get image and show
+    [self setImage:(PFUser*)cUser]; //image
     NSString *user = cUser.username; //username
     NSDate *createdDate = cUser.createdAt; //date
     NSString *email = cUser.email; //email
-    //todo//NSString *listingCount = [self getListingCount:(PFUser*)cUser]; //listing count
+    //int listingCount = [self getListingCount:(PFUser*)cUser]; //listing count
     [self setFeedback:(PFUser*)cUser]; //feedback
     
     /* Format date */
@@ -35,14 +35,45 @@
     [self formatImage:(_imageView)];
     
     /* Populate fields */
-    //show image in UIImageView
     _usernameField.text = user; //username
     _memberField.text = created; //date
     _emailField.text = email; //email
+    //NSLog(@"%d", listingCount); //move to viewDIdLoad?
     //_listingField.text = listingCount; //listing count
 }
 
-/* Convert a date to a string 
+-(void)viewDidAppear:(BOOL)animated {
+    PFUser *cUser = [PFUser currentUser];
+    int listingCount = [self getListingCount:(PFUser*)cUser];
+    
+    NSLog(@"%d", listingCount);
+}
+
+/* Gets profile picture from database
+ * sets the image to the image view
+ */
+-(void)setImage:(PFUser*)user {
+    NSString *userID = user.objectId;
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    
+    [query whereKey:@"objectId" equalTo:userID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error) { //objects found
+            PFObject *objectImage = objects[0];
+            
+            PFFile *fileImage = [objectImage objectForKey:@"prof_image"];
+            NSData *imageData = [fileImage getData];
+            UIImage *imageFromData = [UIImage imageWithData:imageData];
+            
+            _imageView.image = imageFromData;
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+/* Convert a date to a string
  * Takes date
  * Returns as Month/Day/Year
  */
@@ -62,6 +93,26 @@
     image.layer.cornerRadius = image.frame.size.height / 2;
     image.layer.masksToBounds = YES;
     image.layer.borderWidth = 0;
+}
+
+/* Get the number of listing for current user
+ * Return count as int
+ */
+-(int)getListingCount:(PFUser*)user {
+    PFQuery *query = [PFQuery queryWithClassName:@"Listing"];
+    __block int listingCount = 0;
+    
+    [query whereKey:@"user" equalTo:user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) { //found match
+            listingCount = sizeof(objects);
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    return listingCount;
 }
 
 /* Set feedback for profile
