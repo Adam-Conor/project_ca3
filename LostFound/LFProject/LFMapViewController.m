@@ -7,8 +7,13 @@
 //
 
 #import "LFMapViewController.h"
+#import "LFMapListingViewController.h"
+#import "ListingAnnotation.h"
 
 @interface LFMapViewController ()
+
+
+@property (nonatomic, strong) NSString *objectPressed;
 
 @end
 
@@ -16,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     [_mapView setDelegate:self];
     
@@ -57,14 +63,79 @@
     MKCoordinateSpan span = {.latitudeDelta =  1, .longitudeDelta =  1};
     MKCoordinateRegion region = {coord, span};
     [_mapView setRegion:region];
-
     [_mapView setZoomEnabled:YES];
     [_mapView setScrollEnabled:YES];
+    PFGeoPoint *loc = [PFGeoPoint geoPointWithLatitude:53.34877256273858 longitude:-6.259341214407965];
+    PFQuery* locationQuery = [PFQuery queryWithClassName:@"Listing"];
+    [locationQuery whereKey:@"location" nearGeoPoint:loc withinKilometers:500];
+    [locationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) { //found match
+            for (PFObject *listing in objects) {
+                
+                PFGeoPoint *listingPoint = [listing objectForKey:@"location"];
+                
+                ListingAnnotation *geoPointAnnotation = [[ListingAnnotation alloc]
+                                                         init];
+                geoPointAnnotation.title = [listing objectForKey:@"title"];
+                geoPointAnnotation.subtitle = [listing objectForKey:@"status"];
+                geoPointAnnotation.objectID = listing.objectId;
+                //NSLog(@"%@",geoPointAnnotation.objectID);
+                geoPointAnnotation.coordinate = CLLocationCoordinate2DMake(listingPoint.latitude, listingPoint.longitude);
+                [self.mapView addAnnotation:geoPointAnnotation];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 /* Update user's updated location */
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *pinView = nil;
+    static NSString *defaultPinID = @"identifier";
+    pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    
+    if ([annotation isKindOfClass:[MKUserLocation class]]){
+        return nil;
+    }
+    else{
+        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        
+        pinView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
+        
+        pinView.enabled = YES;
+        pinView.canShowCallout = YES;
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
+        //Accessoryview for the annotation view in ios.
+        pinView.rightCalloutAccessoryView = btn;
+        return pinView;
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
+calloutAccessoryControlTapped:(UIControl *)control
+{
+    
+    [self performSegueWithIdentifier:@"showListing" sender:view.annotation];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showListing"])
+    {
+        ListingAnnotation *anno = (ListingAnnotation *) sender;
+        LFMapListingViewController *mp = [segue destinationViewController];
+        mp.objectPressed = anno.objectID;
+    }
+
 }
 
 
@@ -84,6 +155,7 @@
  * Runs every time the view appears
  * Starts updating location again
  */
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -180,14 +252,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

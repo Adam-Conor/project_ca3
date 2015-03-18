@@ -8,7 +8,6 @@
 
 #import "LFLocationViewController.h"
 #import "LFCreateListingViewController.h"
-#import <Parse/Parse.h>
 
 
 @interface LFLocationViewController ()
@@ -27,8 +26,9 @@
     MKCoordinateSpan span;
     
     if(TARGET_IPHONE_SIMULATOR) {
-        location.latitude  =  53.3478;
-        location.longitude = -6.2597;
+
+        location.latitude  =  51.5072;
+        location.longitude = 0.1275;
         self.locationView.userLocation.coordinate = location;
     } else {
         location.latitude  =  self.locationView.userLocation.location.coordinate.latitude;

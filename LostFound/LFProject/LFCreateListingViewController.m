@@ -17,6 +17,8 @@ static NSString *status = @"none";
 static NSIndexPath *indexPath;
 static NSString *date;
 static NSString *locale;
+static BOOL hasImage = NO;
+static BOOL hasLocation = NO;
 
 @implementation LFCreateListingViewController
 
@@ -95,14 +97,14 @@ static NSString *locale;
             listing[@"status"] = status;
             [listing setObject:_desc.text forKey:@"description"];
             listing[@"date"] = date;
-            
+
             /* Get image ; Optional */
-            if(self.uploadImage){
+            if(hasImage){
                 listing[@"image"] = self.uploadImage;
             }
-            
+                
             /* get location ; Optional */
-            if(self.loc){
+            if(hasLocation){
                 listing[@"location"] = self.loc;
                 listing[@"locale"] = locale;
             }
@@ -167,6 +169,7 @@ static NSString *locale;
 }
 
 -(IBAction)sendLocation:(UIStoryboardSegue *)segue {
+    hasLocation = YES;
     [self getLocale];
 }
 
@@ -222,6 +225,7 @@ static NSString *locale;
     NSData *imageData = UIImagePNGRepresentation(image);
     
     self.uploadImage = [PFFile fileWithData:imageData];
+    hasImage = YES;
 }
 
 @end
