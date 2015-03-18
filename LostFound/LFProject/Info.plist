@@ -26,10 +26,8 @@
 	<string>1.6.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Do I need this?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Why do I need this?</string>
+	<string>Lost and Found would like to see your location</string>
 	<key>NSServices</key>
 	<array/>
 	<key>UILaunchStoryboardName</key>
@@ -48,6 +46,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

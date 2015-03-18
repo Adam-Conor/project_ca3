@@ -22,15 +22,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /* Open the map on location */
     CLLocationCoordinate2D location = self.locationView.userLocation.coordinate;
     
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     
-    //NSLog(@"coordinates: %f %f",location.latitude,location.longitude);
-    if (TARGET_IPHONE_SIMULATOR) {
-        location.latitude  =  53.3478;
-        location.longitude = -6.2597;
+    if(TARGET_IPHONE_SIMULATOR) {
+        location.latitude  =  51.5072;
+        location.longitude = 0.1275;
         self.locationView.userLocation.coordinate = location;
     } else {
         location.latitude  =  self.locationView.userLocation.location.coordinate.latitude;
@@ -42,13 +43,12 @@
     
     region.span = span;
     region.center = location;
-    NSLog(@"coordinates: %f %f",location.latitude,location.longitude);
+    
     [self.locationView setRegion:region animated:YES];
     [self.locationView regionThatFits:region];
     [self.locationView setZoomEnabled:YES];
     [self.locationView setScrollEnabled:YES];
     [self addGestureRecogniserToMapView];
-    //[self.locationView setShowsUserLocation:YES];
     
 }
 

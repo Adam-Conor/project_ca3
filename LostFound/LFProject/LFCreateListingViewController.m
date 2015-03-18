@@ -19,6 +19,8 @@ static NSString *status = @"none";
 static NSIndexPath *indexPath;
 static NSString *date;
 static NSString *locale;
+static BOOL hasImage = NO;
+static BOOL hasLocation = NO;
 
 @implementation LFCreateListingViewController
 
@@ -74,10 +76,10 @@ static NSString *locale;
             listing[@"status"] = status;
             [listing setObject:_desc.text forKey:@"description"];
             listing[@"date"] = date;
-            if(self.uploadImage){
+            if(hasImage){
                 listing[@"image"] = self.uploadImage;
             }
-            if(self.loc){
+            if(hasLocation){
                 listing[@"location"] = self.loc;
                 listing[@"locale"] = locale;
             }
@@ -139,6 +141,7 @@ static NSString *locale;
 -(IBAction)sendLocation:(UIStoryboardSegue *)segue {
     NSLog(@"Nice, should have geo point");
     NSLog(@"%f %f", self.loc.latitude, self.loc.longitude);
+    hasLocation = YES;
     [self getLocale];
 }
 
@@ -183,6 +186,7 @@ static NSString *locale;
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSData *imageData = UIImagePNGRepresentation(image);
     self.uploadImage = [PFFile fileWithData:imageData];
+    hasImage = YES;
 }
 
 @end

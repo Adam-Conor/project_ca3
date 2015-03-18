@@ -9,7 +9,7 @@
 #import "Listing.h"
 
 
-@implementation Listing
+@implementation Listing 
 
 @synthesize title;
 @synthesize user;
