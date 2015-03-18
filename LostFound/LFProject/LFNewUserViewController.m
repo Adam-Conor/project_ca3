@@ -122,13 +122,17 @@
         [alertView show];
         return;
     }
+    
+    /* Get registration information */
     PFUser *user = [PFUser user];
     user.username = username;
     user.email = email;
     user.password = password;
+    user[@"prof_image"] = [self getDefaultImage];
     
+    /* Send user information to database */
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-        if(error){
+        if(error){ //show error if problem
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"]
                                                                 message:nil
                                                                delegate:self
@@ -143,6 +147,7 @@
         }
     }];
 }
+
 - (IBAction)goBack:(id)sender {
     [self performSegueWithIdentifier:@"close" sender:self];
 }
@@ -166,6 +171,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(PFFile*)getDefaultImage {
+    UIImage *defaultImage = [UIImage imageNamed:@"default.png"];
+    NSData *imageData = UIImageJPEGRepresentation(defaultImage, 0.05f);
+    PFFile *imageFile = [PFFile fileWithName:@"default.png" data:imageData];
+    
+    return imageFile;
 }
 
 - (void)keyboardWillShow:(NSNotification*)notification {
