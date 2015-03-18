@@ -76,7 +76,7 @@
  * Takes date
  * Returns as Month/Day/Year
  */
-- (NSString*)dateToString:(NSDate*)date {
+-(NSString*)dateToString:(NSDate*)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterLongStyle];
     

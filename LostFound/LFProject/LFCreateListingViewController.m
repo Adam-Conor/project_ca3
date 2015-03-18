@@ -55,7 +55,7 @@ static BOOL hasLocation = NO;
 
 /* Creates listing in database
  * Warns user for errors
- * Posts listing to databse
+ * Posts listing to databse if no errors
  */
 - (void) createListing {
     NSDate *date = self.datePicker.date;
@@ -145,7 +145,7 @@ static BOOL hasLocation = NO;
 /* Gets listing locale
  * Gives name of area near listing
  */
-- (void) getLocale {
+-(void) getLocale {
     CLLocation *locat = [[CLLocation alloc] initWithLatitude:self.loc.latitude longitude:self.loc.longitude];
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     
@@ -155,7 +155,7 @@ static BOOL hasLocation = NO;
     }];
 }
 
-/* Data between views over segue functions */
+/* Data is received from previous view controller to this method */
 
 -(IBAction)sendData:(UIStoryboardSegue *)segue {
     // Capitalise First letter for label on UI
@@ -168,6 +168,7 @@ static BOOL hasLocation = NO;
     }
 }
 
+/* Receive location from placed pin */
 -(IBAction)sendLocation:(UIStoryboardSegue *)segue {
     hasLocation = YES;
     [self getLocale];
@@ -211,7 +212,7 @@ static BOOL hasLocation = NO;
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
-/* If user cancels image pick */
+/* If user cancels image pick dimisses controller */
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

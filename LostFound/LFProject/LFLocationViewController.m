@@ -16,7 +16,7 @@
 
 @implementation LFLocationViewController
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
     
     /* Open the map on location */
@@ -50,7 +50,7 @@
 
 /* MapView annotation style */
 
-- (MKAnnotationView *)mapView:(MKMapView *)mV viewForAnnotation:(id <MKAnnotation>)annotation {
+-(MKAnnotationView *)mapView:(MKMapView *)mV viewForAnnotation:(id <MKAnnotation>)annotation {
     MKPinAnnotationView *pinView = nil;
     
     pinView.pinColor = MKPinAnnotationColorRed;
@@ -63,7 +63,7 @@
 /* Enable gesture recognition
  * Allows mapview to recognise gestures
  */
-- (void)addGestureRecogniserToMapView {
+-(void)addGestureRecogniserToMapView {
     
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
                                           initWithTarget:self
@@ -77,7 +77,7 @@
 /* Add pin to map
  * Allows user to add pin on map with gesture
  */
-- (void)addPinToMap:(UIGestureRecognizer *)gestureRecognizer {
+-(void)addPinToMap:(UIGestureRecognizer *)gestureRecognizer {
     if(gestureRecognizer.state != UIGestureRecognizerStateBegan) {
         return;
     }
@@ -100,18 +100,18 @@
                                       longitude:self.listingLoc.coordinate.longitude];
 }
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /* Functions to send data over segue to other view controller */
 
-- (IBAction)sendLocation:(id)sender {
+-(IBAction)sendLocation:(id)sender {
     [self performSegueWithIdentifier:@"sendLocation" sender:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.destinationViewController isKindOfClass:[LFCreateListingViewController class]]) {
         LFCreateListingViewController *mainViewConroller = segue.destinationViewController;

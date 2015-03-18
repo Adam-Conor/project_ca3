@@ -10,13 +10,14 @@
 
 @interface LFMapListingViewController ()
 
-
 @end
 
 @implementation LFMapListingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /* Load listings onto map */
     [self loadListing];
 }
 
@@ -25,6 +26,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+/* Load the required listing */
 - (void) loadListing {
     PFQuery* listingQuery = [PFQuery queryWithClassName:@"Listing"];
     [listingQuery whereKey:@"objectId" equalTo:self.objectPressed];
@@ -32,7 +34,8 @@
         if (!error) { //found match
             PFObject *listing = [objects objectAtIndex:0];
             PFUser *user = listing[@"user"];
-                        NSLog(@"%@", listing);
+            
+            /* Get listing information from query */
             _listingTitle.text = [self capitalise:listing[@"title"]];
             _category.text = [self capitalise:listing[@"category"]];
             _locale.text = listing[@"locale"];
@@ -42,12 +45,14 @@
             _user.text = user.username;
             _email.text = user.email;
             PFFile *fileImage = [listing objectForKey:@"image"];
-            if(fileImage != NULL){
+            
+            /* Check for no image, replace with placeholder */
+            if(fileImage != NULL) {
                 NSData *imageData = [fileImage getData];
                 UIImage *imageFromData = [UIImage imageWithData:imageData];
+                
                 _image.image = imageFromData;
-            }
-            else{
+            } else {
                 _image.image = [UIImage imageNamed:@"placeholder.png"];
             }
             
@@ -72,18 +77,19 @@
     }];
 }
 
-- (NSString*)dateToString:(NSDate*)date {
+-(NSString*)dateToString:(NSDate*)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterLongStyle];
     NSString *created = [formatter stringFromDate:date];
+    
     return created;
 }
 
-- (NSString*)capitalise:(NSString*)str {
+-(NSString*)capitalise:(NSString*)str {
     NSString *upper;
     upper = [str capitalizedString];
+    
     return upper;
 }
-
 
 @end

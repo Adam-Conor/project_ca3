@@ -19,7 +19,7 @@
 
 @implementation LFMapViewController
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
     
     
@@ -91,11 +91,11 @@
 }
 
 /* Update user's updated location */
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     MKPinAnnotationView *pinView = nil;
     static NSString *defaultPinID = @"identifier";
@@ -120,7 +120,7 @@
     }
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control
 {
     

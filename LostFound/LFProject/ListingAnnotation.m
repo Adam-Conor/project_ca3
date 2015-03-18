@@ -7,8 +7,6 @@
 //
 #import "ListingAnnotation.h"
 
-#import <Foundation/Foundation.h>
-
 @interface ListingAnnotation ()
 
 @end

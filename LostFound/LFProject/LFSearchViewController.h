@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface LFSearchViewController : UITableViewController
-<UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource>
+    <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource>
 
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchField;
