@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Listing.h"
 
 @interface LFCategoriesViewController : UITableViewController
 
