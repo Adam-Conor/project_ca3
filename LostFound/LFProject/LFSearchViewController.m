@@ -26,7 +26,6 @@
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = nil;
-
 }
 
 - (void)didReceiveMemoryWarning {
