@@ -24,11 +24,6 @@
 
 @implementation LFLoginViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self) self.automaticallyAdjustsScrollViewInsets = NO;
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -158,7 +153,7 @@
         [self getFieldValues];
 }
 
-//This is all to do with keyboards, not essential rn
+//This is all to do with keyboards
 
 - (void)registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
