@@ -626,13 +626,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search Listings" showsCancelButton="YES" id="rOl-ZD-OAC">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search Listings" showsCancelButton="YES" showsScopeBar="YES" id="rOl-ZD-OAC">
+                            <rect key="frame" x="0.0" y="64" width="414" height="88"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="alphabet" keyboardAppearance="light"/>
                             <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
+                                <string>All</string>
+                                <string>Lost</string>
+                                <string>Found</string>
                             </scopeButtonTitles>
                         </searchBar>
                         <sections>
@@ -856,6 +857,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchField" destination="rOl-ZD-OAC" id="Qki-X1-dEW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ykv-NM-MAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -866,7 +870,7 @@
             <objects>
                 <tableViewController id="0wg-CK-Z0c" customClass="LFSearchResultsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="155" sectionHeaderHeight="10" sectionFooterHeight="10" id="Vu6-UR-2oh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -944,7 +948,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mWw-3T-xBm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hZQ-ow-yOp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amw-Ck-Jm1">
@@ -1512,9 +1516,9 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m4N-by-MLH"/>
-        <segue reference="dTL-zJ-Pbh"/>
-        <segue reference="Mjm-In-mEA"/>
         <segue reference="zFg-zo-Cbu"/>
+        <segue reference="Mjm-In-mEA"/>
+        <segue reference="CNM-Mz-1TA"/>
+        <segue reference="m4N-by-MLH"/>
     </inferredMetricsTieBreakers>
 </document>
