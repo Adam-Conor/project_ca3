@@ -27,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Lost &amp; Found needs permission to acces you location while the app is in use</string>
+	<string>Lost &amp; Found needs permission to access your location while the app is in use</string>
 	<key>NSServices</key>
 	<array/>
 	<key>UILaunchStoryboardName</key>

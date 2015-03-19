@@ -47,8 +47,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "backgroundView"
-            landmarkType = "19">
+            landmarkName = "@implementation LFLoginViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -109,7 +109,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
-            landmarkName = "-dismissKeyboard"
+            landmarkName = "-getFieldValues"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -125,8 +125,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "@interface LFDelegate()"
-            landmarkType = "2">
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -141,8 +141,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
             endingLineNumber = "21"
-            landmarkName = "@implementation LFDelegate"
-            landmarkType = "3">
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -253,7 +253,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "-loginPressed:"
+            landmarkName = "-dismissKeyboard"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -757,8 +757,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
             endingLineNumber = "108"
-            landmarkName = "-sendLocation:"
-            landmarkType = "5">
+            landmarkName = "@implementation LFLocationViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -853,7 +853,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
             endingLineNumber = "128"
-            landmarkName = "-prepareForSegue:sender:"
+            landmarkName = "-mapView:annotationView:calloutAccessoryControlTapped:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
