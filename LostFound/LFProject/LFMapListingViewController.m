@@ -17,9 +17,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [_remove setHidden:YES];
+    
     /* Load listings onto map */
     [self loadListing];
 }
+
+- (IBAction)remove:(id)sender {
+    [self removeListing];
+}
+
+- (void)removeListing {
+    NSLog(@"Pressed niggaa");
+    PFQuery *listingQuery = [PFQuery queryWithClassName:@"Listing"];
+    [listingQuery whereKey:@"objectId" equalTo:self.objectPressed];
+    [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) { //found match
+            PFObject *toRemove = objects[0];
+            [toRemove deleteInBackground];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    //[self performSegueWithIdentifier:@"showListing" sender:self];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -56,25 +80,20 @@
                 _image.image = [UIImage imageNamed:@"placeholder.png"];
             }
             
-            /* Remove and Report button iunder contstruction
+            /* Remove and Report button iunder contstruction */
              
             PFUser *current = [PFUser currentUser];
-            if(user == current){
-                UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [button addTarget:self
-                           action:@selector(aMethod:)
-                 forControlEvents:UIControlEventTouchUpInside];
-                [button setTitle:@"Show View" forState:UIControlStateNormal];
-                button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
-                [self.view addSubview:button];
+            
+            if(user == current) {
+                [_remove setHidden:NO];
             }
-             
-            */
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    NSLog(@"%@", _objectPressed);
 }
 
 -(NSString*)dateToString:(NSDate*)date {

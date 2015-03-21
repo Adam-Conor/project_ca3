@@ -65,6 +65,11 @@
     [_mapView setRegion:region];
     [_mapView setZoomEnabled:YES];
     [_mapView setScrollEnabled:YES];
+    
+    [self updateMapListings];
+}
+
+- (void)updateMapListings {
     PFGeoPoint *loc = [PFGeoPoint geoPointWithLatitude:53.34877256273858 longitude:-6.259341214407965];
     PFQuery* locationQuery = [PFQuery queryWithClassName:@"Listing"];
     [locationQuery whereKey:@"location" nearGeoPoint:loc withinKilometers:500];
@@ -79,7 +84,7 @@
                 geoPointAnnotation.title = [listing objectForKey:@"title"];
                 geoPointAnnotation.subtitle = [listing objectForKey:@"status"];
                 geoPointAnnotation.objectID = listing.objectId;
-                //NSLog(@"%@",geoPointAnnotation.objectID);
+                NSLog(@"%@",geoPointAnnotation.objectID);
                 geoPointAnnotation.coordinate = CLLocationCoordinate2DMake(listingPoint.latitude, listingPoint.longitude);
                 [self.mapView addAnnotation:geoPointAnnotation];
             }
@@ -160,6 +165,8 @@ calloutAccessoryControlTapped:(UIControl *)control
     [super viewWillAppear:animated];
     
     [self.locationManager startUpdatingLocation];
+    
+    [self updateMapListings];
 }
 
 /*
@@ -215,6 +222,8 @@ calloutAccessoryControlTapped:(UIControl *)control
             break;
         case kCLAuthorizationStatusNotDetermined: {
             NSLog(@"kCLAuthorizationStatusNotDetermined");
+            
+            [_locationManager requestWhenInUseAuthorization];
         }
             break;
         case kCLAuthorizationStatusRestricted: {

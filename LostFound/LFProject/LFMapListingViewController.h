@@ -21,6 +21,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *email;
 @property (nonatomic, strong) IBOutlet UILabel *phone;
 @property (nonatomic, strong) IBOutlet UILabel *listingTitle;
+@property (nonatomic, weak) IBOutlet UIButton *remove;
 
 
 @end
