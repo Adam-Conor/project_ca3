@@ -32,19 +32,29 @@
     [listingQuery whereKey:@"objectId" equalTo:self.objectPressed];
     [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
-            PFObject *listing = [objects objectAtIndex:0];
-            PFUser *user = listing[@"user"];
+            self.listing = [objects objectAtIndex:0];
+            //listing[@"user"].objectId;
+            //PFUser *user = (PFUser *)listing;
+            //NSLog(user.user.objectId);
+            
+            /* Get infor about user who posted ad */
+            
+            PFQuery *query = [PFUser query];
+            PFUser *user = _listing[@"user"];
+            [query whereKey:@"objectId" equalTo:user.objectId];
+            self.poster = [query getFirstObject];
             
             /* Get listing information from query */
-            _listingTitle.text = [self capitalise:listing[@"title"]];
-            _category.text = [self capitalise:listing[@"category"]];
-            _locale.text = listing[@"locale"];
-            _status.text = [self capitalise:listing[@"status"]];
-            _desc.text = listing[@"description"];
-            _date.text = [self dateToString:listing[@"date"]];
-            _user.text = user.username;
-            _email.text = user.email;
-            PFFile *fileImage = [listing objectForKey:@"image"];
+            
+            _listingTitle.text = [self capitalise:_listing[@"title"]];
+            _category.text = [self capitalise:_listing[@"category"]];
+            _locale.text = _listing[@"locale"];
+            _status.text = [self capitalise:_listing[@"status"]];
+            _desc.text = _listing[@"description"];
+            _date.text = [self dateToString:_listing[@"date"]];
+            _user.text = _poster.username;
+            _email.text = _poster.email;
+            PFFile *fileImage = [_listing objectForKey:@"image"];
             
             /* Check for no image, replace with placeholder */
             if(fileImage != NULL) {
@@ -77,6 +87,23 @@
     }];
 }
 
+- (IBAction)emailUser:(id)sender {
+    NSString *subject= [self capitalise:_listing[@"title"]];
+    NSString *body = @"Hi! I was just wondering about your listing on Lost & Found";
+    NSString *email = _poster.email;
+    NSArray *toEmail = [NSArray arrayWithObject:email];
+    
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:subject];
+    [mc setMessageBody:body isHTML:NO];
+    [mc setToRecipients:toEmail];
+    
+    // Present mail view controller on screen
+    [self presentViewController:mc animated:YES completion:NULL];
+}
+
 -(NSString*)dateToString:(NSDate*)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterLongStyle];
@@ -90,6 +117,49 @@
     upper = [str capitalizedString];
     
     return upper;
+}
+
+/* (IBAction)showEmail:(id)sender {
+    // Email Subject
+    NSString *emailTitle = @"Test Email";
+    // Email Content
+    NSString *messageBody = @"iOS programming is so fun!";
+    // To address
+    NSArray *toRecipents = [NSArray arrayWithObject:@"support@appcoda.com"];
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:emailTitle];
+    [mc setMessageBody:messageBody isHTML:NO];
+    [mc setToRecipients:toRecipents];
+    
+    // Present mail view controller on screen
+    [self presentViewController:mc animated:YES completion:NULL];
+    
+}*/
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

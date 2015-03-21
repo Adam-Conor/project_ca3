@@ -28,6 +28,7 @@
 		81A6CA611A2EA82800297C39 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6CA601A2EA82800297C39 /* libstdc++.6.dylib */; };
 		81DDFD1919B4A60300BE649C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DDFD1719B4A60300BE649C /* Parse.framework */; };
 		81DDFD1A19B4A60300BE649C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DDFD1819B4A60300BE649C /* ParseFacebookUtils.framework */; };
+		8808321B1ABE000600E495A0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8808321A1ABE000600E495A0 /* MessageUI.framework */; };
 		880B65641AA8A3B300FF12D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 880B65631AA8A3B300FF12D6 /* MapKit.framework */; };
 		883F6C9C1A9FE0CB00ABD4C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */; };
 		8852E7F11AB9FE680022FC8B /* LFMapListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852E7F01AB9FE680022FC8B /* LFMapListingViewController.m */; };
@@ -78,6 +79,7 @@
 		81A6CA601A2EA82800297C39 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81DDFD1719B4A60300BE649C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		81DDFD1819B4A60300BE649C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		8808321A1ABE000600E495A0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		880B65631AA8A3B300FF12D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		883F6C9B1A9FE0CB00ABD4C0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		8852E7EF1AB9FE680022FC8B /* LFMapListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFMapListingViewController.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8808321B1ABE000600E495A0 /* MessageUI.framework in Frameworks */,
 				880B65641AA8A3B300FF12D6 /* MapKit.framework in Frameworks */,
 				91D261791A36EB67005D713D /* libsqlite3.0.dylib in Frameworks */,
 				81A6CA611A2EA82800297C39 /* libstdc++.6.dylib in Frameworks */,
@@ -169,6 +172,7 @@
 		09ABC07013A1D52D009C3FCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8808321A1ABE000600E495A0 /* MessageUI.framework */,
 				880B65631AA8A3B300FF12D6 /* MapKit.framework */,
 				91D261781A36EB67005D713D /* libsqlite3.0.dylib */,
 				81DDFD1719B4A60300BE649C /* Parse.framework */,

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
-@interface LFSearchResultsViewController : UITableViewController
+@interface LFSearchResultsViewController : PFQueryTableViewController
 
 @end

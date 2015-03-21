@@ -205,8 +205,38 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13"
-            landmarkName = "@interface LFProfileViewController"
-            landmarkType = "2">
+            landmarkName = "imageView"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LFProfileViewController imageView]"
+                  moduleName = "LostFound"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFProfileViewController.h"
+                  timestampString = "448657033.892308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LFProfileViewController setImageView:]"
+                  moduleName = "LostFound"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFProfileViewController.h"
+                  timestampString = "448657033.892465"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -287,36 +317,6 @@
             endingLineNumber = "20"
             landmarkName = "backgroundView"
             landmarkType = "19">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LFNewUserViewController backgroundView]"
-                  moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFNewUserViewController.m"
-                  timestampString = "448404637.492467"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LFNewUserViewController setBackgroundView:]"
-                  moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFNewUserViewController.m"
-                  timestampString = "448404637.492645"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -333,36 +333,6 @@
             endingLineNumber = "14"
             landmarkName = "signOut"
             landmarkType = "19">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LFProfileViewController signOut]"
-                  moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFProfileViewController.m"
-                  timestampString = "448404637.493672"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LFProfileViewController setSignOut:]"
-                  moduleName = "LostFound"
-                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFProfileViewController.m"
-                  timestampString = "448404637.493873"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -647,6 +617,36 @@
             endingLineNumber = "22"
             landmarkName = "@interface LFCreateListingViewController"
             landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LFCreateListingViewController category]"
+                  moduleName = "LostFound"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFCreateListingViewController.h"
+                  timestampString = "448657033.897285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LFCreateListingViewController setCategory:]"
+                  moduleName = "LostFound"
+                  urlString = "file:///Users/aoflynn/Desktop/project_ca3/LostFound/LFProject/LFCreateListingViewController.h"
+                  timestampString = "448657033.897443"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -864,11 +864,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LFProject/LFMapListingViewController.m"
-            timestampString = "448405997.770278"
+            timestampString = "448658763.785692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-loadListing"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LFProject/LFMapListingViewController.m"
+            timestampString = "448657941.410274"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-loadListing"
             landmarkType = "5">
          </BreakpointContent>
