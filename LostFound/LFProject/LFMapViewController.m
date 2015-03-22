@@ -22,7 +22,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self.mapView removeAnnotations:self.mapView.annotations];
     [_mapView setDelegate:self];
     
     /* Caters for iOS7 */
@@ -65,6 +65,33 @@
     [_mapView setRegion:region];
     [_mapView setZoomEnabled:YES];
     [_mapView setScrollEnabled:YES];
+    [self getListings];
+   /* PFGeoPoint *loc = [PFGeoPoint geoPointWithLatitude:53.34877256273858 longitude:-6.259341214407965];
+    PFQuery* locationQuery = [PFQuery queryWithClassName:@"Listing"];
+    [locationQuery whereKey:@"location" nearGeoPoint:loc withinKilometers:500];
+    [locationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) { //found match
+            for (PFObject *listing in objects) {
+                
+                PFGeoPoint *listingPoint = [listing objectForKey:@"location"];
+                
+                ListingAnnotation *geoPointAnnotation = [[ListingAnnotation alloc]
+                                                         init];
+                geoPointAnnotation.title = [listing objectForKey:@"title"];
+                geoPointAnnotation.subtitle = [listing objectForKey:@"status"];
+                geoPointAnnotation.objectID = listing.objectId;
+                //NSLog(@"%@",geoPointAnnotation.objectID);
+                geoPointAnnotation.coordinate = CLLocationCoordinate2DMake(listingPoint.latitude, listingPoint.longitude);
+                [self.mapView addAnnotation:geoPointAnnotation];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];*/
+}
+
+- (void)getListings {
     PFGeoPoint *loc = [PFGeoPoint geoPointWithLatitude:53.34877256273858 longitude:-6.259341214407965];
     PFQuery* locationQuery = [PFQuery queryWithClassName:@"Listing"];
     [locationQuery whereKey:@"location" nearGeoPoint:loc withinKilometers:500];
@@ -88,9 +115,10 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+
 }
 
-/* Update user's updated location */
+  /* Update user's updated location */
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
 }
@@ -158,7 +186,7 @@ calloutAccessoryControlTapped:(UIControl *)control
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self getListings];
     [self.locationManager startUpdatingLocation];
 }
 

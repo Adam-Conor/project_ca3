@@ -170,8 +170,13 @@ static BOOL hasLocation = NO;
 
 /* Receive location from placed pin */
 -(IBAction)sendLocation:(UIStoryboardSegue *)segue {
-    hasLocation = YES;
-    [self getLocale];
+    if(self.loc.latitude != 0 && self.loc.longitude != 0){
+        hasLocation = YES;
+        [self getLocale];
+    }
+    else{
+        NSLog(@"No location given, %@", hasLocation);
+    }
 }
 
 

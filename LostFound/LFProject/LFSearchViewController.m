@@ -24,11 +24,14 @@
     _searchField.showsScopeBar = NO;
     
     [self.view addSubview:_searchField];
+    
+    self.navigationItem.hidesBackButton = YES;
 }
-
 /* Runs when search bar opened
  * Shows scope bar and cancel button
  */
+
+
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     searchBar.showsScopeBar = YES;
@@ -51,6 +54,10 @@
     [searchBar setShowsCancelButton:NO animated:YES];
     
     return YES;
+}
+
+-(IBAction)close:(UIStoryboardSegue *)segue {
+    
 }
 
 /* When user presses search
@@ -180,8 +187,96 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    LFSearchResultsViewController *dest = [segue destinationViewController];
+    
+    if ([[segue identifier] isEqualToString:@"lostAnimal"])
+    {
+        dest.searchStatus = @"lost";
+        dest.searchCat = @"animals";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"lostClothing"])
+    {
+        dest.searchStatus = @"lost";
+        dest.searchCat = @"clothing";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"lostElectronics"])
+    {
+        dest.searchStatus = @"lost";
+        dest.searchCat = @"electronics";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"lostJewellery"])
+    {
+        dest.searchStatus = @"lost";
+        dest.searchCat = @"jewellery";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"lostPersonal"])
+    {
+        dest.searchStatus = @"lost";
+        dest.searchCat = @"personal";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"lostTicket"])
+    {
+        dest.searchStatus = @"lost";
+        dest.searchCat = @"tickets";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"lostOther"])
+    {
+        dest.searchStatus = @"lost";
+        dest.searchCat = @"other";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"foundAnimal"])
+    {
+        dest.searchStatus = @"found";
+        dest.searchCat = @"animals";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"foundClothing"])
+    {
+        dest.searchStatus = @"found";
+        dest.searchCat = @"clothing";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"foundElectronics"])
+    {
+        dest.searchStatus = @"found";
+        dest.searchCat = @"electronics";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"foundJewellery"])
+    {
+        dest.searchStatus = @"found";
+        dest.searchCat = @"jewellery";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"foundPersonal"])
+    {
+        dest.searchStatus = @"found";
+        dest.searchCat = @"personal";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"foundTickets"])
+    {
+        dest.searchStatus = @"found";
+        dest.searchCat = @"tickets";
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"foundOther"])
+    {
+        dest.searchStatus = @"found";
+        dest.searchCat = @"other";
+    }
+    
+    else {
+        
+    }
+    
 }
 
 

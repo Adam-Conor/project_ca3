@@ -26,7 +26,6 @@
     MKCoordinateSpan span;
     
     if(TARGET_IPHONE_SIMULATOR) {
-
         location.latitude  =  51.5072;
         location.longitude = 0.1275;
         self.locationView.userLocation.coordinate = location;
@@ -82,7 +81,7 @@
         return;
     }
     
-    if(self.locationView.annotations.count > 1) {
+    if(self.locationView.annotations.count > 0) {
         [self.locationView removeAnnotations:self.locationView.annotations];
     }
     
