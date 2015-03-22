@@ -29,13 +29,10 @@
     
     PFUser *user = [PFUser currentUser];
     if (user) {
-        NSLog(@"%s This is working", __PRETTY_FUNCTION__);
-        NSLog(@"%@" ,user.username);
         UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"homeView"];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }else{
-        NSLog(@"%s User needs to log in", __PRETTY_FUNCTION__);
         UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginView"];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
