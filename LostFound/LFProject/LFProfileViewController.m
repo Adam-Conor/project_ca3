@@ -52,10 +52,6 @@
  * sets the image to the image view
  */
 
--(IBAction)close:(UIStoryboardSegue *)segue {
-    
-}
-
 - (void)setImage:(PFUser*)user {
     NSString *userID = user.objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];

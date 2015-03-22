@@ -53,8 +53,8 @@
     PFQuery* query = [PFQuery queryWithClassName:self.parseClassName];
     [query whereKey:@"status" equalTo:self.searchStatus];
     [query whereKey:@"category" equalTo:self.searchCat];
-    [query orderByDescending:@"date"];
-    //[query findObjects];
+    //[query orderByDescending:@"date"];
+    [query findObjects];
     return query;
 }
 

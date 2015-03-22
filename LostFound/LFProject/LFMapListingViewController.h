@@ -26,5 +26,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *emailUser;
 @property (strong, nonatomic) PFUser *poster;
 @property (strong, nonatomic) PFObject *listing;
+@property (strong, nonatomic) IBOutlet UIButton *remove;
 
 @end

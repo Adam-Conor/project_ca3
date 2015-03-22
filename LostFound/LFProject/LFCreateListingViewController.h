@@ -21,5 +21,7 @@
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, assign) NSString *category;
 @property (nonatomic, strong) PFGeoPoint *loc;
+@property (nonatomic, strong) NSString *locale;
+
 
 @end

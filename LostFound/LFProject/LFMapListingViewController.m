@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [_remove setHidden:YES];
     /* Load listings onto map */
     [self loadListing];
 }
@@ -25,6 +25,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)remove:(id)sender {
+    [self removeListing];
+}
+
+- (void)removeListing {
+    NSLog(@"Should delete.");
+    PFQuery *listingQuery = [PFQuery queryWithClassName:@"Listing"];
+    [listingQuery whereKey:@"objectId" equalTo:self.objectPressed];
+    [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) { //found match
+            PFObject *toRemove = objects[0];
+            [toRemove deleteInBackground];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    //[self performSegueWithIdentifier:@"removeListing" sender:self];
+}
+
+
 
 /* Load the required listing */
 - (void) loadListing {
@@ -64,6 +87,12 @@
                 _image.image = imageFromData;
             } else {
                 _image.image = [UIImage imageNamed:@"placeholder.png"];
+            }
+            
+            PFUser *current = [PFUser currentUser];
+            
+            if(user == current) {
+                [_remove setHidden:NO];
             }
             
             /* Remove and Report button iunder contstruction
