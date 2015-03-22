@@ -108,14 +108,11 @@ static BOOL hasLocation = NO;
             if(hasLocation){
                 NSLog(@"has Location %@", self.loc);
                 listing[@"location"] = self.loc;
-                self.locale = @"";
-                [self getLocale];
-                
                 listing[@"locale"] = self.locale;
             }
             
             
-            NSLog(@"%@", listing);
+            //NSLog(@"%@", listing);
             /* Save listing */
             [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded) NSLog(@"%s Listing saved succesfully.", __PRETTY_FUNCTION__);
@@ -155,12 +152,23 @@ static BOOL hasLocation = NO;
 
 -(void)getLocale{
     CLLocation *locat = [[CLLocation alloc] initWithLatitude:self.loc.latitude longitude:self.loc.longitude];
+   
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     
     [geoCoder reverseGeocodeLocation:locat completionHandler:^(NSArray *placemarks, NSError *error) {
-        CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        self.locale = placemark.locality;
-        //NSLog(@"%@", self.locale);
+        if(!error){
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            if([placemark.locality isEqualToString:@""]){
+                self.locale = placemark.region;
+            }
+            else{
+                self.locale = placemark.locality;
+            }
+            
+        }
+        else{
+            NSLog(@"%@", error);
+        }
     }];
 }
 
@@ -182,6 +190,8 @@ static BOOL hasLocation = NO;
     if(self.loc.latitude != 0 && self.loc.longitude != 0){
         NSLog(@"%@", self.loc);
         hasLocation = YES;
+        self.locale = @"";
+        [self getLocale];
     }
     else{
         self.loc.latitude = 0;
