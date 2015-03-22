@@ -68,10 +68,10 @@
     NSString *email = self.emailField.text;
     NSString *password = self.passwordField.text;
     NSString *passwordAgain = self.passAgain.text;
-    NSString *emptyUser = @"Empty username";
-    NSString *emptyPass = @"Empty password";
-    NSString *emptyEmail = @"Empty email";
-    NSString *noMatch = @"Please enter the same password.";
+    NSString *emptyUser = @"Empty username /n";
+    NSString *emptyPass = @"Empty password /n";
+    NSString *emptyEmail = @"Empty email /n";
+    NSString *noMatch = @"Please enter the same password. /n";
     NSString *errorText = @"";
     NSString *joinText = @", and ";
     

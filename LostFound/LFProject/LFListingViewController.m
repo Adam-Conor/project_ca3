@@ -6,17 +6,17 @@
 //
 //
 
-#import "LFMapListingViewController.h"
+#import "LFListingViewController.h"
 
-@interface LFMapListingViewController ()
+@interface LFListingViewController ()
 
 @end
 
-@implementation LFMapListingViewController
+@implementation LFListingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_remove setHidden:YES];
+    NSLog(@"%@", self.objectId);
     /* Load listings onto map */
     [self loadListing];
 }
@@ -26,39 +26,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)remove:(id)sender {
-    [self removeListing];
-}
-
-- (void)removeListing {
-    NSLog(@"Should delete.");
-    PFQuery *listingQuery = [PFQuery queryWithClassName:@"Listing"];
-    [listingQuery whereKey:@"objectId" equalTo:self.objectPressed];
-    [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) { //found match
-            PFObject *toRemove = objects[0];
-            [toRemove deleteInBackground];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-    
-    //[self performSegueWithIdentifier:@"removeListing" sender:self];
-}
-
-
-
 /* Load the required listing */
 - (void) loadListing {
     PFQuery* listingQuery = [PFQuery queryWithClassName:@"Listing"];
-    [listingQuery whereKey:@"objectId" equalTo:self.objectPressed];
+    [listingQuery whereKey:@"objectId" equalTo:self.objectId];
     [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
             self.listing = [objects objectAtIndex:0];
-            //listing[@"user"].objectId;
-            //PFUser *user = (PFUser *)listing;
-            //NSLog(user.user.objectId);
             
             /* Get infor about user who posted ad */
             
@@ -66,7 +40,7 @@
             PFUser *user = _listing[@"user"];
             [query whereKey:@"objectId" equalTo:user.objectId];
             self.poster = [query getFirstObject];
-            
+            NSLog(self.poster.username);
             /* Get listing information from query */
             
             _listingTitle.text = [self capitalise:_listing[@"title"]];
@@ -89,31 +63,35 @@
                 _image.image = [UIImage imageNamed:@"placeholder.png"];
             }
             
-            PFUser *current = [PFUser currentUser];
-            
-            if(user == current) {
-                [_remove setHidden:NO];
-            }
-            
-            /* Remove and Report button iunder contstruction
              
-            PFUser *current = [PFUser currentUser];
-            if(user == current){
-                UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [button addTarget:self
-                           action:@selector(aMethod:)
-                 forControlEvents:UIControlEventTouchUpInside];
-                [button setTitle:@"Show View" forState:UIControlStateNormal];
-                button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
-                [self.view addSubview:button];
-            }
-             
-            */
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+- (IBAction)remove:(id)sender {
+    [self removeListing];
+}
+
+- (void)removeListing {
+    PFQuery *listingQuery = [PFQuery queryWithClassName:@"Listing"];
+    [listingQuery whereKey:@"objectId" equalTo:self.objectId];
+    [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) { //found match
+            PFObject *toRemove = objects[0];
+            [toRemove deleteInBackground];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your listing has been deleted!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alert show];
+    
+    //[self performSegueWithIdentifier:@"removeListing" sender:self];
 }
 
 - (IBAction)emailUser:(id)sender {

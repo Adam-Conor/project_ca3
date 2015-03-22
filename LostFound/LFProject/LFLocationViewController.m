@@ -26,17 +26,16 @@
     MKCoordinateSpan span;
     
     if(TARGET_IPHONE_SIMULATOR) {
-
-        location.latitude  =  51.5072;
-        location.longitude = 0.1275;
+        location.latitude  =  53.5072;
+        location.longitude = -6.1275;
         self.locationView.userLocation.coordinate = location;
     } else {
         location.latitude  =  self.locationView.userLocation.location.coordinate.latitude;
         location.longitude =  self.locationView.userLocation.location.coordinate.longitude;
     }
     
-    span.latitudeDelta = 0.001;
-    span.longitudeDelta = 0.002;
+    span.latitudeDelta = 0.01;
+    span.longitudeDelta = 0.02;
     
     region.span = span;
     region.center = location;
@@ -82,7 +81,7 @@
         return;
     }
     
-    if(self.locationView.annotations.count > 1) {
+    if(self.locationView.annotations.count > 0) {
         [self.locationView removeAnnotations:self.locationView.annotations];
     }
     
@@ -115,7 +114,7 @@
 {
     if([segue.destinationViewController isKindOfClass:[LFCreateListingViewController class]]) {
         LFCreateListingViewController *mainViewConroller = segue.destinationViewController;
-        
+        NSLog(@"%@", self.loc);
         mainViewConroller.loc = self.loc;
     }
 }

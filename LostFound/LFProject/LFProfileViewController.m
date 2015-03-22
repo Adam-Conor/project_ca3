@@ -51,6 +51,7 @@
 /* Gets profile picture from database
  * sets the image to the image view
  */
+
 - (void)setImage:(PFUser*)user {
     NSString *userID = user.objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];

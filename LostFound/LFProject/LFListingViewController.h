@@ -1,8 +1,8 @@
 //
-//  LFMapListingViewController.h
+//  LFListingViewController.h
 //  LostFound
 //
-//  Created by Adam O'Flynn on 18/03/2015.
+//  Created by Adam O'Flynn on 21/03/2015.
 //
 //
 
@@ -10,9 +10,8 @@
 #import <Parse/Parse.h>
 #import <MessageUI/MessageUI.h>
 
+@interface LFListingViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
-@interface LFMapListingViewController : UIViewController <MFMailComposeViewControllerDelegate>
-@property (nonatomic, strong) NSString *objectPressed;
 @property (nonatomic, strong) IBOutlet UILabel *status;
 @property (nonatomic, strong) IBOutlet UIImageView *image;
 @property (nonatomic, strong) IBOutlet UILabel *category;
@@ -26,6 +25,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *emailUser;
 @property (strong, nonatomic) PFUser *poster;
 @property (strong, nonatomic) PFObject *listing;
-@property (strong, nonatomic) IBOutlet UIButton *remove;
+@property (strong, nonatomic) NSString *objectId;
 
 @end

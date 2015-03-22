@@ -79,9 +79,7 @@
     /* Set up strings */
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
-    NSString *emptyUser = @"Username";
-    NSString *emptyPass = @"Password";
-    NSString *errorText = @"Please ";
+    NSString *errorText;
     
     BOOL textError = NO;
     
@@ -99,20 +97,22 @@
     }
     
     /* Show error messages */
-    if([username length] == 0) {
+    if([username length] == 0 && [password length] == 0) {
         textError = YES;
-        errorText = [errorText stringByAppendingString:emptyUser];
+        errorText = @"Please enter a username and password.";
     }
     
-    if ([password length] == 0) {
+    else if([username length] == 0) {
         textError = YES;
-        
-        if ([username length] == 0) {
-            errorText = [errorText stringByAppendingString:emptyUser];
-        }
-        
-        errorText = [errorText stringByAppendingString:emptyPass];
+        errorText = @"Please enter a username.";
     }
+    
+    else if ([password length] == 0) {
+        textError = YES;
+        errorText = @"Please enter a password.";
+    }
+    
+    else{}
     
     if(textError) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText

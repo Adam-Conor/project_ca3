@@ -16,7 +16,6 @@
 static NSString *status = @"none";
 static NSIndexPath *indexPath;
 static NSString *date;
-static NSString *locale;
 static BOOL hasImage = NO;
 static BOOL hasLocation = NO;
 
@@ -87,6 +86,8 @@ static BOOL hasLocation = NO;
             
             [alertView show];
         } else {
+            
+            
             /* Get listing information from fields */
             PFObject *listing = [PFObject objectWithClassName:@"Listing"];
             
@@ -105,10 +106,16 @@ static BOOL hasLocation = NO;
                 
             /* get location ; Optional */
             if(hasLocation){
+                NSLog(@"has Location %@", self.loc);
                 listing[@"location"] = self.loc;
-                listing[@"locale"] = locale;
+                self.locale = @"";
+                [self getLocale];
+                
+                listing[@"locale"] = self.locale;
             }
             
+            
+            NSLog(@"%@", listing);
             /* Save listing */
             [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded) NSLog(@"%s Listing saved succesfully.", __PRETTY_FUNCTION__);
@@ -145,13 +152,15 @@ static BOOL hasLocation = NO;
 /* Gets listing locale
  * Gives name of area near listing
  */
--(void) getLocale {
+
+-(void)getLocale{
     CLLocation *locat = [[CLLocation alloc] initWithLatitude:self.loc.latitude longitude:self.loc.longitude];
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     
     [geoCoder reverseGeocodeLocation:locat completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        locale = [placemark locality];
+        self.locale = placemark.locality;
+        //NSLog(@"%@", self.locale);
     }];
 }
 
@@ -170,8 +179,15 @@ static BOOL hasLocation = NO;
 
 /* Receive location from placed pin */
 -(IBAction)sendLocation:(UIStoryboardSegue *)segue {
-    hasLocation = YES;
-    [self getLocale];
+    if(self.loc.latitude != 0 && self.loc.longitude != 0){
+        NSLog(@"%@", self.loc);
+        hasLocation = YES;
+    }
+    else{
+        self.loc.latitude = 0;
+        self.loc.longitude = 0;
+        NSLog(@"No location given, %@", hasLocation);
+    }
 }
 
 
