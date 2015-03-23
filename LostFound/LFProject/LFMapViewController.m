@@ -42,11 +42,7 @@
     }
     
     /* Check to see if user has ever authorized */
-    if(status == kCLAuthorizationStatusNotDetermined) {
-        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [_locationManager requestWhenInUseAuthorization];
-        }
-    }
+    [self requestPermission];
     
     /* Cache any current location info */
     CLLocation *currentLocation = _locationManager.location;
@@ -100,8 +96,7 @@
     self.mapView.centerCoordinate = userLocation.location.coordinate;
 }
 
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-{
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     MKPinAnnotationView *pinView = nil;
     static NSString *defaultPinID = @"identifier";
     pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
@@ -112,7 +107,7 @@
     else{
         pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
         
-        pinView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
+        pinView.pinColor = MKPinAnnotationColorRed;
         
         pinView.enabled = YES;
         pinView.canShowCallout = YES;
@@ -126,14 +121,12 @@
 }
 
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
-calloutAccessoryControlTapped:(UIControl *)control
-{
+calloutAccessoryControlTapped:(UIControl *)control {
     
     [self performSegueWithIdentifier:@"showListing" sender:view.annotation];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showListing"])
     {
         ListingAnnotation *anno = (ListingAnnotation *) sender;
@@ -147,8 +140,7 @@ calloutAccessoryControlTapped:(UIControl *)control
 /*
  * Sends user to app settings to change location servies if they wish
  */
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         // Send the user to the Settings for this app
         NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
@@ -166,10 +158,22 @@ calloutAccessoryControlTapped:(UIControl *)control
     [self.locationManager startUpdatingLocation];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [self requestPermission];
+    
     [self getListings];
+}
 
+- (void)requestPermission {
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    if(status == kCLAuthorizationStatusNotDetermined) {
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+    }
 }
 
 /*
