@@ -19,6 +19,7 @@ static NSString *cat;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"categories View loading");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,6 +84,9 @@ static NSString *cat;
 
 - (IBAction)sendData:(id)sender {
     self.category = cat;
+    
+    //log what category is returned
+    NSLog(@"Category returned: %@", cat);
     
     [self performSegueWithIdentifier:@"sendData" sender:self];
 }
