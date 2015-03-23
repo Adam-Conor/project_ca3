@@ -21,7 +21,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.hidesBackButton = YES;
     [self.mapView removeAnnotations:self.mapView.annotations];
     [_mapView setDelegate:self];
     

@@ -73,6 +73,10 @@
     }];
 }
 
+-(IBAction)close:(UIStoryboardSegue *)segue {
+    
+}
+
 /* Convert a date to a string
  * Takes date
  * Returns as Month/Day/Year
@@ -160,7 +164,6 @@
  */
 - (IBAction)signOut:(id)sender {
     [PFUser logOut];
-    
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
 

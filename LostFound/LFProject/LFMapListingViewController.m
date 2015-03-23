@@ -31,7 +31,6 @@
 }
 
 - (void)removeListing {
-    NSLog(@"Should delete.");
     PFQuery *listingQuery = [PFQuery queryWithClassName:@"Listing"];
     [listingQuery whereKey:@"objectId" equalTo:self.objectPressed];
     [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -43,6 +42,9 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your listing has been deleted!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alert show];
     
     //[self performSegueWithIdentifier:@"removeListing" sender:self];
 }
@@ -95,20 +97,6 @@
                 [_remove setHidden:NO];
             }
             
-            /* Remove and Report button iunder contstruction
-             
-            PFUser *current = [PFUser currentUser];
-            if(user == current){
-                UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                [button addTarget:self
-                           action:@selector(aMethod:)
-                 forControlEvents:UIControlEventTouchUpInside];
-                [button setTitle:@"Show View" forState:UIControlStateNormal];
-                button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
-                [self.view addSubview:button];
-            }
-             
-            */
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);

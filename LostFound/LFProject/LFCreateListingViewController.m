@@ -59,9 +59,12 @@ static BOOL hasLocation = NO;
 - (void) createListing {
     NSDate *date = self.datePicker.date;
     PFUser *user = [PFUser currentUser];
+    [user fetch]; 
+    /*NSLog(@"%@", user[@"emailVerified"]);
+    BOOL verified = user[@"emailVerified"];*/
     
     /* Alert user that they are not verified */
-    if([user objectForKey:@"emailVerified"] == NO){
+    if( ![[user objectForKey:@"emailVerified"] boolValue] ){
         NSString *alertTitle = @"You are not a verified user. Please verify your email account through the email we sent you when you signed up.";
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
                                                             message:nil
@@ -86,14 +89,13 @@ static BOOL hasLocation = NO;
             
             [alertView show];
         } else {
-            
-            
             /* Get listing information from fields */
             PFObject *listing = [PFObject objectWithClassName:@"Listing"];
             
             [listing setObject:_listingTitle.text forKey:@"title"];
             
             listing[@"category"] = self.category;
+            NSLog(@"%@",self.category);
             listing[@"user"] = user;
             listing[@"status"] = status;
             [listing setObject:_desc.text forKey:@"description"];
@@ -112,7 +114,7 @@ static BOOL hasLocation = NO;
             }
             
             
-            //NSLog(@"%@", listing);
+            NSLog(@"%@", listing);
             /* Save listing */
             [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded) NSLog(@"%s Listing saved succesfully.", __PRETTY_FUNCTION__);

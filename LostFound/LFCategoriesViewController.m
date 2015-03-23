@@ -74,6 +74,7 @@ static NSString *cat;
             self.category = cat;
             break;
         default:
+            self.category = @"";
             break;
     }
 }

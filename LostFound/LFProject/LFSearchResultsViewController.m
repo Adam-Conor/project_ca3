@@ -112,6 +112,10 @@
     return cell;
 }
 
+-(IBAction)close:(UIStoryboardSegue *)segue {
+    
+}
+
 - (void) objectsDidLoad:(NSError *)error
 {
     [super objectsDidLoad:error];

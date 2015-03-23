@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.objectId);
+    [_remove setHidden:YES];
     /* Load listings onto map */
     [self loadListing];
 }
@@ -63,7 +63,13 @@
                 _image.image = [UIImage imageNamed:@"placeholder.png"];
             }
             
-             
+            
+            PFUser *current = [PFUser currentUser];
+            
+            if(user == current) {
+                [_remove setHidden:NO];
+            }
+  
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
