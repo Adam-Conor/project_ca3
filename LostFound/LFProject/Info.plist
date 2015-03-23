@@ -26,6 +26,8 @@
 	<string>1.6.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Do not need</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Lost &amp; Found needs permission to access your location while the app is in use</string>
 	<key>NSServices</key>
