@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"listing View loading");
     
     /* Hide remove button for now */
     [_remove setHidden:YES];
@@ -34,6 +35,8 @@
  * Displays text in view controller
  */
 - (void) loadListing {
+    NSLog(@"Listing is loading");
+    
     /* Set up query for objectId */
     PFQuery* listingQuery = [PFQuery queryWithClassName:@"Listing"];
     [listingQuery whereKey:@"objectId" equalTo:self.objectId];
@@ -41,6 +44,7 @@
     /* Execute query in background */
     [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
+            NSLog(@"match found for listing");
             self.listing = [objects objectAtIndex:0];
             
             /* Get info about user who posted listing */
@@ -48,6 +52,9 @@
             PFUser *user = _listing[@"user"];
             [query whereKey:@"objectId" equalTo:user.objectId];
             self.poster = [query getFirstObject];
+            
+            //show what the query returns
+            NSLog(@"Listing returned: %@", _listing);
             
             /* Get listing information from query */
             _listingTitle.text = [self capitalise:_listing[@"title"]];
@@ -64,9 +71,10 @@
             if(fileImage != NULL) {
                 NSData *imageData = [fileImage getData];
                 UIImage *imageFromData = [UIImage imageWithData:imageData];
-                
+                NSLog(@"Image");
                 _image.image = imageFromData;
             } else {
+                NSLog(@"No Image");
                 _image.image = [UIImage imageNamed:@"placeholder.png"];
             }
             
@@ -75,6 +83,7 @@
             
             /* Display remove listing button if user */
             if(user == current) {
+                NSLog(@"User owns listing");
                 [_remove setHidden:NO];
             }
   
@@ -87,6 +96,7 @@
 
 /* Button action for remove listing */
 - (IBAction)remove:(id)sender {
+    NSLog(@"Remove listing pressed");
     [self removeListing];
 }
 
@@ -95,11 +105,17 @@
  * Alerts user that listing is being deleted
  */
 - (void)removeListing {
+    NSLog(@"Remove listing called");
     PFQuery *listingQuery = [PFQuery queryWithClassName:@"Listing"];
     [listingQuery whereKey:@"objectId" equalTo:self.objectId];
+    
     [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
+            NSLog(@"Found object to remove");
             PFObject *toRemove = objects[0];
+            
+            //show what's being removed
+            NSLog(@"Being removed: %@", toRemove);
             
             /* remove object from database */
             [toRemove deleteInBackground];
@@ -124,6 +140,8 @@
  * Fills some field information for contactor
  */
 - (IBAction)emailUser:(id)sender {
+    NSLog(@"Email  user called");
+    
     NSString *subject= [self capitalise:_listing[@"title"]];
     NSString *body = @"Hi! I was just wondering about your listing on Lost & Found";
     NSString *email = _poster.email;
@@ -144,6 +162,9 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterLongStyle];
     NSString *created = [formatter stringFromDate:date];
+    
+    //what date to string being returned
+    NSLog(@"date to string: %@", created);
     
     return created;
 }

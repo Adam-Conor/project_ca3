@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"New user view loading");
+    
     /* Set up gesture recognition */
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                                                     initWithTarget:self
@@ -43,9 +45,11 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.usernameField) {
         [self.emailField becomeFirstResponder];
+        NSLog(@"email field first responder");
     }
     if (textField == self.emailField){
         [self.passwordField becomeFirstResponder];
+        NSLog(@"password field first responder");
     }
     if (textField == self.passwordField) {
         [self.passwordField becomeFirstResponder];
@@ -68,10 +72,10 @@
     NSString *email = self.emailField.text;
     NSString *password = self.passwordField.text;
     NSString *passwordAgain = self.passAgain.text;
-    NSString *emptyUser = @"Empty username /n";
-    NSString *emptyPass = @"Empty password /n";
-    NSString *emptyEmail = @"Empty email /n";
-    NSString *noMatch = @"Please enter the same password. /n";
+    NSString *emptyUser = @"Empty username \n";
+    NSString *emptyPass = @"Empty password \n";
+    NSString *emptyEmail = @"Empty email \n";
+    NSString *noMatch = @"Please enter the same password. \n";
     NSString *errorText = @"";
     NSString *joinText = @", and ";
     
@@ -84,39 +88,49 @@
         /* Set keyboard to first missing field */
         if(passwordAgain.length == 0) {
             [self.passAgain becomeFirstResponder];
+            NSLog(@"second password empty");
         }
         
         if(password.length == 0) {
             [self.passwordField becomeFirstResponder];
+            NSLog(@"password empty");
         }
         
         if(username.length == 0) {
             [self.usernameField becomeFirstResponder];
+            NSLog(@"username field empty");
         }
         
         if(email.length == 0){
             [self.emailField becomeFirstResponder];
+            NSLog(@"email field empty");
         }
         
         /* Show error message */
         if(username.length == 0) {
             errorText = [errorText stringByAppendingString:emptyUser];
+            NSLog(@"%@", errorText);
         }
         
         if(email.length == 0){
             errorText = [errorText stringByAppendingString:emptyEmail];
+            NSLog(@"%@", errorText);
         }
         
         if(password.length == 0 || passwordAgain.length == 0) {
             if (username.length == 0) { // We need some joining text in the error:
                 errorText = [errorText stringByAppendingString:joinText];
+                NSLog(@"%@", errorText);
             }
             errorText = [errorText stringByAppendingString:emptyPass];
+            NSLog(@"%@", errorText);
         }
     } else if([password compare:passwordAgain] != NSOrderedSame) {
         /* Check passwords are the same */
         textError = YES;
         errorText = [errorText stringByAppendingString:noMatch];
+        
+        NSLog(@"%@", errorText);
         
         [self.passwordField becomeFirstResponder];
     }
@@ -192,6 +206,7 @@
     NSData *imageData = UIImageJPEGRepresentation(defaultImage, 0.05f);
     PFFile *imageFile = [PFFile fileWithName:@"default.png" data:imageData];
     
+    NSLog(@"default image set");
     return imageFile;
 }
 

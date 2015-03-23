@@ -28,6 +28,10 @@
     */
     
     PFUser *user = [PFUser currentUser];
+    
+    //current user logged in
+    NSLog(@"%@", user);
+    
     if (user) {
         UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"homeView"];
         self.window.rootViewController = rootViewController;

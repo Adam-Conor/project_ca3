@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"Search view loading");
     
     /* Assign the delegate */
     _searchField.delegate = self;
@@ -39,6 +40,8 @@
     [searchBar sizeToFit];
     [searchBar setShowsCancelButton:YES animated:YES];
     
+    NSLog(@"user opened bar");
+    
     return YES;
 }
 
@@ -52,6 +55,8 @@
     
     [searchBar sizeToFit];
     [searchBar setShowsCancelButton:NO animated:YES];
+    
+    NSLog(@"user closed bar");
     
     return YES;
 }
@@ -74,9 +79,9 @@
     str = [NSString stringWithFormat:@"%@", str]; //case insensitive
     NSString *scopeAsString = [self scopeIndexToString:scopeAsNum];
     
-    /* Test logs. To be removed */
-    NSLog(@"%@", str);
-    NSLog(@"%@", scopeAsString);
+    /* Test logs*/
+    NSLog(@"string to search: %@", str);
+    NSLog(@"Scope to search: %@", scopeAsString);
     
     /* Query for search */
     [self queryString:str queryScope:scopeAsString];
@@ -108,6 +113,7 @@
             break;
     }
     
+    NSLog(@"Scope returned: %@", scope);
     return scope;
 }
 
@@ -125,6 +131,7 @@
     /* Get query objects in array */
     [query findObjectsInBackgroundWithBlock:^(NSArray *listings, NSError *error) {
         if (!error) { //found match
+            NSLog(@"Match found for search");
             /* TODO
              * Put relevant info into view
              * Image - Title - Category?
@@ -140,7 +147,7 @@
                 NSString *category = listing[@"category"];
                 
                 /* Test log */
-                NSLog(@"\nStatus: %@\nTitle: %@\nCategory: %@", status, title, category);
+                NSLog(@"Listing returned: \n\nStatus: %@\nTitle: %@\nCategory: %@", status, title, category);
                 
                 /* Somehow put information into view */
             }

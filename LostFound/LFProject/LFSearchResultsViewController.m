@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"");
     NSLog(@"%@ %@", self.searchStatus, self.searchCat);
 }
 

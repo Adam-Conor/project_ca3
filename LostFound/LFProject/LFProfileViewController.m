@@ -17,8 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    NSLog(@"Profile view loading");
     PFUser *cUser = [PFUser currentUser];
+    
+    NSLog(@"Show current user: %@", cUser);
     
     /* Get User information */
     [self setImage:(PFUser*)cUser]; //image
@@ -42,10 +44,12 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"Profile view appeared");
+    
     PFUser *cUser = [PFUser currentUser];
     int listingCount = [self getListingCount:(PFUser*)cUser];
     
-    NSLog(@"%d", listingCount);
+    NSLog(@"Listing count for user: %d", listingCount);
 }
 
 /* Gets profile picture from database
@@ -53,12 +57,14 @@
  */
 
 - (void)setImage:(PFUser*)user {
+    NSLog(@"Image query function called");
     NSString *userID = user.objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     
     [query whereKey:@"objectId" equalTo:userID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(!error) { //objects found
+            NSLog(@"Match found for image");
             PFObject *objectImage = objects[0];
             
             PFFile *fileImage = [objectImage objectForKey:@"prof_image"];
@@ -66,6 +72,7 @@
             UIImage *imageFromData = [UIImage imageWithData:imageData];
             
             _imageView.image = imageFromData;
+            NSLog(@"Image shown");
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -87,6 +94,8 @@
     
     NSString *created = [formatter stringFromDate:date];
     
+    
+    NSLog(@"date to string: %@", created);
     return created;
 }
 
@@ -97,18 +106,22 @@
     image.layer.cornerRadius = image.frame.size.height / 2;
     image.layer.masksToBounds = YES;
     image.layer.borderWidth = 0;
+    
+    NSLog(@"image formatted");
 }
 
 /* Get the number of listing for current user
  * Return count as int
  */
 - (int)getListingCount:(PFUser*)user {
+    NSLog(@"listing count called");
     PFQuery *query = [PFQuery queryWithClassName:@"Listing"];
     __block int listingCount = 0;
     
     [query whereKey:@"user" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
+            NSLog(@"listings found");
             listingCount = sizeof(objects);
         } else {
             // Log details of the failure
@@ -116,6 +129,7 @@
         }
     }];
     
+    NSLog(@"listing count returned: %d", listingCount);
     return listingCount;
 }
 
@@ -124,6 +138,7 @@
  * Displays rating on progress bar
  */
 - (void)setFeedback:(PFUser*)user {
+    NSLog(@"Set feedback called");
     /* Set what to query */
     NSString *userID = user.objectId;
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
@@ -131,6 +146,7 @@
     [query whereKey:@"objectId" equalTo:userID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
+            NSLog(@"user feedback found");
             NSString *feedbackAsString;
             float feedbackAsPercent;
             
@@ -142,11 +158,13 @@
                 feedbackAsString = @"0";
                 feedbackAsPercent = 50;
                 _noFeedbackField.text = @"No feedback";
+                NSLog(@"Uesr has not received feedback");
             }
             
             /* Display on profile */
             _feedbackField.text = [NSString stringWithFormat:@"%@%%", feedbackAsString];
             _feedbackBar.progress = (feedbackAsPercent / 100);
+            NSLog(@"feedback displayed");
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -164,6 +182,7 @@
  */
 - (IBAction)signOut:(id)sender {
     [PFUser logOut];
+    NSLog(@"User signing out");
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
 

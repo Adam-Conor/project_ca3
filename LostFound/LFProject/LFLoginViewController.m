@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"Login view loading");
+    
     /* Set up gesture recognition */
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                                                     initWithTarget:self
@@ -57,6 +59,7 @@
 
 /* Button for user registration */
 - (IBAction)signUp:(id)sender {
+    NSLog(@"Sign up button pressed");
     [self performSegueWithIdentifier:@"register" sender:self];
 }
 
@@ -88,10 +91,12 @@
         textError = YES;
         
         if(username.length == 0) {
+            NSLog(@"username empty");
             [self.usernameField becomeFirstResponder];
         }
         
         if(password.length == 0) {
+            NSLog(@"password epty");
             [self.passwordField becomeFirstResponder];
         }
     }
@@ -114,6 +119,8 @@
     
     else{}
     
+    NSLog(@"%@", errorText);
+    
     if(textError) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText
                                                             message:nil
@@ -125,8 +132,10 @@
         return;
     }
     
+    NSLog(@"Searching for user");
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         if(!error){ //if user found
+            NSLog(@"User found");
             [self performSegueWithIdentifier:@"login" sender:self];
         } else {
             NSString *alertTitle = nil;
@@ -155,8 +164,9 @@
 
 /* Button for login */
 - (IBAction)loginPressed:(id)sender {
-        [self dismissKeyboard];
-        [self getFieldValues];
+    NSLog(@"Login pressed");
+    [self dismissKeyboard];
+    [self getFieldValues];
 }
 
 /* Keyboard functions */

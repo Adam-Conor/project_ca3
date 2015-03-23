@@ -21,6 +21,9 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"map view loading");
+    
     self.navigationItem.hidesBackButton = YES;
     [self.mapView removeAnnotations:self.mapView.annotations];
     [_mapView setDelegate:self];
@@ -39,6 +42,8 @@
                                                   cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:@"Settings", nil];
         [alertView show];
+        
+        NSLog(@"Authorization denied. Warn user");
     }
     
     /* Check to see if user has ever authorized */
@@ -53,6 +58,7 @@
     
     /* Show user location with blue dot */
      _mapView.showsUserLocation = YES;
+    NSLog(@"User being shown as blue dot");
     
     /* Open map on user */
     CLLocationCoordinate2D coord = {currentLocation.coordinate.latitude, currentLocation.coordinate.longitude};
@@ -61,16 +67,19 @@
     [_mapView setRegion:region];
     [_mapView setZoomEnabled:YES];
     [_mapView setScrollEnabled:YES];
-    //[self getListings];
+    NSLog(@"Map view opened on user");
 }
 
 - (void)getListings {
+    NSLog(@"get listings called");
     PFGeoPoint *loc = [PFGeoPoint geoPointWithLatitude:53.34877256273858 longitude:-6.259341214407965];
     PFQuery* locationQuery = [PFQuery queryWithClassName:@"Listing"];
     [locationQuery whereKey:@"location" nearGeoPoint:loc withinKilometers:500];
     [locationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
+            NSLog(@"Listings found");
             for (PFObject *listing in objects) {
+                NSLog(@"Listing that was found: %@", listing);
                 
                 PFGeoPoint *listingPoint = [listing objectForKey:@"location"];
                 
@@ -156,6 +165,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.locationManager startUpdatingLocation];
+    NSLog(@"View appeared, start updating location");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -169,9 +179,12 @@ calloutAccessoryControlTapped:(UIControl *)control {
 - (void)requestPermission {
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     
+    NSLog(@"permission status to be checked");
+    
     if(status == kCLAuthorizationStatusNotDetermined) {
         if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
             [_locationManager requestWhenInUseAuthorization];
+            NSLog(@"permission for location requested");
         }
     }
 }
@@ -184,6 +197,8 @@ calloutAccessoryControlTapped:(UIControl *)control {
     [super viewDidDisappear:animated];
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.locationManager stopUpdatingLocation];
+    
+    NSLog(@"View disappeared. Stop updating location");
 }
 
 /*
@@ -191,6 +206,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
  */
 
 - (void)startStandardUpdates {
+    NSLog(@"Start updating location");
     [self.locationManager startUpdatingLocation];
     
     CLLocation *currentLocation = self.locationManager.location;

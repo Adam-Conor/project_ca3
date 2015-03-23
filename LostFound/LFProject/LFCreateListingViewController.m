@@ -23,6 +23,8 @@ static BOOL hasLocation = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"create listing View loading");
     // Do any additional setup after loading the view.
     /* Set max date as current date */
     self.datePicker.maximumDate = [NSDate date];
@@ -57,11 +59,12 @@ static BOOL hasLocation = NO;
  * Posts listing to databse if no errors
  */
 - (void) createListing {
+    NSLog(@"create listing called");
     NSDate *date = self.datePicker.date;
     PFUser *user = [PFUser currentUser];
-    [user fetch]; 
-    /*NSLog(@"%@", user[@"emailVerified"]);
-    BOOL verified = user[@"emailVerified"];*/
+    [user fetch];
+    
+    NSLog(@"User data refreshed");
     
     /* Alert user that they are not verified */
     if( ![[user objectForKey:@"emailVerified"] boolValue] ){
@@ -73,6 +76,7 @@ static BOOL hasLocation = NO;
                                                   otherButtonTitles:@"Ok", nil];
         
         [alertView show];
+        NSLog(@"user is not verified");
     } else {
         /* Alert user to fill mandatory fields */
         NSString *alertTitle = @"Title, Category, Status and Description are all mandatory fields. Please make sure these are filled before placing listing.";
@@ -88,7 +92,10 @@ static BOOL hasLocation = NO;
                                                       otherButtonTitles:@"Ok", nil];
             
             [alertView show];
+            NSLog(@"User did not fill madatory fields");
         } else {
+            
+            NSLog(@"Getting listing information");
             /* Get listing information from fields */
             PFObject *listing = [PFObject objectWithClassName:@"Listing"];
             
@@ -103,18 +110,20 @@ static BOOL hasLocation = NO;
 
             /* Get image ; Optional */
             if(hasImage){
+                NSLog(@"Image included");
                 listing[@"image"] = self.uploadImage;
             }
                 
             /* get location ; Optional */
             if(hasLocation){
+                NSLog(@"location included");
                 NSLog(@"has Location %@", self.loc);
                 listing[@"location"] = self.loc;
                 listing[@"locale"] = self.locale;
             }
             
             
-            NSLog(@"%@", listing);
+            NSLog(@"Listing to be saved: %@", listing);
             /* Save listing */
             [listing saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded) NSLog(@"%s Listing saved succesfully.", __PRETTY_FUNCTION__);
@@ -152,7 +161,7 @@ static BOOL hasLocation = NO;
  * Gives name of area near listing
  */
 
--(void)getLocale{
+-(void)getLocale {
     CLLocation *locat = [[CLLocation alloc] initWithLatitude:self.loc.latitude longitude:self.loc.longitude];
    
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
@@ -166,6 +175,8 @@ static BOOL hasLocation = NO;
             else{
                 self.locale = placemark.locality;
             }
+            
+            NSLog(@"User locale found: %@", _locale);
             
         }
         else{

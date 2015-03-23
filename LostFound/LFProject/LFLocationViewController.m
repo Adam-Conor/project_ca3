@@ -19,6 +19,8 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"location View loading");
+    
     /* Open the map on location */
     CLLocationCoordinate2D location = self.locationView.userLocation.coordinate;
     
@@ -89,6 +91,8 @@
     CLLocationCoordinate2D touchMapCoordinate =
     [self.locationView convertPoint:touchPoint toCoordinateFromView:self.locationView];
     
+    NSLog(@"user placing pin");
+    
     self.listingLoc = [[MKPointAnnotation alloc]init];
     
     self.listingLoc.coordinate = touchMapCoordinate;
@@ -110,8 +114,7 @@
     [self performSegueWithIdentifier:@"sendLocation" sender:self];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.destinationViewController isKindOfClass:[LFCreateListingViewController class]]) {
         LFCreateListingViewController *mainViewConroller = segue.destinationViewController;
         NSLog(@"%@", self.loc);
