@@ -1,0 +1,332 @@
+Commit Log from Lost & Found Project
+Adam O’Flynn
+12378651
+
+Newest at top.
+View Full GitHub project at: https://github.com/Adam-Conor/project_ca3
+
+
+commit 86dc9264c282e28a72c88e899f38d692b3516d5d
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Mon Mar 23 03:49:32 2015 +0000
+
+    Final Testing and Demo Run Through
+    
+    Did a demo run of the application, fixed errors about verification,
+    create listing and general navigation errors.
+
+commit ccee26309d788e95a4dc2b1efcbef5da0b01fef5
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 22 22:40:56 2015 +0000
+
+    Found why locale was returning null. Fixed
+    
+    Think the locale bug should be fixed. IF it can’t get a locale because
+    it is too rural, will search bigger. If it can’t again, returns blank.
+
+commit d147ecac894498e27663a006b254ee90f91bb3df
+Merge: 687165d 5173704
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 22 22:11:31 2015 +0000
+
+    Merge branch 'listing-result-page'
+
+commit 5173704a6cfbcb6fb480114a8a2b7709574e8b31
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 22 22:10:33 2015 +0000
+
+    Integrated remove listing, found a bug with returning locale
+    
+    Users can now remove listings. Map refreshes, pull to refresh in
+    category view works too.
+    
+    Bug is because of internet speeds and apple cloud service, will look
+    into.
+
+commit 20262a5e9d660ab8d38eccffd3ff91ddcbe1b908
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 22 02:23:10 2015 +0000
+
+    Tested and fixed log in and register alert errors
+    
+    Log in and register is tested and shows correct errors and will check
+    email address for validity and matching passwords.
+
+commit 754667d1646f3aa5e13b5605235b40229c7bd67a
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 22 00:52:42 2015 +0000
+
+    Now you can search by categories and status.
+    
+    Listings can now be searched by both map and categories. Search by
+    search bar is there, just not implemented yet.
+
+commit 00405efaf79af589f97e44869c66669cbcee7c0f
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Mar 21 19:56:35 2015 +0000
+
+    Fixed retrieving user email and username glitch. Also made email user button. Works, but can't send on simulator.
+
+commit 687165d956911033f00657f3c4b97dee66ed41d9
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Thu Mar 19 01:40:29 2015 +0000
+
+    Fixed .xibs causing a compile error. Deleted all references to them.
+
+commit 2ffe562d9ca988b857b9fbf06cf41a2060d90e2a
+Merge: 349c321 83e120c
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Wed Mar 18 22:27:23 2015 +0000
+
+    Fixed merge conflicts
+
+commit 83e120c7e7ff6e8f0bc77f29be8e43dd27ac53a3
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Wed Mar 18 22:08:27 2015 +0000
+
+    Fixed Map to show listings, listings are now clickable.
+
+commit 3147cb7837c506fb37f814005ba4353e6960c0fb
+Merge: 00025fa 7b6d474
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Wed Mar 18 14:03:00 2015 +0000
+
+    Merge branch 'create-listing'
+
+commit 7b6d4742d6b5274cf29f04d837244433d1279746
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Wed Mar 18 14:02:29 2015 +0000
+
+    Did some testing and fixed crashing when not uploading optional information on listing page
+
+commit 00025faf176066681daf3e9826cbadd76a6f9b57
+Merge: 245882a eee34f8
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 15 20:38:10 2015 +0000
+
+    Merge branch 'create-listing'
+
+commit eee34f85d5c82e3d9dddec3886c7af5085c8c2a6
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 15 01:17:03 2015 +0000
+
+    Users can now add a location to their listing through a map view
+    
+    Create lisiting is functional to our spec, big advancement now that
+    location can be got. This will now allow us to populate a map with pins
+    and listings :)
+
+commit e3cb28066e519805d1676e0d22b22d139261e3e6
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Mar 14 21:42:34 2015 +0000
+
+    Image upload now functioning
+    
+    User is asked for permission to access their album to upload a photo,
+    then they pick a photo. Image is synced to the database with the
+    listing
+
+commit fb8e9bff7d02b8305052019e75ca8b69b4cbc9f1
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Mar 14 17:19:45 2015 +0000
+
+    Date picker functioning properly
+    
+    User can now pick a date and that goes to the database correctly. Also,
+    you can only pick a date before the current day so you can’t lose
+    anything in the future :)
+
+commit ccf3b92adb5c9b98ba802b19f140c59491a4e0a1
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Mar 14 00:59:53 2015 +0000
+
+    Description now implemented. Problems with date
+    
+    Date picker wheel is crashing the app when  I try to take the date from
+    it, will fix too
+
+commit d86ceafa7e1ea0ddf1017552d9b6dd8b320f098c
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Wed Mar 11 17:07:15 2015 +0000
+
+    Made it so Category cell now shows the selected category after selection of it.
+    
+    Also moved lost and found options down in create listing view. This
+    should fix selection errors — very dirty but is the only way right now
+    :)
+
+commit aa964c239cad05259420188c838056f7fcacdfdd
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Wed Mar 11 16:12:39 2015 +0000
+
+    Create a listing view that saves a listing in the database
+    
+    Got a bare create listing working, need to add more fields but still
+    allows us to go onto search listing now
+
+commit 245882ab34189f7ab24ae7e911489077c5a5fc3c
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sun Mar 8 18:15:51 2015 +0000
+
+    General Fixes to UI and some input fixes
+    
+    Fixed constraints for storyboard so no more issues or warnings when
+    running. Fixed input so password field is secured. Also started create
+    listing, which I’m going to branch of this now and start properly.
+
+commit 5d58182d76af3b23938e85858630f27c05906420
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Thu Mar 5 16:37:32 2015 +0000
+
+    Just some small fixes to the storyboard re: last commit
+    
+    Small conflict with last commit and needed to fix storyboard.
+
+commit 2897e993d9203bb586c5a23db5c231ef915cb88e
+Merge: e687fce f907dd3
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Thu Mar 5 14:33:45 2015 +0000
+
+    Merge branch 'search'
+    
+    Conflicts:
+    	LostFound/LFProject/Main.storyboard
+
+commit f907dd3bcfc55be4d4d1c1dfb0c805827137a71b
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Thu Mar 5 14:32:22 2015 +0000
+
+    need to commit to merge
+
+commit 14c3c0f63f61d1e0aff876889dbdb4ba256d0b43
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Thu Mar 5 00:22:36 2015 +0000
+
+    Storyboard is practically complete. Can show app as a static walkthrough. Added search categories. Navigation controllers are working now.
+
+commit e99d2c643f2f6518044527ff0b2c6b727028bb52
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Mon Mar 2 23:11:32 2015 +0000
+
+    Fixed Storyboard
+    
+    Moved to storyboard based app
+    Fixed segues and made some conditional. Tab controller now works too.
+
+
+commit 4fe817d7e222e5938bcdf6cdc5918ccb9147d3f0
+Merge: 94889f5 5abc197
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Mon Mar 2 19:08:09 2015 +0000
+
+    Merge branch 'aoflynn'
+
+commit 5abc197bfcbdd3c2c89871411e0ae5db989e18fb
+Merge: 936c5d1 023f496
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Mon Mar 2 19:07:05 2015 +0000
+
+    Merge remote-tracking branch 'origin/aoflynn' into aoflynn
+    
+    Conflicts:
+    
+    LostFound/DerivedData/LostFound/Build/Intermediates/LostFound.build/Debu
+    g-iphonesimulator/LostFound.build/dgph
+    	LostFound/DerivedData/LostFound/TextIndex/text-filter.idx
+    	LostFound/LFProject/LFSearchViewController.xib
+    
+    LostFound/LostFound.xcodeproj/project.xcworkspace/xcuserdata/aoflynn.xcu
+    serdatad/UserInterfaceState.xcuserstate
+
+commit 936c5d11ca5212ea4a7377ba1556412eea6b77f1
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Mon Mar 2 19:06:42 2015 +0000
+
+    Decided to move to storyboard format
+    
+    Changed from using Interface Builder and .xib files so now optimizing
+    code for storyboard and segues
+
+commit 94889f5a866f50210402778ae22fb2be81c27263
+Merge: 9735792 023f496
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Feb 28 22:31:22 2015 +0000
+
+    Merge branch 'aoflynn'
+
+commit 023f4969f6ba9e15bb6fb0e0de578c3783e8a2cd
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Feb 28 22:31:05 2015 +0000
+
+    meh
+
+commit 9735792c4cbb607139457001dbbe8cb1815b399d
+Merge: 44e68b6 f0da88c
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Feb 28 22:30:24 2015 +0000
+
+    Merge branch 'aoflynn'
+
+commit f0da88c75da2c1c7bfe4159a77b2135808da94b0
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Feb 28 21:13:36 2015 +0000
+
+    try to ignore icon
+
+commit 2849d2c1cffc6eb8e14252295700d38389dd42f4
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Sat Feb 28 21:03:20 2015 +0000
+
+    Users can now log in and register. Log in is cached locally now, so no need to log in everytime.
+    
+    Fixed views so they now work properly. Users can now register an
+    account and log in. Once logged in they will be brought to the search
+    page, this is the important part of the app. Will probably start that
+    tomorrow.
+    
+    Updated UI a little bit too, may add screenshots of the views soon,
+    just for reference.
+
+commit 44e68b6ccf24d840397e95b6b9608f5fc1bb83b1
+Merge: 306f572 05edc7e
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Fri Feb 27 21:34:47 2015 +0000
+
+    Merge branch 'aoflynn'
+
+commit 05edc7e104f4cae8513d98022be03cc3d2f248bc
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Fri Feb 27 21:32:05 2015 +0000
+
+    Got simulation working and users can now register
+    
+    Set up a register view so people can register if they don’t have an
+    account already. Log in works I think, need to make search screen to
+    test the transition to it after logging in. Database shows new users.
+    Since Parse takes care of backend, it sorts matching passwords, emails
+    and usernames. Nifty enough.
+
+commit 306f57258cb601e48388f9d38b7212c8c76d2bf9
+Author: Adam <adam.oflynn7@mail.dcu.ie>
+Date:   Fri Feb 27 00:41:37 2015 +0000
+
+    ignored DerivedData
+
+commit 1bec966d92f47defae571c90fe648a124a351990
+Author: Adam <aoflynn9909@gmail.com>
+Date:   Thu Feb 26 20:31:03 2015 +0000
+
+    Login should be nearly working
+    
+    Got the login view controller started and pretty much have it down. It
+    should work but the app delegate or .xib files aren’t working properly.
+    May need to just fresh start or delete some files. Too much code
+    commented out also, so may delete that and try to fix problems from
+    there. Don’t think parse is the problem. Will continue doing some work
+    later.
+
+commit 5222f773d643c09f674b656fb5f84b23da5bcdf0
+Author: Adam <adam.oflynn7@mail.dcu.ie>
+Date:   Thu Feb 26 20:18:22 2015 +0000
+
+    ignored DerivedData
