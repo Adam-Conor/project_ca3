@@ -1,0 +1,265 @@
+Blog from Lost & Found Project
+Conor Smyth 12452382
+
+Newest to oldest
+View full GitHub repo at: https://github.com/Adam-Conor/project_ca3
+
+Branch: remove_listing
+Merged to master
+----------------------
+commit c2a515f1f6b5d8047ddba6a86971e365f33e5a02
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Sat Mar 21 22:20:09 2014 -7000
+
+		Removes listing from db but still shows on map
+
+Branch: master
+--------------
+commit cb74f67af33883b85c33d3eb7a23edc104139c52
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 16:51:45 2015 -0700
+
+    folered documentation away
+
+commit 2468179d80ab7fd7da51e1d522df80e216338436
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 16:41:11 2015 -0700
+
+    Comments and formatting added
+
+commit 349c32181dd8f6467c344abf6a5e087cedf8d836
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 14:57:27 2015 -0700
+
+    Added search capabilites
+
+commit 4ba325386e009d3c05829e32654f7c14cbe9b4bf
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 14:57:10 2015 -0700
+
+    added search to master. Logs results
+
+commit f174b404e78fc44003c1c00a0a8783c90a20463d
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 13:27:54 2015 -0700
+
+    Added comments and some formatting
+
+commit 8d49cdc8ca0a571a0f973debe717121849e78631
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 13:26:36 2015 -0700
+
+    fixed incorrect text for location request
+
+commit d2f80e1ed928b8babf6087ac5233294ae85cf432
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 13:20:34 2015 -0700
+
+    Added comments and formatting
+
+commit 8ecc3aa3c880eefebe606b67d8ce6f3626b8eca9
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 13:20:09 2015 -0700
+
+    Fixed warning
+
+commit 92b809a1aa08fb8d4eef3c47fcc8c3091f839044
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 12:10:44 2015 -0700
+
+    Imported Parse
+Branch: profile
+Merged to master
+----------------
+commit 7872cda112174bd90164095b310a2d558659fdca
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 12:10:12 2015 -0700
+
+    Showing Profile picture and logs listing count
+
+commit 08cf8051ecf0339c47189ec55fba3d7f163d5686
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 11:09:23 2015 -0700
+
+    Added profile view layout
+
+commit 3df91cfaa89a88c7d94dfe4521454a9b50820a9b
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 11:08:49 2015 -0700
+
+    imported parse
+
+commit b49c654ffd99e0bfc349d875f900d6aa70e6ddff
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 11:06:41 2015 -0700
+
+    added default image for new users
+
+commit 494adedbd479e72f84caeb8efa4f09763abaf6b3
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 18 08:40:18 2015 -0700
+
+    Profile view moved from profile branch
+
+commit e687fce0a118a0b96aa7b930d8efb764f17639d3
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Thu Mar 5 06:14:46 2015 -0800
+
+    some formatting
+
+Branch: map
+Merged to master
+----------------
+commit 20da4b6cc08b4a2d3a3218418077bb9feed9ff4e
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 4 20:04:28 2015 -0800
+
+    Opens on user on shows blue dot
+
+commit af27ed8516c7176e16c89efed0a1efc1146d04dd
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 4 20:03:52 2015 -0800
+
+    Got map responding. wew
+
+commit 86324988c05886341f74af66349ae7d72daef46d
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 4 17:43:18 2015 -0800
+
+    got authorization request working :3
+
+commit 6a773db6a09b7e7bd574ca98ac20683191f27b1f
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 4 17:42:50 2015 -0800
+
+    Added search bar and constraints
+
+commit 2bf6bf55db0b810499034124eaf4572c121a00fe
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 4 17:42:18 2015 -0800
+
+    Removed authorization request. Not needed
+
+commit a7c5788f3d0e185f36ace9bd9c8cf975b0d6a8b6
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Wed Mar 4 17:41:26 2015 -0800
+
+    corrected location stuff
+
+commit 4d52c55a3018e019ccfc875828fda5676e18ad7c
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Tue Mar 3 18:15:06 2015 -0800
+
+    still working on authorization
+
+commit 2940624db8e154dd3ac8b61b2f47979731881bbc
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Tue Mar 3 10:43:51 2015 -0800
+
+    Making moves on map. Still can't get permission
+
+commit 5cc3497d87b9bc580579b4b5e12b1e0124ce6fd5
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Tue Mar 3 10:43:33 2015 -0800
+
+    added some mapkit stuff
+
+commit 56eb6cba0be10c7e3d65e3000ca2200582c9a523
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Tue Mar 3 10:42:47 2015 -0800
+
+    added necessary servies
+
+commit 67160600c369e2be5823fa0bb0e2518c50da2d0a
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Tue Mar 3 09:45:30 2015 -0800
+
+    Hid status bar when laoding
+
+commit 773054cb98b1d87e81d76577f79c69bea09d695d
+Author: Conor Smyth <conorsmyth@Conors-Mac.local>
+Date:   Tue Mar 3 08:44:47 2015 -0800
+
+    map displaying. need to add start position
+
+commit 1eafdcbb42ae085ba47fba4c772f9e80df502c83
+Author: Conor Smyth <conorsmyth@Conors-Mac.local>
+Date:   Mon Mar 2 14:52:58 2015 -0800
+
+    started map implementation. Not much done
+
+commit 93362570fb4d18e6d32aae2bef948c4924af71e1
+Author: Conor Smyth <conorsmyth@Conors-Mac.local>
+Date:   Tue Feb 24 09:00:28 2015 -0800
+
+    Initial Commit
+
+commit 11ddb354f91685d229048298de84bfd49af46d03
+Author: Conor Smyth <conorsmyth@Conors-Mac.local>
+Date:   Mon Feb 23 07:15:41 2015 -0800
+
+    added git ignore
+
+commit fbbd1d866d3c3421e41a791f4c8caad118022889
+Author: Conor Smyth <conorsmyth@Conors-Mac.local>
+Date:   Mon Feb 23 07:15:23 2015 -0800
+
+    Updated folering
+
+Branch: master
+First submission blogs initial work
+-----------------------------------
+commit 2941e3453f68d8ce914f3003acd54d3ba535382b
+Merge: 50ffc05 9e3eef7
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Mon Nov 17 21:10:03 2014 +0000
+
+    Merge branch 'master' of github.com:Adam-Conor/project_ca3
+
+commit 50ffc052032a32d5495fa3383dee8833ae70d785
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Mon Nov 17 21:09:29 2014 +0000
+
+    foldered stuff away
+
+commit 9e3eef78815d8ca8b6b9b77f316dd7894e0444a2
+Author: SmythConor <cnrsmyth@gmail.com>
+Date:   Fri Nov 7 11:51:13 2014 +0000
+
+    Updated README.md with markdown
+
+commit 5059b03c06471ae8649bc9634e19b7c192a0e0c0
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Sun Oct 26 00:33:58 2014 +0100
+
+    Updated readme
+
+commit b3f38cacc77e9bc2b0c98e8d328def32e59e06aa
+Author: Conor <cnrsmyth@gmail.com>
+Date:   Thu Oct 23 10:09:01 2014 +0100
+
+    added folder with files to submit for Fri 24th
+
+commit b20394ccdf315db6ad3df2c435d64b94bc76a104
+Author: Conor <cnrsmyth@gmail.com>
+Date:   Thu Oct 23 10:08:15 2014 +0100
+
+    Added filled out proposal pdf
+
+commit 4c2b46c891f94e442f55524cffa6b124a56d691b
+Author: Conor <cnrsmyth@gmail.com>
+Date:   Thu Oct 23 10:05:48 2014 +0100
+
+    members.txt ready for submission
+
+commit a035bc2dafcb149ec26af43734f47af07b6b529f
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Tue Oct 21 22:20:26 2014 +0100
+
+    Files due for Friday 24th
+
+commit a2cd7fd961e305e5d93f0be485869f4c82514c29
+Author: Conor Smyth <cnrsmyth@gmail.com>
+Date:   Tue Oct 21 22:20:09 2014 +0100
+
+    Initial commit
