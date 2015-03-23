@@ -10,7 +10,8 @@
 #import <Parse/Parse.h>
 #import <MessageUI/MessageUI.h>
 
-@interface LFListingViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface LFListingViewController : UIViewController
+    <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UILabel *status;
 @property (nonatomic, strong) IBOutlet UIImageView *image;
@@ -22,10 +23,10 @@
 @property (nonatomic, strong) IBOutlet UILabel *email;
 @property (nonatomic, strong) IBOutlet UILabel *phone;
 @property (nonatomic, strong) IBOutlet UILabel *listingTitle;
-@property (strong, nonatomic) IBOutlet UIButton *emailUser;
-@property (strong, nonatomic) PFUser *poster;
-@property (strong, nonatomic) PFObject *listing;
-@property (strong, nonatomic) NSString *objectId;
-@property (strong, nonatomic) IBOutlet UIButton *remove;
+@property (nonatomic, strong) IBOutlet UIButton *emailUser;
+@property (nonatomic, strong) PFUser *poster;
+@property (nonatomic, strong) PFObject *listing;
+@property (nonatomic, strong) NSString *objectId;
+@property (nonatomic, strong) IBOutlet UIButton *remove;
 
 @end

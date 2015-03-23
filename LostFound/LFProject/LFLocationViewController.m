@@ -26,8 +26,8 @@
     MKCoordinateSpan span;
     
     if(TARGET_IPHONE_SIMULATOR) {
-        location.latitude  =  53.5072;
-        location.longitude = -6.1275;
+        location.latitude  =  53.3798766;
+        location.longitude = -6.2597792;
         self.locationView.userLocation.coordinate = location;
     } else {
         location.latitude  =  self.locationView.userLocation.location.coordinate.latitude;

@@ -17,5 +17,7 @@
 @property (nonatomic, strong) IBOutlet MKMapView *locationView;
 @property (nonatomic, strong) MKPointAnnotation *listingLoc;
 @property (nonatomic, strong) PFGeoPoint *loc;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *currentLocation;
 
 @end

@@ -16,7 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /* Hide remove button for now */
     [_remove setHidden:YES];
+    
     /* Load listings onto map */
     [self loadListing];
 }
@@ -26,23 +29,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-/* Load the required listing */
+/* Load the required listing
+ * Queries database for specified listing
+ * Displays text in view controller
+ */
 - (void) loadListing {
+    /* Set up query for objectId */
     PFQuery* listingQuery = [PFQuery queryWithClassName:@"Listing"];
     [listingQuery whereKey:@"objectId" equalTo:self.objectId];
+    
+    /* Execute query in background */
     [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
             self.listing = [objects objectAtIndex:0];
             
-            /* Get infor about user who posted ad */
-            
+            /* Get info about user who posted listing */
             PFQuery *query = [PFUser query];
             PFUser *user = _listing[@"user"];
             [query whereKey:@"objectId" equalTo:user.objectId];
             self.poster = [query getFirstObject];
-            NSLog(self.poster.username);
-            /* Get listing information from query */
             
+            /* Get listing information from query */
             _listingTitle.text = [self capitalise:_listing[@"title"]];
             _category.text = [self capitalise:_listing[@"category"]];
             _locale.text = _listing[@"locale"];
@@ -63,9 +70,10 @@
                 _image.image = [UIImage imageNamed:@"placeholder.png"];
             }
             
-            
+            /* Check if listing created by user */
             PFUser *current = [PFUser currentUser];
             
+            /* Display remove listing button if user */
             if(user == current) {
                 [_remove setHidden:NO];
             }
@@ -77,16 +85,23 @@
     }];
 }
 
+/* Button action for remove listing */
 - (IBAction)remove:(id)sender {
     [self removeListing];
 }
 
+/* Remove listing function
+ * Gets the listing objectId and removes it from the database
+ * Alerts user that listing is being deleted
+ */
 - (void)removeListing {
     PFQuery *listingQuery = [PFQuery queryWithClassName:@"Listing"];
     [listingQuery whereKey:@"objectId" equalTo:self.objectId];
     [listingQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) { //found match
             PFObject *toRemove = objects[0];
+            
+            /* remove object from database */
             [toRemove deleteInBackground];
         } else {
             // Log details of the failure
@@ -94,12 +109,20 @@
         }
     }];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your listing has been deleted!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-    [alert show];
+    /* Alert user the listing will be removed */
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                    message:@"Your listing has been deleted!"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"OK", nil];
     
-    //[self performSegueWithIdentifier:@"removeListing" sender:self];
+    [alert show];    
 }
 
+/* Email user function
+ * Redirects the user to email the listing owner
+ * Fills some field information for contactor
+ */
 - (IBAction)emailUser:(id)sender {
     NSString *subject= [self capitalise:_listing[@"title"]];
     NSString *body = @"Hi! I was just wondering about your listing on Lost & Found";
@@ -133,10 +156,10 @@
 }
 
 
-- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-    switch (result)
-    {
+- (void) mailComposeController:(MFMailComposeViewController *)controller
+           didFinishWithResult:(MFMailComposeResult)result
+                         error:(NSError *)error {
+    switch(result) {
         case MFMailComposeResultCancelled:
             NSLog(@"Mail cancelled");
             break;
